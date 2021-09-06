@@ -3,10 +3,10 @@
 Pitch Pow is an app that helps students create business pitches using a standard template with prompts to answer key questions and receive feedback from university staff.
 
 ### Table Of Contents
-1. [Prerequisites]()
-2. [Installation & Usage]()
-3. [Features]()
-4. [Contributing]()
+1. [Prerequisites](https://github.com/bradley-mubenga/Pitch-Pow/tree/feature_Authentication#1-prerequisites)
+2. [Installation & Usage](https://github.com/bradley-mubenga/Pitch-Pow/tree/feature_Authentication#2-installation--usage)
+3. [Features](https://github.com/bradley-mubenga/Pitch-Pow/tree/feature_Authentication#3-features)
+4. [Contributing](https://github.com/bradley-mubenga/Pitch-Pow/tree/feature_Authentication#4-contributing)
 
 ## 1. Prerequisites
 In onder to run this repository locally, you will need to install/download the following resources.
