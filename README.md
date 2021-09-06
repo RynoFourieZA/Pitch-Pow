@@ -41,13 +41,9 @@ Describe how our custom features work here.
 
 To contribute to the repository, ensure that you follow the following guidelines:
 
-1. Develop on any branch besides but not the ```master``` branch. @bradley-mubenga will ensure that there is a new branch for every objective or feature we plan to work on.
+1. You can develop on any other branch but **NOT** the ```master``` branch. @bradley-mubenga will ensure that there is a branch for every objective or feature we plan to develop.
 
-2. Once you have completed your developing on the branch, make a pull request to the ```master``` branch. Select @bradley-mubenga as a reviewer, once peers have reviewed the code @bradley-mubenga will merge to the main branch. **Do not merge any branch to the main branch without the team's approval**
-
-5. Feature branches are merged every friday after making sure the backend and frontend is full functional.
-
-6. An emergency meeting is called on a friday if things are not working at all or if we have a serious problem.
+2. Once you have completed developing on the branch, make a pull request to the ```master``` branch. Select @bradley-mubenga as a reviewer, and assign your team mates. Once your code is reviewed @bradley-mubenga will merge to the main branch. **Make sure to select @bradley-mubenga as the reviewer when making a pull request for it to be sucessfully merged**
 
 ## 5. Troubleshooting
-See the guidance in the [wiki](https://github.com/textbook/starter-kit/wiki).
+If you are having trouble setting up the repo locally, [read this wiki](https://github.com/textbook/starter-kit/wiki) to find the solution or contact @bradley-mubenga for assistance.
