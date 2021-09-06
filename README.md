@@ -1,73 +1,50 @@
-# Starter Kit
+# Pitch Pow
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+Pitch Pow is an app that helps students create business pitches using a standard template with prompts to answer key questions.
 
-- [x] Full stack ES8+ with [Babel]
-- [x] [Node] LTS support (verified working on 12.x and 14.x LTS releases)
-- [x] [Express] server
-- [x] [React] client with [Webpack]
-- [x] Client-side routing with [React Router]
-- [x] Linting with [ESLint] and [Prettier]
-- [x] Dev mode (watch modes for client and server, proxy to avoid CORS issues)
-- [x] Production build (single deployment artifact, React loaded via CDN)
-- [x] [Heroku] deployment
-- [x] [Cloud Foundry] deployment
-- [x] [Docker] build
-- [x] [Postgres] database with [node-postgres]
+### Table Of Contents
+1. [Prerequisites]()
+2. [Installation & Usage]()
+3. [Features]()
+4. [Contributing]()
 
-## Setup
+## 1. Prerequisites
+In onder to run this repository locally, you will need to install/download the following resources.
 
-Pick one member of the team to own the repository and pipeline. That person should do the following:
+- [Node.js v16.x](https://nodejs.org/en/)
+- [Node Package Manager (npm) v7.x](https://nodejs.org/en/)
+- [PostgreSQL](https://www.postgresql.org/)
 
-1.  Click the "Use this template" button above (see [GitHub's docs][1]) to create your team repository, select "Include all branches" and name it something appropriate for your project.
-2.  In your new repo, go to "Settings", then "Branches", then switch the default branch to `postgres` (_optional_: you can now delete the old `master` branch and rename `postgres` to `master`, `main` or whatever else you'd like) - see [GitHub's docs][2] again
-3.  In your repo, click the "Deploy to Heroku" button at the top of the README and create a Heroku account when prompted.
-4.  Fill in the name of the application, select Europe and then click "Deploy App".
-5.  Once it has deployed successfully, click the "Manage app" button to view the application details.
-6.  Go to the "Deploy" tab, select "Connect to GitHub" and choose your repo.
-7.  Click "Enable automatic deploys".
+Please make sure you have a PostgreSQL superuser named ```root``` with the password of ```null``` (empty), and also ensure that you have a local database named ```cyf```.
 
-Whenever you commit to master (or e.g. merge a [pull request]) it will get automatically deployed!
+## 2. Installation & Usage
+Clone this repository and then enter the root folder. In the root folder run the following command to install all the required dependencies.
 
-You should now make sure all of the project team are [collaborators] on the repository.
+```bash
+npm install
+```
 
-## Scripts
+Once the dependencies are installed run the following command to start the development server and client locally.
 
-Various scripts are provided in the package file, but many are helpers for other scripts; here are the ones you'll
-commonly use:
+```bash
+npm run dev
+```
 
-- `dev`: starts the frontend and backend in dev mode, with file watching (note that the backend runs on port 3100, and
-  the frontend is proxied to it).
-- `lint`: runs ESLint and Prettier against all the code in the project.
-- `serve`: builds and starts the app in production mode locally.
+## 3. Features
 
-### Debugging
+Describe how our custom features work here.
 
-While running the dev mode using `npm run dev`, you can attach the Node debugger to the server process via port 9229.
-If you're using VS Code, a debugging configuration is provided for this.
+```bash
+```
 
-There is also a VS Code debugging configuration for the Chrome debugger, which requires the recommended Chrome
-extension, for debugging the client application.
+## 4. Features
 
-### Troubleshooting
+To contribute to the repository, ensure that you follow the following guidelines:
 
-See the guidance in the [wiki].
+1. Develop on any branch besides the ``master`` branch. @bradley-mubenga will ensure that there is a new branch for every objective we plan to accomplish.
 
-[1]: https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template
-[2]: https://docs.github.com/en/github/administering-a-repository/managing-branches-in-your-repository
-[babel]: https://babeljs.io/
-[cloud foundry]: https://www.cloudfoundry.org/
-[collaborators]: https://help.github.com/en/articles/inviting-collaborators-to-a-personal-repository
-[docker]: https://www.docker.com
-[eslint]: https://eslint.org/
-[express]: https://expressjs.com/
-[heroku]: https://www.heroku.com/
-[node]: https://nodejs.org/en/
-[node-postgres]: https://node-postgres.com/
-[postgres]: https://www.postgresql.org/
-[prettier]: https://prettier.io/
-[pull request]: https://help.github.com/en/articles/about-pull-requests
-[react]: https://reactjs.org/
-[react router]: https://reactrouter.com/web
-[webpack]: https://webpack.js.org/
-[wiki]: https://github.com/textbook/starter-kit/wiki
+2. Once you have completed your developing on the branch, make a pull request to the ``master`` branch. Once peers have reviewed the code and @RynoFourieZA checks that the code meets our naming conventions @bradley-mubenga will merge to the main branch. **Do not merge any branch to the main branch without the team's approval**
+
+5. Feature branches are merged every friday after making sure the backend and frontend is full functional.
+
+6. An emergency meeting is called on a friday if things are not working at all or if we have a serious problem.
