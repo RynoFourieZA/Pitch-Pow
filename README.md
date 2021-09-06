@@ -1,6 +1,6 @@
 # Pitch Pow
 
-Pitch Pow is an app that helps students create business pitches using a standard template with prompts to answer key questions.
+Pitch Pow is an app that helps students create business pitches using a standard template with prompts to answer key questions and receive feedback from university staff.
 
 ### Table Of Contents
 1. [Prerequisites]()
@@ -37,14 +37,17 @@ Describe how our custom features work here.
 ```bash
 ```
 
-## 4. Features
+## 4. Contributing
 
 To contribute to the repository, ensure that you follow the following guidelines:
 
-1. Develop on any branch besides the ``master`` branch. @bradley-mubenga will ensure that there is a new branch for every objective we plan to accomplish.
+1. Develop on any branch besides but not the ```master``` branch. @bradley-mubenga will ensure that there is a new branch for every objective or feature we plan to work on.
 
-2. Once you have completed your developing on the branch, make a pull request to the ``master`` branch. Once peers have reviewed the code and @RynoFourieZA checks that the code meets our naming conventions @bradley-mubenga will merge to the main branch. **Do not merge any branch to the main branch without the team's approval**
+2. Once you have completed your developing on the branch, make a pull request to the ```master``` branch. Select @bradley-mubenga as a reviewer, once peers have reviewed the code @bradley-mubenga will merge to the main branch. **Do not merge any branch to the main branch without the team's approval**
 
 5. Feature branches are merged every friday after making sure the backend and frontend is full functional.
 
 6. An emergency meeting is called on a friday if things are not working at all or if we have a serious problem.
+
+## 5. Troubleshooting
+See the guidance in the [wiki](https://github.com/textbook/starter-kit/wiki).
