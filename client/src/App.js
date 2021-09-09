@@ -8,6 +8,7 @@ import "./assets/css/_responsive.css";
 import About from "./pages/About";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
+import LoginPage from "./pages/LoginPage";
 
 const App = () => (
 	<Switch>
@@ -19,6 +20,9 @@ const App = () => (
 		</Route>
 		<Route path="/signup">
 			<SignUp />
+		</Route>
+		<Route path="/login">
+			<LoginPage />
 		</Route>
 	</Switch>
 );
