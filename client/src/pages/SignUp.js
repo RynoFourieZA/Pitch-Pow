@@ -19,7 +19,12 @@ const SignUp = () => (
                 </div>
 
                 <div className="col-sm-12 col-md-12 col-lg-8 col-xl-8">
-
+                    <div>
+                        <form>
+                            <input type="text" id="fname" name="fname" />
+                            <input type="text" id="lname" name="lname" />
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
