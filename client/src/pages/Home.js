@@ -10,7 +10,7 @@ export function Home() {
 	useEffect(() => {
 		fetch("/api")
 			.then((res) => res.json())
-			.then((body) => setMessage(body[0].test_string));
+			.then((body) => setMessage(body[1].test_string));
 	}, []);
 
 	return (
