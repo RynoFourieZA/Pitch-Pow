@@ -1,5 +1,3 @@
-drop table test_table;
-
 create table test_table(
     test_string         varchar(1000)
 );
