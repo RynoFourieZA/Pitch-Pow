@@ -9,18 +9,8 @@ export function Home() {
 
 	useEffect(() => {
 		fetch("/api")
-			.then((res) => {
-				if (!res.ok) {
-					throw new Error(res.statusText);
-				}
-				return res.json();
-			})
-			.then((body) => {
-				setMessage(body.message);
-			})
-			.catch((err) => {
-				console.error(err);
-			});
+			.then((res) => res.json())
+			.then((body) => setMessage(body[0].test_string));
 	}, []);
 
 	return (
