@@ -5,6 +5,9 @@
 	"extends": ["plugin:jsx-a11y/strict", "plugin:react/recommended"],
 	"plugins": ["react-hooks"],
 	"rules": {
+		"linebreak-style": 0,
+		"global-require": 0,
+		"eslint linebreak-style": [0, "error", "windows"],
 		"react/jsx-tag-spacing": "error",
 		"react/no-unused-prop-types": "error",
 		"react/prop-types": "off",
