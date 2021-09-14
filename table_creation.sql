@@ -51,7 +51,8 @@ CREATE TABLE pitch_questions (
 CREATE TABLE draft_pitch (
 	id SERIAL PRIMARY KEY,
 	pitch_questions_id integer REFERENCES pitch_questions(id),
-	questions varchar(250)
+	questions varchar(250),
+	student_no int references students(id)
 );
 
 CREATE TABLE comments (
