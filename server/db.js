@@ -23,7 +23,6 @@ export const connectDb = async () => {
 	console.log("Postgres connected to", client.database);
 	client.release();
 };
-
 // This disconnect the pool request on a bad time out
 export const disconnectDb = () => pool.close();
 

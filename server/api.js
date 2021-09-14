@@ -4,7 +4,7 @@ import connectDb from "./db";
 
 const router = new Router();
 
-router.get("/", (req, res) => {
+router.get("/", (_, res) => {
 	connectDb
 		.query("SELECT * FROM test_table")
 		.then((result) => res.json(result.rows))
