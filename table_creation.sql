@@ -10,10 +10,10 @@ drop table students;
 drop table roles;
 
 CREATE TABLE students (
-	id  SERIAL PRIMARY KEY,
+	id  int PRIMARY KEY, 
 	Full_name varchar(50) NOT NULL,
 	Email varchar(50) NOT NULL,
-	Password varchar(255) NOT NULL, /*The Encrypted Password Is Very Long*/
+	Password varchar(255) NOT NULL,
 	Roles varchar(15) NOT NULL,
 	Tell_about_yourself varchar(250),
 	profile_picture varchar(250)
@@ -23,7 +23,7 @@ CREATE TABLE mentors (
 	id  SERIAL PRIMARY KEY,
 	Full_name varchar(50) NOT NULL,
 	Email varchar(50) NOT NULL,
-	Password varchar(50) NOT NULL,
+	Password varchar(255) NOT NULL,
 	Roles varchar(15) NOT NULL,
 	Tell_about_yourself varchar(250),
 	profile_picture varchar(250)
@@ -51,7 +51,9 @@ CREATE TABLE pitch_questions (
 CREATE TABLE draft_pitch (
 	id SERIAL PRIMARY KEY,
 	pitch_questions_id integer REFERENCES pitch_questions(id),
-	questions varchar(250)
+	student_no int REFERENCES students(id),
+	questions varchar(250),
+	answers varchar(150)
 );
 
 CREATE TABLE comments (

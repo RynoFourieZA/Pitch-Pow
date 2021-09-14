@@ -29,10 +29,12 @@ router.post("/signup", async (req, res) => {
         const salt = await bcrypt.genSalt(saltRounds);
         const bcryptPassword = await bcrypt.hash(password, salt);
         //Add user to the database (mentor or student)
+        const student_id = email.replace("@myuwc.ac.za", "");
+
         if (roles === "student") {
             const newUser = await connectDb.query(
-                "INSERT INTO students (full_name, email, password, roles) VALUES ($1, $2, $3, $4) RETURNING *",
-                [full_name, email, bcryptPassword, roles]
+                "INSERT INTO students (id, full_name, email, password, roles) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+                [student_id, full_name, email, bcryptPassword, roles]
             );
 
             //5. Generating our jwt token
