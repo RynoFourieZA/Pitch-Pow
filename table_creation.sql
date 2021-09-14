@@ -9,8 +9,6 @@ drop table mentors;
 drop table students;
 drop table roles;
 
-CREATE EXTENSION if not exists "uuid-ossp";
-
 CREATE TABLE students (
 	id  int PRIMARY KEY,
 	Full_name varchar(50) NOT NULL,
@@ -22,7 +20,7 @@ CREATE TABLE students (
 );
 
 CREATE TABLE mentors (
-	id  uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+	id  SERIAL PRIMARY KEY,
 	Full_name varchar(50) NOT NULL,
 	Email varchar(50) NOT NULL,
 	Password varchar(50) NOT NULL,
