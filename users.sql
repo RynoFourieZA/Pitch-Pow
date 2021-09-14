@@ -1,21 +1,14 @@
--- Inserting the roles of the users.
-INSERT INTO roles (name) VALUES ('Student');
-
-INSERT INTO roles (name) VALUES ('Mentor');
-
-INSERT INTO roles (name) VALUES ('Administration');
-
 -- Inserting into students.
-INSERT INTO students (Full_name, Email, Password, Roles) VALUES ('Aitken Fortuin', 'aitkenf115@gmail.com', '20Aitken21cyf', '1');
+INSERT INTO students (id, full_name, email, password, roles) VALUES (23546, 'Aitken Fortuin', 'aitkenf115@gmail.com', '20Aitken21cyf', 'student');
 
-INSERT INTO students (Full_name, Email, Password, Roles) VALUES ('Bradley Mubenga', 'mubengaBradley@gmail.com', '20Bradley21cyf', '1');
+INSERT INTO students (id, full_name, email, password, roles) VALUES (23547, 'Bradley Mubenga', 'mubengaBradley@gmail.com', '20Bradley21cyf', 'student');
 
-INSERT INTO students (Full_name, Email, Password, Roles) VALUES ('Ryno Fourie', 'rjrfourie@outlook.com', '20Ryno21cyf', '1');
+INSERT INTO students (id, full_name, email, password, roles) VALUES (23548, 'Ryno Fourie', 'rjrfourie@outlook.com', '20Ryno21cyf', 'student');
 
-INSERT INTO students (Full_name, Email, Password, Roles) VALUES ('Shawen Harker', 'harkershawen@gmail.com', '20Shawen21cyf', '1');
+INSERT INTO students (id, full_name, email, password, roles) VALUES (23549, 'Shawen Harker', 'harkershawen@gmail.com', '20Shawen21cyf', 'student');
 
-INSERT INTO mentors (Full_name, Email, Password, Roles ) VALUES ('Sharad Parbhoo', 'parbster@gmail.com', '20Sharad21cyf', 2);
+INSERT INTO mentors (full_name, email, password, roles) VALUES ('Sharad Parbhoo', 'parbster@gmail.com', '20Sharad21cyf', 'mentor');
 
-INSERT INTO mentors (Full_name, Email, Password, Roles) VALUES ('Lana Franks', 'lfranks@uwc.ac.za', '20Sharad21cyf', 2);
+INSERT INTO mentors (full_name, email, password, roles) VALUES ('Lana Franks', 'lfranks@uwc.ac.za', '20Sharad21cyf', 'mentor');
 
-INSERT INTO mentors (Full_name, Email, Password, Roles) VALUES ('Emma Keet', 'keetemma@gmail.com', '20Emma21cyf', 3);
+INSERT INTO mentors (full_name, email, password, roles) VALUES ('Emma Keet', 'keetemma@gmail.com', '20Emma21cyf', 'administrator');

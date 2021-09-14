@@ -1,34 +1,32 @@
 drop table resourses;
 drop table competitions;
-drop table question_type;
-drop table pitch_questions;
-drop table draft_pitch;
 drop table pitch;
+drop table draft_pitch;
+drop table pitch_questions;
+drop table question_type;
 drop table "comments";
 drop table mentors;
 drop table students;
+drop table roles;
 
-CREATE TABLE roles (
-	id SERIAL PRIMARY KEY,
-	name varchar(15)
-);
+CREATE EXTENSION if not exists "uuid-ossp";
 
 CREATE TABLE students (
-	id  SERIAL PRIMARY KEY,
-	Full_name varchar(250) NOT NULL,
-	Email varchar(250) NOT NULL,
-	Password varchar(250) NOT NULL,
-	Roles int REFERENCES roles(id),
+	id  int PRIMARY KEY,
+	Full_name varchar(50) NOT NULL,
+	Email varchar(50) NOT NULL,
+	Password varchar(50) NOT NULL,
+	Roles varchar(15) NOT NULL,
 	Tell_about_yourself varchar(250),
 	profile_picture varchar(250)
 );
 
 CREATE TABLE mentors (
-	id  SERIAL PRIMARY KEY,
-	Full_name varchar(250) NOT NULL,
-	Email varchar(250) NOT NULL,
-	Password varchar(250) NOT NULL,
-	Roles int REFERENCES roles(id),
+	id  uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+	Full_name varchar(50) NOT NULL,
+	Email varchar(50) NOT NULL,
+	Password varchar(50) NOT NULL,
+	Roles varchar(15) NOT NULL,
 	Tell_about_yourself varchar(250),
 	profile_picture varchar(250)
 );
