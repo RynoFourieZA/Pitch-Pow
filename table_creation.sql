@@ -1,9 +1,24 @@
+drop table resourses;
+drop table competitions;
+drop table question_type;
+drop table pitch_questions;
+drop table draft_pitch;
+drop table pitch;
+drop table "comments";
+drop table mentors;
+drop table students;
+
+CREATE TABLE roles (
+	id SERIAL PRIMARY KEY,
+	name varchar(15)
+);
+
 CREATE TABLE students (
 	id  SERIAL PRIMARY KEY,
 	Full_name varchar(250) NOT NULL,
 	Email varchar(250) NOT NULL,
 	Password varchar(250) NOT NULL,
-	Roles varchar(30) DEFAULT 'Student',
+	Roles int REFERENCES roles(id),
 	Tell_about_yourself varchar(250),
 	profile_picture varchar(250)
 );
@@ -13,7 +28,7 @@ CREATE TABLE mentors (
 	Full_name varchar(250) NOT NULL,
 	Email varchar(250) NOT NULL,
 	Password varchar(250) NOT NULL,
-	Roles varchar(30) DEFAULT 'Mentor',
+	Roles int REFERENCES roles(id),
 	Tell_about_yourself varchar(250),
 	profile_picture varchar(250)
 );
