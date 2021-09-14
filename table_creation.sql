@@ -10,10 +10,10 @@ drop table students;
 drop table roles;
 
 CREATE TABLE students (
-	id  int PRIMARY KEY,
+	id  SERIAL PRIMARY KEY,
 	Full_name varchar(50) NOT NULL,
 	Email varchar(50) NOT NULL,
-	Password varchar(50) NOT NULL,
+	Password varchar(255) NOT NULL, /*The Encrypted Password Is Very Long*/
 	Roles varchar(15) NOT NULL,
 	Tell_about_yourself varchar(250),
 	profile_picture varchar(250)

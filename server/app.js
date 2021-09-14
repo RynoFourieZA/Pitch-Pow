@@ -26,9 +26,6 @@ app.use(express.json());
 app.use(configuredHelmet());
 app.use(morgan("dev"));
 
-// Routes
-app.use("/auth", require("./routes/jwtAuth"));
-
 if (app.get("env") === "production") {
 	app.enable("trust proxy");
 	app.use(httpsOnly());
@@ -36,6 +33,9 @@ if (app.get("env") === "production") {
 
 // Giving the value of "api" to router that is found in the api.js file
 app.use(apiRoot, router);
+
+// Routes
+app.use("/auth", require("./routes/Authentication"));
 
 // Config middleware
 app.use(express.static(staticDir));
