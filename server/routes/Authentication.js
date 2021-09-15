@@ -80,7 +80,9 @@ router.post("/login", async (req, res) => {
 
             const studentToken = jwtGenerator(student.rows[0].id)
             return res.json({ studentToken });
-        } else if (mentor.rows.length > 0) {
+        } 
+        
+        else if (mentor.rows.length > 0) {
             const validMentorPassword = await bcrypt.compare(password, mentor.rows[0].password);
 
             if (!validMentorPassword){
