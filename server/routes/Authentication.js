@@ -60,14 +60,17 @@ router.post("/signup", async (req, res) => {
 
 router.post("/login", async (req, res) => {
     try {
+        //Destructuring The Request Body And Quering The Database To See If User Exists
         const { email, password } = req.body;
         const student = await connectDb.query("SELECT * FROM students WHERE email = $1", [email]);
         const mentor = await connectDb.query("SELECT * FROM mentors WHERE email = $1", [email]);
 
+        //Returing An Error If User Does Not Exist
         if (student.rows.length === 0 && mentor.rows.length === 0) {
             return res.status(401).send("User Does Not Exist")
         }
 
+        //Checking The Role Of The User And Authenticating Them Accordingly
         if (student.rows.length > 0) {
             const validStudentPassword = await bcrypt.compare(password, student.rows[0].password);
 
