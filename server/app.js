@@ -32,8 +32,7 @@ if (app.get("env") === "production") {
 app.use("/auth", require("./routes/Authentication"));
 app.use(apiRoot, require("./routes/api"));
 app.use(apiRoot, require("./routes/Admin"));
-app.use(apiRoot, router);
-
+app.use(apiRoot, require("./routes/api"));
 
 // Config middleware
 app.use(express.static(staticDir));
