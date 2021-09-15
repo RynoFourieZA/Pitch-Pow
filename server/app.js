@@ -35,6 +35,7 @@ if (app.get("env") === "production") {
 
 // Routes
 app.use("/auth", require("./routes/Authentication"));
+app.use(apiRoot, require("./routes/Admin"));
 app.use(apiRoot, router);
 app.use(apiRoot, questions);
 app.use(apiRoot, pitch);
