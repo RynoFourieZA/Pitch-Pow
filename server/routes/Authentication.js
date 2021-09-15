@@ -63,44 +63,25 @@ router.post("/login", async (req, res) => {
     try {
 
         const { email, password } = req.body;
-        
         const student = await connectDb.query("SELECT * FROM students WHERE email = $1", [email]);
-
         const mentor = await connectDb.query("SELECT * FROM mentors WHERE email = $1", [email]);
-        
-        
-        const validStudentPassword = await bcrypt.compare(
-            password, student.rows[0].password
-            )
 
-            const validMentorPassword = await bcrypt.compare(
-                password, mentor.rows[0].password
-            )
-            
-            if (student.rows.length === 0 || !validStudentPassword) {
-    
-                return res.status(401).json("Password or Email is incorrect1"); 
+        if (student.rows.length === 0 && mentor.rows.length === 0) {
+            return res.status(401).send("User Does Not Exist")
+        }
 
-            } 
+        //if (student had data) { ... } if (mentor has data) { ... }
 
-            if (student.rows.length > 0) {
-                const studentToken = jwtGenerator(student.rows[0].id);
+        const validStudentPassword = await bcrypt.compare(password, student.rows[0].password);
+        const validMentorPassword = await bcrypt.compare(password, mentor.rows[0].password);
 
-                return res.json({studentToken});
-            }
-            
-            if(mentor.rows.length === 0 || !validMentorPassword) {
+        if (validStudentPassword || validMentorPassword) {
+            return  res.status(401).send("Username or email is incorrect")
+        }
 
-                return res.status(401).json("Password or Email is incorrect2"); 
-
-            }
-
-            if (mentor.rows.length > 0) {
-                const mentorToken = jwtGenerator(mentor.rows[0].id);
-               return res.json({mentorToken});
-                
-            }
-
+        //4 . Give them jwt token
+        const token = jwtGenerator(user.rows[0].user_id)
+        res.json({token})
 
     } catch (err) {
         console.error(err.message);
