@@ -19,4 +19,4 @@ router.get("/pitch/:student_no", async (req, res) => {
     }
 });
 
-export default router;
+module.exports = router;

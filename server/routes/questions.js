@@ -11,7 +11,7 @@ router.get("/questions", (req, res) => {
 	.catch((e) => console.error(e));
 });
 
-export default router;
+module.exports = router;
 
 /*
 questions.get("/new-questions", async (_, res) => {
