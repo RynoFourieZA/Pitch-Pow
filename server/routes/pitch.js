@@ -1,7 +1,15 @@
 import { Router } from "express";
 import connectDb from "../db";
 
+// For MVP
+// Create
+// Readable
+// Update
+// Delete
+
 const router = new Router();
+
+
 
 router.get("/pitch/:student_no", async (req, res) => {
     const student_no = req.body.student_no;

@@ -33,6 +33,7 @@ app.use("/auth", require("./routes/Authentication"));
 app.use(apiRoot, require("./routes/api"));
 app.use(apiRoot, require("./routes/Admin"));
 app.use(apiRoot, require("./routes/api"));
+app.use(apiRoot, require("./routes/questions"));
 
 // Config middleware
 app.use(express.static(staticDir));
