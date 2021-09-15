@@ -1,9 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import path from "path";
-
-// Retrieving data from api file that is received from the DB.
-import router from "./api";
+const cors = require("cors");
 
 // All middleware
 import {
@@ -11,13 +9,14 @@ import {
 	httpsOnly,
 	logErrors,
 	pushStateRouting,
-} from "./middleware";
+} from "./middleware/middleware";
 
 // Creating a route value.
 const apiRoot = "/api";
 const staticDir = path.join(__dirname, "static");
 
 const app = express();
+app.use(cors());
 
 // Config middleware
 app.use(express.json());
@@ -29,8 +28,12 @@ if (app.get("env") === "production") {
 	app.use(httpsOnly());
 }
 
-// Giving the value of "api" to router that is found in the api.js file. 
-app.use(apiRoot, router);
+// Routes
+app.use("/auth", require("./routes/Authentication"));
+app.use(apiRoot, require("./routes/api"));
+app.use(apiRoot, require("./routes/Admin"));
+app.use(apiRoot, require("./routes/api"));
+app.use(apiRoot, require("./routes/questions"));
 
 // Config middleware
 app.use(express.static(staticDir));
