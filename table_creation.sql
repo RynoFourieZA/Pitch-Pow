@@ -15,6 +15,7 @@ CREATE TABLE students (
 	Email varchar(50) NOT NULL,
 	Password varchar(255) NOT NULL,
 	Roles varchar(15) NOT NULL,
+	Confirm varchar(10) DEFAULT false,
 	Tell_about_yourself varchar(250),
 	profile_picture varchar(250)
 );
