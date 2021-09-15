@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import connectDb from "./db";
+import connectDb from "../db";
 
 const router = new Router();
 

@@ -4,7 +4,9 @@ import path from "path";
 const cors = require("cors");
 
 // Retrieving data from api file that is received from the DB.
-import router from "./api";
+import router from "./routes/api";
+import questions from "./routes/questions";
+import pitch from "./routes/pitch";
 
 // All middleware
 import {
@@ -12,7 +14,7 @@ import {
 	httpsOnly,
 	logErrors,
 	pushStateRouting,
-} from "./middleware";
+} from "./middleware/middleware";
 
 // Creating a route value.
 const apiRoot = "/api";
@@ -31,11 +33,12 @@ if (app.get("env") === "production") {
 	app.use(httpsOnly());
 }
 
-// Giving the value of "api" to router that is found in the api.js file
-app.use(apiRoot, router);
-
 // Routes
 app.use("/auth", require("./routes/Authentication"));
+app.use(apiRoot, require("./routes/Admin"));
+app.use(apiRoot, router);
+app.use(apiRoot, questions);
+app.use(apiRoot, pitch);
 
 // Config middleware
 app.use(express.static(staticDir));

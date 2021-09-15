@@ -9,11 +9,9 @@ module.exports = async (req, res, next) => {
             return res.status(403).json("Not Authorized");
         }
 
-        const payload = jwt.verify(jwtToken, process.env.jwtSecret);
+        const payload = jwt.verify(jwtToken, process.env.JWT_SECRET);
 
         req.user = payload.user;
-
-        console.log(payload)
 
     } catch (err) {
         console.error(err.message);
