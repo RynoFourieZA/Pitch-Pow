@@ -3,11 +3,6 @@ import morgan from "morgan";
 import path from "path";
 const cors = require("cors");
 
-// Retrieving data from api file that is received from the DB.
-import router from "./routes/api";
-import questions from "./routes/questions";
-import pitch from "./routes/pitch";
-
 // All middleware
 import {
 	configuredHelmet,
@@ -35,10 +30,10 @@ if (app.get("env") === "production") {
 
 // Routes
 app.use("/auth", require("./routes/Authentication"));
+app.use(apiRoot, require("./routes/api"));
 app.use(apiRoot, require("./routes/Admin"));
 app.use(apiRoot, router);
-app.use(apiRoot, questions);
-app.use(apiRoot, pitch);
+
 
 // Config middleware
 app.use(express.static(staticDir));
