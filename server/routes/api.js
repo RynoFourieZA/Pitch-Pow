@@ -11,4 +11,4 @@ router.get("/", (_, res) => {
 		.catch((e) => console.error(e));
 });
 
-export default router;
+module.exports = router;
