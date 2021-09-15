@@ -58,4 +58,35 @@ router.post("/signup", async (req, res) => {
     }
 });
 
+router.post("/login", async (req, res) => {
+
+    try {
+
+        const { email, password } = req.body;
+        const student = await connectDb.query("SELECT * FROM students WHERE email = $1", [email]);
+        const mentor = await connectDb.query("SELECT * FROM mentors WHERE email = $1", [email]);
+
+        if (student.rows.length === 0 && mentor.rows.length === 0) {
+            return res.status(401).send("User Does Not Exist")
+        }
+
+        //if (student had data) { ... } if (mentor has data) { ... }
+
+        const validStudentPassword = await bcrypt.compare(password, student.rows[0].password);
+        const validMentorPassword = await bcrypt.compare(password, mentor.rows[0].password);
+
+        if (validStudentPassword || validMentorPassword) {
+            return  res.status(401).send("Username or email is incorrect")
+        }
+
+        //4 . Give them jwt token
+        const token = jwtGenerator(user.rows[0].user_id)
+        res.json({token})
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error")
+    };
+});
+
 module.exports = router;

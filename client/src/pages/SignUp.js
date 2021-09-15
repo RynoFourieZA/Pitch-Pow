@@ -14,7 +14,7 @@ const SignUp = () => (
                         <img src={logo} alt="pitch-pow-logo" className="img-fluid" />
                     </div>
                     <div>
-                        <p>Already a user? <Link>Sign in</Link></p>
+                        <p>Already a user? <Link to="/login" >Sign in</Link></p>
                     </div>
                 </div>
 
