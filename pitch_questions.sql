@@ -28,3 +28,7 @@ INSERT INTO pitch_questions (question_type, finances) VALUES (2, 'What is curren
 INSERT INTO pitch_questions (question_type, finances) VALUES (2, 'Show the operational expenses (Opex) versus the capital expenditure (Capex). (Expressed in % and Rand value)');
 
 INSERT INTO pitch_questions (question_type, finances) VALUES (2, 'What are the financial risks?');
+
+UPDATE business_description, innovation, market_analysis, product_or_service_analysis, competition, marketing_strategy, operations, finances, management_and_technical_complexit 
+SET business_description ' ', innovation = ' ', market_analysis = ' ', product_or_service_analysis = ' ', competition = ' ', marketing_strategy = ' ', operations = ' ', finances = ' ', management_and_technical_complexit = ' '
+WHERE business_description, innovation, market_analysis, product_or_service_analysis, competition, marketing_strategy, operations, finances, management_and_technical_complexit IS NULL;
