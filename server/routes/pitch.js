@@ -47,5 +47,3 @@ router.get("/pitch", async (req, res) => {
 });
 
 module.exports = router;
-
-// SELECT pitch FROM pitch WHERE student_no = $1
