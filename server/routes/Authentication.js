@@ -2,7 +2,6 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const jwtGenerator = require("../utils/jwtGenerator");
 import connectDb from "../db";
-const validUser = require("../middleware/validUser");
 
 //Signup / Register route
 router.post("/signup", async (req, res) => {
@@ -24,7 +23,7 @@ router.post("/signup", async (req, res) => {
             }
         }
 
-        //3. Bycrypt the user password
+        //3. Bcrypt the user password
         const saltRounds = 10;
         const salt = await bcrypt.genSalt(saltRounds);
         const bcryptPassword = await bcrypt.hash(password, salt);
