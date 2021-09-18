@@ -15,10 +15,10 @@ CREATE TABLE users (
 	confirm varchar(10) DEFAULT false,
 	biography varchar(250),
 	profile_picture varchar(600),
-	create_date date,
+	create_date date not null default CURRENT_DATE,
 	modifyby varchar(50),
-	modify_date date,
-	isDelete boolean DEFAULT false       
+	modify_date date not null default CURRENT_DATE,
+	isDelete boolean not null DEFAULT false 
 );
 
 CREATE TABLE  category_type (
@@ -26,20 +26,20 @@ CREATE TABLE  category_type (
 	name varchar(250),
 	description varchar(250),
 	createby uuid REFERENCES users(id),
-	create_date date,
+	create_date date not null default CURRENT_DATE,
 	modifyby uuid REFERENCES users(id),
-	modify_date date,
-	isDelete boolean DEFAULT false
+	modify_date date not null default CURRENT_DATE,
+	isDelete boolean not null DEFAULT false
 );
 
 CREATE TABLE pitch_type(
 	id SERIAL PRIMARY KEY,
 	description varchar(10), 
 	createby uuid REFERENCES users(id),
-	create_date date,
+	create_date date not null default CURRENT_DATE,
 	modifyby uuid REFERENCES users(id),
-	modify_date date,
-	isDelete boolean DEFAULT false
+	modify_date date not null default CURRENT_DATE,
+    isDelete boolean not null DEFAULT false
 );
 
 CREATE TABLE questions (
@@ -48,30 +48,30 @@ CREATE TABLE questions (
 	category_type_id int REFERENCES category_type(id),
 	pitch_type_id int REFERENCES pitch_type(id),
 	createby uuid REFERENCES users(id),
-	create_date date,
+	create_date date not null default CURRENT_DATE,
 	modifyby uuid REFERENCES users(id),
-	modify_date date,
-	isDelete boolean DEFAULT false
+	modify_date date not null default CURRENT_DATE,
+    isDelete boolean not null DEFAULT false
 );
 
 CREATE TABLE answers (
 	id SERIAL PRIMARY KEY,
 	answer varchar(150),
 	createby uuid REFERENCES users(id),
-	create_date date,
+	create_date date not null default CURRENT_DATE,
 	modifyby uuid REFERENCES users(id),
-	modify_date date,
-	isDelete boolean DEFAULT false
+	modify_date date not null default CURRENT_DATE,
+    isDelete boolean not null DEFAULT false
 );
 
 CREATE TABLE comments (
 	id SERIAL PRIMARY KEY,
 	comments varchar(500), 
 	createby uuid REFERENCES users(id),
-	create_date date,
+	create_date date not null default CURRENT_DATE,
 	modifyby uuid REFERENCES users(id),
-	modify_date date,
-	isDelete boolean DEFAULT false
+	modify_date date not null default CURRENT_DATE,
+    isDelete boolean not null DEFAULT false
 );
 
 CREATE TABLE pitch (
@@ -82,8 +82,8 @@ CREATE TABLE pitch (
 	comment_id int REFERENCES comments(id),
 	user_id uuid REFERENCES users(id),
 	createby uuid REFERENCES users(id),
-	create_date date,
+	create_date date not null default CURRENT_DATE,
 	modifyby uuid REFERENCES users(id),
-	modify_date date,
-	isDelete boolean DEFAULT false
+	modify_date date not null default CURRENT_DATE,
+	isDelete boolean not null DEFAULT false
 );
