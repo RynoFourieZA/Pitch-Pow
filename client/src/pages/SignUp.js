@@ -19,9 +19,8 @@ const SignUp = () => (
                     justify-content-center 
                     col-sm-12 col-md-12 col-lg-4 col-xl-4"
             >
-                <div className="">
-                    <p>Login and start creating pitches now.</p>
-                    <img src={logo} alt="pitch-pwo-logo"/>
+                <div className="text-center">
+                    <img src={logo} alt="pitch-pwo-logo" width="75%"/>
                 </div>
             </div>
 
