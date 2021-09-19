@@ -31,11 +31,7 @@ router.get("/questions", async (req, res) => {
 	try {
 		const { id, column, type } = req.query;
 
-		const { type } = req.query;
-
 		console.log(req.query);
-
-		const { id, column, type } = req.query;
 
 		let query = "SELECT * FROM pitch_questions";
 
