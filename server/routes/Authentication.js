@@ -24,10 +24,11 @@ router.post("/signup", async (req, res) => {
             }
         }
 
-        //3. Bycrypt the user password
+        //3. Bcrypt the user password
         const saltRounds = 10;
         const salt = await bcrypt.genSalt(saltRounds);
         const bcryptPassword = await bcrypt.hash(password, salt);
+        
         //Add user to the database (mentor or student)
         const student_id = email.replace("@myuwc.ac.za", "");
 
