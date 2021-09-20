@@ -31,7 +31,7 @@ router.get("/pitch", async (req, res) => {
 	try {
 		const { student } = req.query;
 
-		let query = "SELECT student_no, pitch FROM pitch";
+		let query = "SELECT * FROM pitch";
 
 		if(student){
 			query = `SELECT id, student_no, pitch FROM pitch WHERE student_no = $1`;

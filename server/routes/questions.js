@@ -30,6 +30,7 @@ router.post("/questions", async (req, res) => {
 router.get("/questions", async (req, res) => {
 	try {
 		const { id, column, type } = req.query;
+
 		console.log(req.query);
 
 		let query = "SELECT * FROM pitch_questions";
@@ -94,5 +95,22 @@ router.delete("/questions", async (req, res) => {
 		res.status(500).send("Server error");
 	}
 });
+
+//NB!!! After MVP is created questions must be able to be updated.
+
+// router.put("/questions", async (req, res) => {
+// 	try {
+// 		const { column, value, type } = req.body;
+
+// 		let query = `Update pitch_questions set isDelete = true WHERE ${column} ~~* '%${value}%' AND question_type = $1`;
+
+// 		connectDb
+// 			.query(query, [type])
+// 			.then(() => res.send("The question was deleted"));
+// 	} catch (error) {
+// 		console.error(error.message);
+// 		res.status(500).send("Server error");
+// 	}
+// });
 
 module.exports = router;
