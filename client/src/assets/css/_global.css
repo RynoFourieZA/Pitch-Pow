@@ -12,12 +12,6 @@ body {
 	outline: none;
 }
 
-#login {
-	margin-top: 20px !important;
-	background-color: #0a195c;
-	color:white;
-}
-
 .blueButton {
 	padding: 0.5rem 1rem;
 	background-color: #222359;
@@ -30,4 +24,11 @@ body {
 	background-color: #C1AA74;
 	color: white;
 	border: none;
+	transition: 0.35s ease-in-out;
+}
+
+.yellowButton:hover {
+	padding: 0.5rem 1rem;
+	background-color: #222359;
+	color: white;
 }

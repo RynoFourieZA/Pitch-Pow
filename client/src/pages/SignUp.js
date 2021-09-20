@@ -26,21 +26,21 @@ const SignUp = () => (
 
             <div className="col-sm-12 col-md-12 col-lg-8 col-xl-8">
                 <AuthHeader />
-                <div className="d-flex justify-content-center">
+                <div className="d-flex justify-content-center align-tems-center">
                     <div>
                         <div className="text-center">
                             <img src={ceiLogo} alt="cei-logo" width="65px"/>
-                            <p className="pt-3">Welcome! Sign up to get started.</p>
+                            <p className="pt-1">Welcome! Sign up to get started.</p>
                         </div>
 
                         <form className="d-flex flex-column">
-                            <p className="mt-3 mb-0">Full Name</p>
+                            <h6 className="mt-1 mb-0">Full Name</h6>
                             <input className="input" type="text" id="full_name" name="full_name" />
 
-                            <p className="mt-3 mb-0">Email</p>
+                            <h6 className="mt-3 mb-0">Email</h6>
                             <input className="input"  type="text" id="email" name="email" />
 
-                            <p className="mt-3 mb-1">Role</p>
+                            <h6 className="mt-3 mb-0">Role</h6>
                             <div>
                                 <select name="role" id="cars" className="input">
                                     <option value="Student">Student</option>
@@ -48,7 +48,7 @@ const SignUp = () => (
                                 </select>
                             </div>
 
-                            <p className="mt-3 mb-0">Password</p>
+                            <h6 className="mt-3 mb-0">Password</h6>
                             <input className="input"  type="password" id="email" name="password" />
 
                             <div className="my-2">
