@@ -2,6 +2,7 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const jwtGenerator = require("../utils/jwtGenerator");
 import connectDb from "../db";
+const validUser = require("../middleware/validUser");
 
 //Signup / Register route
 router.post("/signup", async (req, res) => {
@@ -59,17 +60,14 @@ router.post("/signup", async (req, res) => {
 
 router.post("/login", async (req, res) => {
     try {
-        //Destructuring The Request Body And Quering The Database To See If User Exists
         const { email, password } = req.body;
         const student = await connectDb.query("SELECT * FROM students WHERE email = $1", [email]);
         const mentor = await connectDb.query("SELECT * FROM mentors WHERE email = $1", [email]);
 
-        //Returing An Error If User Does Not Exist
         if (student.rows.length === 0 && mentor.rows.length === 0) {
             return res.status(401).send("User Does Not Exist")
         }
 
-        //Checking The Role Of The User And Authenticating Them Accordingly
         if (student.rows.length > 0) {
             const validStudentPassword = await bcrypt.compare(password, student.rows[0].password);
 
@@ -79,9 +77,7 @@ router.post("/login", async (req, res) => {
 
             const studentToken = jwtGenerator(student.rows[0].id)
             return res.json({ studentToken });
-        } 
-        
-        else if (mentor.rows.length > 0) {
+        } else if (mentor.rows.length > 0) {
             const validMentorPassword = await bcrypt.compare(password, mentor.rows[0].password);
 
             if (!validMentorPassword){
