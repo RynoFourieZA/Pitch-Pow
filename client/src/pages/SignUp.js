@@ -1,31 +1,30 @@
-//React Router
-import { Link } from "react-router-dom";
 //CSS
-import "../assets/css/signup.css";
+import "../assets/css/authPages.css";
 //Images
 import logo from "../assets/images/pitch-pow-logo.png";
+import ceiLogo from "../assets/images/cei-logo.png";
+//Components
+import AuthHeader from '../components/authHeader';
+import YellowButton from '../components/YellowButton';
 
 const SignUp = () => (
-    <main className="">
-        <div className="container">
-            <div className="row">
-                <div className="col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                    <div>
-                        <img src={logo} alt="pitch-pow-logo" className="img-fluid" />
-                    </div>
-                    <div>
-                        <p>Already a user? <Link>Sign in</Link></p>
-                    </div>
+    <main className="loginPage">
+        <div className="row">
+            <div 
+                className="
+                    sideImage 
+                    d-flex 
+                    flex-column 
+                    align-items-center 
+                    justify-content-center 
+                    col-sm-12 col-md-12 col-lg-4 col-xl-4"
+            >
+                <div className="">
+                    <p>Login and start creating pitches now.</p>
+                    <img src={logo} alt="pitch-pwo-logo"/>
                 </div>
+            </div>
 
-<<<<<<< HEAD
-                <div className="col-sm-12 col-md-12 col-lg-8 col-xl-8">
-                    <div>
-                        <form>
-                            <input type="text" id="fname" name="fname" />
-                            <input type="text" id="lname" name="lname" />
-                        </form>
-=======
             <div className="col-sm-12 col-md-12 col-lg-8 col-xl-8">
                 <AuthHeader />
                 <div className="d-flex justify-content-center">
@@ -57,7 +56,6 @@ const SignUp = () => (
                                 <YellowButton text={"Sign up"}/>
                             </div>
                         </form> 
->>>>>>> parent of bf357d0 (Login and Signup Page Completed)
                     </div>
                 </div>
             </div>

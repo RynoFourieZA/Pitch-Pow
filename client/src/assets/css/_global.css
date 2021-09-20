@@ -1,32 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
-body {
-    font-family: 'Open Sans', sans-serif !important;
+html {
+	overflow-x: hidden;
 }
 
-<<<<<<< HEAD
-=======
+body {
+	font-family: "Open Sans", sans-serif !important;
+}
+
 *:focus {
 	outline: none;
 }
 
->>>>>>> parent of bf357d0 (Login and Signup Page Completed)
 #login {
 	margin-top: 20px !important;
 	background-color: #0a195c;
-	color:white;
-<<<<<<< HEAD
-}
-
-.col-md-6 {
-	margin-top: 150px !important;
-	background-color: white;
-	padding: 10px;
-}
-
-input {
-	margin-top: 10px !important;
-=======
+	color: white;
 }
 
 .blueButton {
@@ -38,8 +27,7 @@ input {
 
 .yellowButton {
 	padding: 0.5rem 1rem;
-	background-color: #C1AA74;
+	background-color: #c1aa74;
 	color: white;
 	border: none;
->>>>>>> parent of bf357d0 (Login and Signup Page Completed)
 }
