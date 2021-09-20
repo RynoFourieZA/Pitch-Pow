@@ -5,8 +5,8 @@ import "../assets/css/authPages.css";
 import logo from "../assets/images/pitch-pow-logo.png";
 import ceiLogo from "../assets/images/cei-logo.png";
 //Components
-import AuthHeader from '../components/authHeader';
-import YellowButton from '../components/YellowButton';
+import AuthHeaderLogin from '../components/authHeaderLogin';
+// import YellowButton from '../components/YellowButton';
 
 const SignUp = () => {
     
@@ -62,7 +62,7 @@ const onSubmitForm = async (e) => {
             </div>
 
             <div className="col-sm-12 col-md-12 col-lg-8 col-xl-8">
-                <AuthHeader />
+                <AuthHeaderLogin />
                 <div className="d-flex justify-content-center align-tems-center">
                     <div>
                         <div className="text-center">
