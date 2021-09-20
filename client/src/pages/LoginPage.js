@@ -1,120 +1,89 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
+//CSS
+import "../assets/css/authPages.css";
+//Images
+import logo from "../assets/images/pitch-pow-logo.png";
+import ceiLogo from "../assets/images/cei-logo.png";
+//Components
+import AuthHeader from '../components/authHeader';
+import YellowButton from '../components/YellowButton';
 
-const LoginPage = () => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+const Login = () => {
+    const [inputs, setInputs] = useState({
+        email: "",
+        password: ""
+    });
 
-    function validate() {
-        console.log(email + password);
+    const { email, password } = inputs;
+
+    const onChange = (e) => {
+        setInputs({ ...inputs, [e.target.name]: e.target.value });
+    };
+
+    const onSubmitForm = async (e) => {
+        e.preventDefault();
+        try{
+
+            const body = {email, password};
+
+            const response = await fetch("http://localhost:3100/auth/login", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(body)
+            });
+
+            const parseRes = await response.json();
+            console.log(parseRes);
+
+        } catch (err) {
+            console.error(err.message);
+        }
+
     }
-	return (
-		<div className="container">
-			<div className="row justify-content-center">
-				<div className="col-md-6 shadow-lg p-3 mb-5 bg-white rounded">
-=======
-import { Link } from "react-router-dom";
-import "../assets/css/login.css";
 
-const LoginPage = () => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState({
-		values: "",
-		showPassword: false,
-	});
+    return (
+    <main className="loginPage">
+        <div className="row">
+            <div 
+                className="
+                    sideImage 
+                    d-flex 
+                    flex-column 
+                    align-items-center 
+                    justify-content-center 
+                    col-sm-12 col-md-12 col-lg-4 col-xl-4"
+            >
+                <div className="text-center">
+                    <img src={logo} alt="pitch-pwo-logo" width="75%"/>
+                </div>
+            </div>
 
-	const [errorEmail, setErrorEmail] = useState("");
-	const [errorPassword, setErrorPassword] = useState("");
+            <div className="col-sm-12 col-md-12 col-lg-8 col-xl-8">
+                <AuthHeader />
+                <div className="d-flex justify-content-center align-items-center">
+                    <div>
+                        <div className="text-center">
+                            <img src={ceiLogo} alt="cei-logo" width="65px"/>
+                            <p className="pt-1">Welcome! Sign up to get started.</p>
+                        </div>
 
-	function visibility() {
-		return console.log("yes");
-	}
+                        <form className="d-flex flex-column" onSubmit={onSubmitForm}>
+                            <h6 className="mt-3 mb-0">Email</h6>
+                            <input className="input"  type="text" id="email" name="email" alue={email} onChange={(e) => onChange(e)}/>
 
-    function validate(event) {
-		event.preventDefault();
+                            <h6 className="mt-3 mb-0">Password</h6>
+                            <input className="input"  type="password" id="password" name="password" value={password} onChange={e => onChange(e)}/>
 
-		if(email.includes("@uwc.ac.za") || email.includes("@myuwc.ac.za") && email.length > 3 && email.toLowerCase()) {
-			setErrorEmail("");
-			setEmail("");
-			console.log(email);
-		}else {
-			setErrorEmail(`Email must contain "@uwc.ac.za" or "@myuwc.ac.za" and must be 8 letters long`);
-		};
+                            <div className="my-2">
+                            <button className="yellowButton" id="login">Login</button>
+                                {/* <YellowButton text={"Login"}/> */}
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+)};
 
-		if(password.length > 7 && password !== 12345678 ) {
-			setErrorPassword("");
-			setPassword("");
-			console.log(password);
-		}else {
-			setErrorPassword("Password must be 8 numbers long");
-		};
-    }
-	return (
-		<form className="container">
-			<div className="row justify-content-center">
-				<div className="col-md-5 shadow-lg p-3 mb-5 bg-white rounded">
-					{/* <img src="./"/> */}
->>>>>>> parent of bf357d0 (Login and Signup Page Completed)
-					<h1>Welcome back! Login to get started.</h1>
-					<div className="form-group">
-						<label htmlFor="email" className="text-info">Email</label><br />
-						<input
-							type="text"
-							value={email}
-<<<<<<< HEAD
-							placeholder="Enter Username"
-							name="username"
-=======
-							placeholder="Enter Email"
-							name="email"
->>>>>>> parent of bf357d0 (Login and Signup Page Completed)
-							className="form-control"
-							onChange={(e) => setEmail(e.target.value)}
-							required
-						/>
-<<<<<<< HEAD
-					</div>
-					<div className="form-group">
-						<label htmlFor="password" className="text-info">Password</label><br />
-=======
-						<p>{errorEmail}</p>
-					</div>
-					<div className="form-group">
-						<input className="text-info">Password</input><br />
->>>>>>> parent of bf357d0 (Login and Signup Page Completed)
-						<input
-							type="password"
-							value={password}
-							placeholder="Enter Password"
-							name="password"
-							className="form-control"
-<<<<<<< HEAD
-							onChange={(e) => setPassword(e.target.value)}
-							required
-						/>
-					</div>
-					<button type="submit" id="login" onClick={validate}>
-						Login
-					</button>
-				</div>
-			</div>
-		</div>
-=======
-
-							onChange={(e) => setPassword(e.target.value)}
-							required
-						/>
-						<p>{errorPassword}</p>
-					</div>
-					<button type="submit" id="login" className="form-control"  onClick={validate}>
-						Login
-					</button> <br />
-					<Link to="/signup" id="link-signup">Register</Link>
-				</div>
-			</div>
-		</form>
->>>>>>> parent of bf357d0 (Login and Signup Page Completed)
-	);
-};
-
-export default LoginPage;
+export default Login;
