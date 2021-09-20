@@ -4,10 +4,18 @@ body {
     font-family: 'Open Sans', sans-serif !important;
 }
 
+<<<<<<< HEAD
+=======
+*:focus {
+	outline: none;
+}
+
+>>>>>>> parent of bf357d0 (Login and Signup Page Completed)
 #login {
 	margin-top: 20px !important;
 	background-color: #0a195c;
 	color:white;
+<<<<<<< HEAD
 }
 
 .col-md-6 {
@@ -18,4 +26,20 @@ body {
 
 input {
 	margin-top: 10px !important;
+=======
+}
+
+.blueButton {
+	padding: 0.5rem 1rem;
+	background-color: #222359;
+	color: white;
+	border: none;
+}
+
+.yellowButton {
+	padding: 0.5rem 1rem;
+	background-color: #C1AA74;
+	color: white;
+	border: none;
+>>>>>>> parent of bf357d0 (Login and Signup Page Completed)
 }
