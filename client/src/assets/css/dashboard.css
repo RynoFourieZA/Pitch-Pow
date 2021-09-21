@@ -1,0 +1,30 @@
+.main {
+    height: 100vh;
+}
+
+.dashboardNav {
+    background-color: #222359;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: #C1AA74;
+}
+
+li {
+    list-style-type: none;
+    line-height: 35px;
+}
+
+ul {
+    padding: 0;
+}
+
+.active {
+    color: #C1AA74;
+}

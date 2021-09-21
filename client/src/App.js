@@ -9,6 +9,7 @@ import About from "./pages/About";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import LoginPage from "./pages/LoginPage";
+import Dashboard from "./pages/Dashboard";
 
 const App = () => (
 	<Switch>
@@ -23,6 +24,9 @@ const App = () => (
 		</Route>
 		<Route path="/login">
 			<LoginPage />
+		</Route>
+		<Route path="/dashboard">
+			<Dashboard />
 		</Route>
 	</Switch>
 );
