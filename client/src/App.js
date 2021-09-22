@@ -1,5 +1,5 @@
 //React Router
-import { Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 //CSS
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/_global.css";
