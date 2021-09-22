@@ -28,3 +28,18 @@ ul {
 .active {
     color: #C1AA74;
 }
+
+h4 {
+    color: #C1AA74;
+    font-weight: bolder;
+}
+
+.heading {
+    font-weight: bolder;
+}
+
+.underline {
+    margin-top: -20px;
+    padding: 2px 50px;
+    border-bottom: 5px solid #222359;
+}

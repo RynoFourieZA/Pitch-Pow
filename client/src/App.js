@@ -12,23 +12,25 @@ import LoginPage from "./pages/LoginPage";
 import Dashboard from "./pages/Dashboard";
 
 const App = () => (
-	<Switch>
-		<Route path="/" exact>
-			<Home />
-		</Route>
-		<Route path="/about/this/site">
-			<About />
-		</Route>
-		<Route path="/signup">
-			<SignUp />
-		</Route>
-		<Route path="/login">
-			<LoginPage />
-		</Route>
-		<Route path="/dashboard">
-			<Dashboard />
-		</Route>
-	</Switch>
+	<BrowserRouter>
+		<Switch>
+			<Route path="/" exact>
+				<Home />
+			</Route>
+			<Route path="/about/this/site">
+				<About />
+			</Route>
+			<Route path="/signup">
+				<SignUp />
+			</Route>
+			<Route path="/login">
+				<LoginPage />
+			</Route>
+			<Route path="/dashboard">
+				<Dashboard />
+			</Route>
+		</Switch>
+	</BrowserRouter>
 );
 
 export default App;

@@ -12,6 +12,7 @@ function Dashboard() {
     const [ userRole, setUserRole ] = useState("None");
 	
     useEffect(() => {
+        // User in the database { role }
         setUserRole("student")
 	}, []);
 
