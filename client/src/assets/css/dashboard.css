@@ -39,7 +39,6 @@ h4 {
 }
 
 .underline {
-    margin-top: -20px;
     padding: 2px 50px;
-    border-bottom: 5px solid #222359;
+    border-top: 5px solid #222359;
 }

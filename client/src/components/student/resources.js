@@ -5,7 +5,8 @@ export default function Resources() {
         <section className="rightColumn">
             <div className="container py-5">
                 <div>
-                    <h1 className="heading w-25 pb-1">Resources</h1>
+                    <h1 className="heading pb-2">Resources</h1>
+                    <span className="underline"></span>
                 </div>
 
                 <div className="text-center">

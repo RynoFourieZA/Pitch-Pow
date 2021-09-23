@@ -4,8 +4,9 @@ export default function Competitions() {
     return (
         <section className="rightColumn">
             <div className="container py-5">
-                <div className="underline">
-                    <h1 className="heading pb-1">Competitions</h1>
+                <div className="">
+                    <h1 className="heading pb-2">Competitions</h1>
+                    <span className="underline"></span>
                 </div>
 
                 <div className="text-center">

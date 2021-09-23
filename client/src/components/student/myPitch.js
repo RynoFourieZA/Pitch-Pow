@@ -12,7 +12,8 @@ export default function MyPitch() {
         <section className="rightColumn">
             <div className="container py-5">
                 <div>
-                    <h1 className="heading pb-1">My Pitch</h1>
+                    <h1 className="heading pb-2">My Profile</h1>
+                    <span className="underline"></span>
                 </div>
 
                 <div className="text-center">
