@@ -1,4 +1,4 @@
-CREATE EXTENSION "uuid ossp";
+CREATE EXTENSION "uuid-ossp";
 
 CREATE TABLE role_type (
 	id SERIAL PRIMARY KEY,
@@ -53,7 +53,7 @@ CREATE TABLE questions (
 
 CREATE TABLE answers (
 	id SERIAL PRIMARY KEY,
-	answer boolean NOT NULL DEFAULT false,
+	answered boolean NOT NULL DEFAULT false,
     question_id int REFERENCES questions(id),
     student_number int NOT NULL,
 	create_date date not null default CURRENT_DATE,
