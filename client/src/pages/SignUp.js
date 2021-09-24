@@ -6,15 +6,16 @@ import logo from "../assets/images/pitch-pow-logo.png";
 import ceiLogo from "../assets/images/cei-logo.png";
 //Components
 import AuthHeaderLogin from '../components/authHeaderLogin';
+
 // import YellowButton from '../components/YellowButton';
 
-const SignUp = () => {
+const SignUp = ({setAuth}) => {
     
     const [inputs, setInputs] = useState({
         full_name: "",
         email: "",
         password: "",
-        roles: ""
+        roles: "student"
     });
 
     const {full_name, email, password, roles} = inputs;
@@ -37,6 +38,10 @@ const onSubmitForm = async (e) => {
 
         const parseRes = await response.json();
         console.log(parseRes);
+
+        localStorage.setItem("studentToken", parseRes.token);
+
+        setAuth(true);
 
     } catch (err) {
         console.error(err.message);
@@ -72,21 +77,21 @@ const onSubmitForm = async (e) => {
 
                         <form className="d-flex flex-column" onSubmit={onSubmitForm}>
                             <h6 className="mt-1 mb-0">Full Name</h6>
-                            <input className="input" type="text" id="full_name" name="full_name" value={full_name} onChange={e => onChange(e)}/>
+                            <input className="input" type="text" id="full_name" name="full_name" value={full_name} onChange={e => onChange(e)} required/>
 
                             <h6 className="mt-3 mb-0">Email</h6>
-                            <input className="input"  type="text" id="email" name="email" value={email} onChange={e => onChange(e)}/>
+                            <input className="input"  type="text" id="email" name="email" value={email} onChange={e => onChange(e)} required/>
 
                             <h6 className="mt-3 mb-0">Role</h6>
                             <div>
-                                <select name="roles" id="cars" className="input" value={roles} onChange={e => onChange(e)}>
+                                <select name="roles" id="roles" className="input" value={roles} onChange={e => onChange(e)} required>
                                     <option value="student">Student</option>
                                     <option value="mentor">Mentor</option>
                                 </select>
                             </div>
 
                             <h6 className="mt-3 mb-0">Password</h6>
-                            <input className="input"  type="password" id="passsword" name="password" value={password} onChange={e => onChange(e)}/>
+                            <input className="input"  type="password" id="passsword" name="password" value={password} onChange={e => onChange(e)} required/>
 
                             <div className="my-2">
                                 <button className="yellowButton">Sign up</button>
