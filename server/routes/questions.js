@@ -17,6 +17,7 @@ router.get("/questions", async (req, res) => {
 
 		connectDb.query(query)
 		.then((result) => res.json(result.rows));
+
 	} catch (e) {
 		console.error(e.message);
 		res.status(500).send("Server error");

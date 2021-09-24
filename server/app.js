@@ -34,6 +34,7 @@ app.use(apiRoot, require("./routes/categories"));
 app.use(apiRoot, require("./routes/Admin"));
 app.use(apiRoot, require("./routes/api"));
 app.use(apiRoot, require("./routes/questions"));
+app.use(apiRoot, require("./routes/answers"));
 
 // Config middleware
 app.use(express.static(staticDir));
