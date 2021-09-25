@@ -27,9 +27,9 @@ INSERT INTO category_type (name, description)
 VALUES ('Management/Technical complexity', 'An assessment of the entrepreneur/team.');
 
 -- Inserting data into the pitch_type table.
-INSERT INTO pitch_type (description) VALUES ('New');
+INSERT INTO pitch_type (pitch_type_name) VALUES ('New');
 
-INSERT INTO pitch_type (description) VALUES ('Existing');
+INSERT INTO pitch_type (pitch_type_name) VALUES ('Existing');
 
 -- Inserting data into the questions table for new business questions.
 INSERT INTO questions (questions, category_type_id, pitch_type_id)
