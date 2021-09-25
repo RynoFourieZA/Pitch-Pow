@@ -1,3 +1,7 @@
+html {
+	overflow-y: hidden;
+}
+
 .sideImage {
 	background-image: url(../images/column-image.png);
 	height: 100vh;
@@ -11,4 +15,9 @@
 input.input:focus {
 	border: #222359 2px solid;
 	box-shadow: none;
+}
+
+.showhide {
+	position: absolute;
+	transform: translate(200px, 103px);
 }

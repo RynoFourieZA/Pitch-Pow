@@ -1,7 +1,7 @@
 //React Router
 import { Link } from "react-router-dom";
 import BlueButton from './BlueButton';
-import uwcLogo from '../assets/images/uwc.png';
+import uwcLogo from '../assets/images/UWC.png';
 
 const AuthHeaderSignup = () => (
     <header className="">

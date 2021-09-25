@@ -12,12 +12,6 @@ body {
 	outline: none;
 }
 
-#login {
-	margin-top: 20px !important;
-	background-color: #0a195c;
-	color: white;
-}
-
 .blueButton {
 	padding: 0.5rem 1rem;
 	background-color: #222359;

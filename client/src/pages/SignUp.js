@@ -5,12 +5,11 @@ import "../assets/css/authPages.css";
 import logo from "../assets/images/pitch-pow-logo.png";
 import ceiLogo from "../assets/images/cei-logo.png";
 //Components
-import AuthHeaderLogin from '../components/authHeaderLogin';
+import AuthHeaderLogin from '../components/authHeaderLogIn';
 
 // import YellowButton from '../components/YellowButton';
 
 const SignUp = ({setAuth}) => {
-    
     const [inputs, setInputs] = useState({
         full_name: "",
         email: "",

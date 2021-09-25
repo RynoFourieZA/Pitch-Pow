@@ -92,11 +92,12 @@ const Login = ({ setAuth }) => {
 									required
 								/>
 								<img
-                                            className="showhide"
-                                            title={isRevealPwd ? "Hide password" : "Show password"}
-                                            src={isRevealPwd ? hidePwdImg : showPwdImg}
-                                            onClick={() => setIsRevealPwd(prevState => !prevState)}
-                                        />
+									className="showhide"
+									title={isRevealPwd ? "Hide password" : "Show password"}
+									src={isRevealPwd ? hidePwdImg : showPwdImg}
+									onClick={() => setIsRevealPwd(prevState => !prevState)}
+									width="25px"
+                                />
 
 								<div className="my-2">
 									<button className="yellowButton" id="login">
