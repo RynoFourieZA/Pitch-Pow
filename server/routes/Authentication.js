@@ -12,48 +12,40 @@ router.post("/signup", async (req, res) => {
 
         //2. Check if user exists (if user exists throw error)
         //Check if student or mentor exists
-        if (roles === "student"){
-            const user = await connectDb.query("SELECT * FROM students WHERE  email = $1", [email]);
-            if(user.rows.length !== 0){
-                return res.status(401).send("User Already Exists");
-            }
-        } else if (roles === "mentor"){
-            const user = await connectDb.query("SELECT * FROM mentors WHERE  email = $1", [email]);
-            if(user.rows.length !== 0){
-                return res.status(401).send("User Already Exists");
-            }
+
+        const user = await connectDb.query("SELECT * FROM users WHERE  email = $1", [email]);
+
+        if(user.rows.length !== 0){
+            return res.status(401).send("User Already Exists");
         }
 
         //3. Bcrypt the user password
         const saltRounds = 10;
         const salt = await bcrypt.genSalt(saltRounds);
         const bcryptPassword = await bcrypt.hash(password, salt);
+
+        const role = await connectDb.query("SELECT id FROM role_type WHERE description = $1", [roles]);
+        
         //Add user to the database (mentor or student)
         const student_id = email.replace("@myuwc.ac.za", "");
 
-        if (roles === "student") {
-            const newUser = await connectDb.query(
-                "INSERT INTO students (id, full_name, email, password, roles) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-                [student_id, full_name, email, bcryptPassword, roles]
-            );
+        if (role === 1) {
+            const newUser = await connectDb.query("INSERT INTO users ( name, email, password, role_type_id, student_number) VALUES ($1, $2, $3, $4, $5) RETURNING *", [full_name, email, bcryptPassword, role, student_id]);
 
             //5. Generating our jwt token
-            const token = jwtGenerator(newUser.rows[0].id);
-            return res.json(token);
+            const studentToken = jwtGenerator(newUser.rows[0].id);
+            return res.json({ studentToken });
 
-        } else if (roles === "mentor") {
-            const newUser = await connectDb.query(
-                "INSERT INTO mentors (full_name, email, password, roles) VALUES ($1, $2, $3, $4) RETURNING *",
-                [full_name, email, bcryptPassword, roles]
-            );
+        } else if (role === 2) {
+            const newUser = await connectDb.query("INSERT INTO users (full_name, email, password, role_type_id) VALUES ($1, $2, $3, $4) RETURNING *", [full_name, email, bcryptPassword, roles]);
 
             //5. Generating out jwt token
-            const token = jwtGenerator(newUser.rows[0].id);
-            return res.json(token);
+            const mentorToken = jwtGenerator(newUser.rows[0].id);
+            return res.json({ mentorToken });
         }
 
-    } catch(err) {
-        console.error(err.message);
+    } catch(e) {
+        console.error(e.message);
         res.status(500).send("Server Error");
     }
 });
@@ -61,35 +53,25 @@ router.post("/signup", async (req, res) => {
 router.post("/login", async (req, res) => {
     try {
         const { email, password } = req.body;
-        const student = await connectDb.query("SELECT * FROM students WHERE email = $1", [email]);
-        const mentor = await connectDb.query("SELECT * FROM mentors WHERE email = $1", [email]);
+        const user = await connectDb.query("SELECT * FROM users WHERE email = $1", [email]);
 
-        if (student.rows.length === 0 && mentor.rows.length === 0) {
+        if (user.rows.length === 0) {
             return res.status(401).send("User Does Not Exist")
         }
 
-        if (student.rows.length > 0) {
-            const validStudentPassword = await bcrypt.compare(password, student.rows[0].password);
+        if (user.rows.length > 0) {
+            const validPassword = await bcrypt.compare(password, user.rows[0].password);
 
-            if (!validStudentPassword) {
-                return res.status(401).send("User Does Not Exist 1")
+            if (!validPassword) {
+                return res.status(401).send("User Does Not Exist OR Password Is Incorrect!!!")
             }
 
-            const studentToken = jwtGenerator(student.rows[0].id)
-            return res.json({ studentToken });
-        } else if (mentor.rows.length > 0) {
-            const validMentorPassword = await bcrypt.compare(password, mentor.rows[0].password);
+            const token = jwtGenerator(user.rows[0].id)
+            return res.json({ token });
+        } 
 
-            if (!validMentorPassword){
-                return res.status(401).send("User Does Not Exist 2")
-            };
-
-            const mentorToken = jwtGenerator(mentor.rows[0].id)
-            return res.json({ mentorToken });
-        }
-
-    } catch (err) {
-        console.error(err.message);
+    } catch (e) {
+        console.error(e.message);
         res.status(500).send("Server Error")
     };
 });
