@@ -58,40 +58,30 @@ router.post("/signup", async (req, res) => {
     }
 });
 
-// router.post("/login", async (req, res) => {
-//     try {
-//         const { email, password } = req.body;
-//         const student = await connectDb.query("SELECT * FROM users WHERE email = $1", [email]);
-//         const mentor = await connectDb.query("SELECT * FROM users WHERE email = $1", [email]);
+router.post("/login", async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const user = await connectDb.query("SELECT * FROM users WHERE email = $1", [email]);
 
-//         if (student.rows.length === 0 && mentor.rows.length === 0) {
-//             return res.status(401).send("User Does Not Exist")
-//         }
+        if (user.rows.length === 0) {
+            return res.status(401).send("User Does Not Exist")
+        }
 
-//         if (student.rows.length > 0) {
-//             const validStudentPassword = await bcrypt.compare(password, student.rows[0].password);
+        if (user.rows.length > 0 ) {
+            const validPassword = await bcrypt.compare(password, user.rows[0].password);
 
-//             if (!validStudentPassword) {
-//                 return res.status(401).send("User Does Not Exist 1")
-//             }
+            if (!validPassword) {
+                return res.status(401).send("User Does Not Exist 1")
+            }
 
-//             const studentToken = jwtGenerator(student.rows[0].id)
-//             return res.json({ studentToken });
-//         } else if (mentor.rows.length > 0) {
-//             const validMentorPassword = await bcrypt.compare(password, mentor.rows[0].password);
+            const token = jwtGenerator(user.rows[0].id)
+            return res.json({ token });
+        } 
 
-//             if (!validMentorPassword){
-//                 return res.status(401).send("User Does Not Exist 2")
-//             };
-
-//             const mentorToken = jwtGenerator(mentor.rows[0].id)
-//             return res.json({ mentorToken });
-//         }
-
-//     } catch (err) {
-//         console.error(err.message);
-//         res.status(500).send("Server Error")
-//     };
-// });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error")
+    };
+});
 
 module.exports = router;
