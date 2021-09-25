@@ -13,7 +13,7 @@ router.post("/answers", async (req,res) => {
         .then(() => res.send("Answer has been submitted"));
 
 	} catch (e) {
-        console.error(error.message);
+        console.error(e.message);
 		res.status(500).send("Server error");
     }
 });
@@ -26,7 +26,7 @@ router.get("/answers", async (_, res) => {
         .then(result => res.json(result.rows));
 
     } catch (e) {
-        console.error(error.message);
+        console.error(e.message);
 		res.status(500).send("Server error");
     }
 });
