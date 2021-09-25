@@ -2,10 +2,11 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const jwtGenerator = require("../utils/jwtGenerator");
 import connectDb from "../db";
-const validUser = require("../middleware/validUser");
+const authorization = require("../middleware/authorization");
+const validInfo = require("../middleware/validInfo");
 
 //Signup / Register route
-router.post("/signup", async (req, res) => {
+router.post("/signup", validInfo, async (req, res) => {
     try {
         //1. Destructure the req.body {email, password, full name, role}
         const { name, email, password, student_number, roles } = req.body;
@@ -58,7 +59,7 @@ router.post("/signup", async (req, res) => {
     }
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login", validInfo, async (req, res) => {
     try {
         const { email, password } = req.body;
         const user = await connectDb.query("SELECT * FROM users WHERE email = $1", [email]);
@@ -77,6 +78,15 @@ router.post("/login", async (req, res) => {
             const token = jwtGenerator(user.rows[0].id)
             return res.json({ token });
         } 
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error")
+    };
+});
+
+router.get("/verify", async (re1, res) => {
+    try {
 
     } catch (err) {
         console.error(err.message);
