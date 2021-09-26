@@ -30,9 +30,10 @@ if (app.get("env") === "production") {
 
 // Routes
 app.use("/auth", require("./routes/Authentication"));
-app.use(apiRoot, require("./routes/api"));
+app.use(apiRoot, require("./routes/categories"));
 app.use(apiRoot, require("./routes/Admin"));
 app.use(apiRoot, require("./routes/questions"));
+app.use(apiRoot, require("./routes/answers"));
 app.use(apiRoot, require("./routes/pitch"));
 
 // Config middleware
