@@ -1,8 +1,8 @@
 const resource = require("express").Router();
-const validUser = require("../middleware/validUser");
+const authorization = require("../middleware/authorization");
 import connectDb from "../db";
 
-resource.post("/add-resource", validUser, async (req, res) => {
+resource.post("/resource", authorization, async (req, res) => {
     //Deconstructing The Request Body
     const { title, text } = req.body;
 
