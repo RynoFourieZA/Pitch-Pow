@@ -1,81 +1,117 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "../assets/css/login.css";
+//CSS
+import "../assets/css/authPages.css";
+//Images
+import logo from "../assets/images/pitch-pow-logo.png";
+import ceiLogo from "../assets/images/cei-logo.png";
+//Components
+import AuthHeaderSignup from "../components/authHeaderSignup";
+import showPwdImg from "../assets/images/show-password.svg";
+import hidePwdImg from "../assets/images/hide-password.svg";
+// import YellowButton from '../components/YellowButton';
 
-const LoginPage = () => {
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState({
-		values: "",
-		showPassword: false,
+const Login = ({ setAuth }) => {
+	const [inputs, setInputs] = useState({
+		email: "",
+		password: "",
 	});
 
-	const [errorEmail, setErrorEmail] = useState("");
-	const [errorPassword, setErrorPassword] = useState("");
+	const { email, password } = inputs;
+	const [isRevealPwd, setIsRevealPwd] = useState(false);
 
-	function visibility() {
-		return console.log("yes");
-	}
+	const onChange = (e) => {
+		setInputs({ ...inputs, [e.target.name]: e.target.value });
+	};
 
-    function validate(event) {
-		event.preventDefault();
+	const onSubmitForm = async (e) => {
+		e.preventDefault();
+		try {
+			const body = { email, password };
 
-		if(email.includes("@uwc.ac.za") || email.includes("@myuwc.ac.za") && email.length > 3 && email.toLowerCase()) {
-			setErrorEmail("");
-			setEmail("");
-			console.log(email);
-		}else {
-			setErrorEmail(`Email must contain "@uwc.ac.za" or "@myuwc.ac.za" and must be 8 letters long`);
-		};
+			const response = await fetch("http://localhost:3100/auth/login", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(body),
+			});
 
-		if(password.length > 7 && password !== 12345678 ) {
-			setErrorPassword("");
-			setPassword("");
-			console.log(password);
-		}else {
-			setErrorPassword("Password must be 8 numbers long");
-		};
-    }
+			const parseRes = await response.json();
+			console.log(parseRes);
+
+			localStorage.setItem("studentToken", parseRes.token);
+			setAuth(true);
+		} catch (err) {
+			console.error(err.message);
+		}
+	};
+
 	return (
-		<form className="container">
-			<div className="row justify-content-center">
-				<div className="col-md-5 shadow-lg p-3 mb-5 bg-white rounded">
-					{/* <img src="./"/> */}
-					<h1>Welcome back! Login to get started.</h1>
-					<div className="form-group">
-						<label htmlFor="email" className="text-info">Email</label><br />
-						<input
-							type="text"
-							value={email}
-							placeholder="Enter Email"
-							name="email"
-							className="form-control"
-							onChange={(e) => setEmail(e.target.value)}
-							required
-						/>
-						<p>{errorEmail}</p>
+		<main className="loginPage">
+			<div className="row">
+				<div
+					className="
+                    sideImage 
+                    d-flex 
+                    flex-column 
+                    align-items-center 
+                    justify-content-center 
+                    col-sm-12 col-md-12 col-lg-4 col-xl-4"
+				>
+					<div className="text-center">
+						<img src={logo} alt="pitch-pwo-logo" width="75%" />
 					</div>
-					<div className="form-group">
-						<input className="text-info">Password</input><br />
-						<input
-							type="password"
-							value={password}
-							placeholder="Enter Password"
-							name="password"
-							className="form-control"
+				</div>
 
-							onChange={(e) => setPassword(e.target.value)}
-							required
-						/>
-						<p>{errorPassword}</p>
+				<div className="col-sm-12 col-md-12 col-lg-8 col-xl-8">
+					<AuthHeaderSignup />
+					<div className="d-flex justify-content-center align-items-center">
+						<div>
+							<div className="text-center">
+								<img src={ceiLogo} alt="cei-logo" width="65px" />
+								<p className="pt-1">Welcome! Sign up to get started.</p>
+							</div>
+
+							<form className="d-flex flex-column" onSubmit={onSubmitForm}>
+								<h6 className="mt-3 mb-0">Email</h6>
+								<input
+									className="input"
+									type="text"
+									id="email"
+									name="email"
+									alue={email}
+									onChange={(e) => onChange(e)}
+								/>
+
+								<h6 className="mt-3 mb-0">Password</h6>
+								<input
+									className="input"
+									type={isRevealPwd ? "text" : "password"}
+									id="password"
+									name="password"
+									value={password}
+									onChange={(e) => onChange(e)}
+									required
+								/>
+								<img
+									className="showhide"
+									title={isRevealPwd ? "Hide password" : "Show password"}
+									src={isRevealPwd ? hidePwdImg : showPwdImg}
+									onClick={() => setIsRevealPwd(prevState => !prevState)}
+									width="25px"
+                                />
+
+								<div className="my-2">
+									<button className="yellowButton" id="login">
+										Login
+									</button>
+									{/* <YellowButton text={"Login"}/> */}
+								</div>
+							</form>
+						</div>
 					</div>
-					<button type="submit" id="login" className="form-control"  onClick={validate}>
-						Login
-					</button> <br />
-					<Link to="/signup" id="link-signup">Register</Link>
 				</div>
 			</div>
-		</form>
+		</main>
 	);
 };
 
-export default LoginPage;
+export default Login;
