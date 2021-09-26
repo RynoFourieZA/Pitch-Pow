@@ -7,6 +7,7 @@ const validUser = require("../middleware/validUser");
 //Signup / Register route
 router.post("/signup", async (req, res) => {
     try {
+
 			//1. Destructure the req.body {email, password, full name, role}
 			const { full_name, email, password, roles } = req.body;
 
@@ -54,6 +55,7 @@ router.post("/signup", async (req, res) => {
 			}
 		} catch(err) {
         console.error(err.message);
+
         res.status(500).send("Server Error");
     }
 });
@@ -73,8 +75,8 @@ router.post("/login", async (req, res) => {
 		const token = jwtGenerator(user.rows[0].id);
 		res.json({ token });
 
-    } catch (err) {
-        console.error(err.message);
+    } catch (e) {
+        console.error(e.message);
         res.status(500).send("Server Error")
     };
 });
