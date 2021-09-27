@@ -18,14 +18,14 @@ import Resources from "./resources";
 import Competitions from './competitions';
 import MyProfile from '../student/profile'
 
-function StudentDashboard() {
+function StudentDashboard({ setAuth }) {
     const [pitchData, setPitch] = useState([]);
 
 	return (
 		<main>
             <div className="row main">
                 <div className="dashboardNav py-3 container col-sm-12 col-md-12 col-lg-3 col-xl-3">
-                    <StudentMenu />
+                    <StudentMenu setAuth={setAuth} />
                 </div>
 
                 <div className="col-sm-12 col-md-12 col-lg-9 col-xl-9">
