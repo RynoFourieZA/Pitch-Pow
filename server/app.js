@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import path from "path";
+const app = express();
 const cors = require("cors");
 
 // All middleware
@@ -15,13 +16,12 @@ import {
 const apiRoot = "/api";
 const staticDir = path.join(__dirname, "static");
 
-const app = express();
-app.use(cors());
 
 // Config middleware
 app.use(express.json());
 app.use(configuredHelmet());
 app.use(morgan("dev"));
+app.use(cors());
 
 if (app.get("env") === "production") {
 	app.enable("trust proxy");
@@ -30,6 +30,7 @@ if (app.get("env") === "production") {
 
 // Routes
 app.use("/auth", require("./routes/Authentication"));
+app.use("/dashboard", require("./routes/dashboard"));
 app.use(apiRoot, require("./routes/categories"));
 app.use(apiRoot, require("./routes/Admin"));
 app.use(apiRoot, require("./routes/questions"));

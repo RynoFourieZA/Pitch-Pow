@@ -2,20 +2,18 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const jwtGenerator = require("../utils/jwtGenerator");
 import connectDb from "../db";
-const validUser = require("../middleware/validUser");
+const authorization = require("../middleware/authorization");
+const validInfo = require("../middleware/validInfo");
 
 //Signup / Register route
-router.post("/signup", async (req, res) => {
+router.post("/signup", validInfo, async (req, res) => {
     try {
 
 			//1. Destructure the req.body {email, password, full name, role}
 			const { full_name, email, password, roles } = req.body;
 
 			//2. Check if user exists (if user exists throw error)
-			const user = await connectDb.query(
-				"SELECT * FROM users WHERE email = $1",
-				[email]
-			);
+			const user = await connectDb.query("SELECT * FROM users WHERE email = $1", [email]);
 
 			if (user.rows.length !== 0) {
 				return res.status(401).send("User Already Exists");
@@ -60,21 +58,36 @@ router.post("/signup", async (req, res) => {
     }
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login", validInfo, async (req, res) => {
     try {
         const { email, password } = req.body;
 
         const user = await connectDb.query("SELECT * FROM users WHERE email = $1", [email]);
 
-		const validStudentPassword = await bcrypt.compare(password, user.rows[0].password);
+		if (user.rows.length === 0) {
+            return res.status(401).send("User Does Not Exist")
+        }
 
-        if (user.rows.length === 0 || !validStudentPassword) {
-			return res.status(401).send("User Or Password Does Not Exist");
-		}
+		if (user.rows.length > 0 ) {
+            const validPassword = await bcrypt.compare(password, user.rows[0].password);
 
-		const token = jwtGenerator(user.rows[0].id);
-		res.json({ token });
+            if (!validPassword) {
+                return res.status(401).send("User Does Not Exist 1")
+            }
 
+            const token = jwtGenerator(user.rows[0].id)
+            return res.json({ token });
+        }
+
+    } catch (e) {
+        console.error(e.message);
+        res.status(500).send("Server Error")
+    };
+});
+
+router.get("/verify", authorization, async (req, res) => {
+    try {
+        res.json(true);
     } catch (e) {
         console.error(e.message);
         res.status(500).send("Server Error")
