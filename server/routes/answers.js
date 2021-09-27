@@ -66,7 +66,7 @@ router.put("/answers", async (req, res) => {
 	}
 });
 
-router.put("answers/delete", async (req, res) => {
+router.put("/answers/delete", async (req, res) => {
 	try {
 		const { id, student_no, deleted } = req.body;
 
