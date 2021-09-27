@@ -8,21 +8,21 @@ import '../assets/css/dashboard.css';
 import MentorDashboard from "../components/mentor/MentorDashboard";
 import StudentDashboard from "../components/student/StudentDashboard";
 
-function Dashboard() {
+function Dashboard( {setAuth} ) {
     const [ userRole, setUserRole ] = useState("None");
 	
     useEffect(() => {
         // User in the database { role }
-        setUserRole("student")
+        setUserRole("Student")
 	}, []);
 
 	return (
 		<main className="main">
             {
-                userRole === "student" 
-                ? (<StudentDashboard />)
+                userRole === "Student" 
+                ? (<StudentDashboard setAuth={setAuth}/>)
                 : userRole === "mentor" 
-                ? (<MentorDashboard />)
+                ? (<MentorDashboard setAuth={setAuth}/>)
                 : (<h1>404: NOT AUTHORIZED</h1>)
             }
 		</main>
