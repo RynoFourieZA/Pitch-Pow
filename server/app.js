@@ -31,6 +31,7 @@ if (app.get("env") === "production") {
 // Routes
 app.use("/auth", require("./routes/Authentication"));
 app.use("/dashboard", require("./routes/dashboard"));
+app.use("/pitch", require("./routes/pitch"));
 
 app.use(apiRoot, require("./routes/api"));
 app.use(apiRoot, require("./routes/Admin"));
