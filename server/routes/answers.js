@@ -43,7 +43,6 @@ router.get("/answers/search", async (req, res) => {
     try {
         const { student } = req.query;
 
-        ;
         connectDb
 			.query("SELECT is_answered, question_id, comment_id FROM answers WHERE student_number = $1 AND is_delete = false", [student])
 			.then((result) => res.json(result.rows));
@@ -54,5 +53,30 @@ router.get("/answers/search", async (req, res) => {
     }
 });
 
+router.put("/answers", async (req, res) => {
+    try {
+        const { id, student_no, answered } = req.body;
+
+        connectDb
+            .query("UPDATE answers SET is_answered = $1 WHERE id = $2 AND student_number = $3 AND is_delete = false", [answered, id, student_no])
+            .then(() => res.send("Your answer was updated."));
+    } catch (e) {
+		console.error(e.message);
+		res.status(500).send("Server error");
+	}
+});
+
+router.put("answers/delete", async (req, res) => {
+	try {
+		const { id, student_no, deleted } = req.body;
+
+		connectDb
+			.query("UPDATE answers SET is_delete = $1 WHERE id = $2 AND student_number = $3", [deleted, id, student_no])
+			.then(() => res.send("Your answer was deleted."));
+	} catch (e) {
+		console.error(e.message);
+		res.status(500).send("Server error");
+	}
+});
 
 module.exports = router;
