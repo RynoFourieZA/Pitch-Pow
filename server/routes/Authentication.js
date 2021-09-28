@@ -51,10 +51,9 @@ router.post("/signup", validInfo, async (req, res) => {
 				const token = jwtGenerator(newUser.rows[0].id);
 				return res.json({ token });
 			}
-		} catch(err) {
+		}catch(err) {
         console.error(err.message);
-
-        res.status(500).send("Server Error");
+		res.status(500).send("Server Error");
     }
 });
 
