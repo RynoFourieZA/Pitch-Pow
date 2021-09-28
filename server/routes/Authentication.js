@@ -54,7 +54,22 @@ router.post("/signup", validInfo, async (req, res) => {
 		} catch(err) {
         console.error(err.message);
 
-        res.status(500).send("Server Error");
+		if (roleValue === 1) {
+			const student_id = await email.replace("@myuwc.ac.za", "");
+
+			const newUser = await connectDb.query("INSERT INTO users (role_type_id, name, email, password, student_number) VALUES ($1, $2, $3, $4, $5) RETURNING *", [roleValue, full_name, email, bcryptPassword, student_id]);
+				
+			const token = jwtGenerator(newUser.rows[0].id);
+			return res.json({ token });
+		} else if (roleValue === 2) {
+			const newUser = await connectDb.query("INSERT INTO users (role_type_id, name, email, password) VALUES ($1, $2, $3, $4) RETURNING *", [roleValue, full_name, email, bcryptPassword]);
+
+			const token = jwtGenerator(newUser.rows[0].id);
+			return res.json({ token });
+		}
+	} catch(err) {
+        console.error(err.message);
+		res.status(500).send("Server Error");
     }
 });
 
