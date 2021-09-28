@@ -16,6 +16,7 @@ import "./assets/css/_responsive.css";
 import SignUp from "./pages/SignUp";
 import LoginPage from "./pages/LoginPage";
 import Dashboard from "./pages/Dashboard";
+import MentorDashboard from "./components/mentor/MentorDashboard";
 
 const App = () => {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -26,6 +27,11 @@ const App = () => {
 
 	return (
 		<Switch>
+		{/* THIS ROUTE IS FOR TESTING PURPOSES ONLY */}
+		<Route path="/mentor-test">
+			<MentorDashboard/>
+		</Route>
+    
 			<Route
 				path="/signup"
 				render={(props) =>

@@ -1,4 +1,5 @@
 module.exports = function(req, res, next) {
+
     const { full_name, email, password, roles } = req.body;
   
     function validEmail(userEmail) {

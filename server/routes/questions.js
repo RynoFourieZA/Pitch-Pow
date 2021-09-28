@@ -9,12 +9,11 @@ router.get("/questions", async (req, res) => {
 		const { type } = req.query;
 		
 		let query =
-			"SELECT questions.questions, category_type.name, category_type.description, pitch_type.description FROM questions INNER JOIN category_type ON questions.category_type_id = category_type.id INNER JOIN pitch_type ON questions.pitch_type_id = pitch_type.id WHERE questions.isDelete = false";
+			"SELECT questions.id, questions.questions, category_type.name, category_type.description, pitch_type.pitch_type_name FROM questions INNER JOIN category_type ON questions.category_type_id = category_type.id INNER JOIN pitch_type ON questions.pitch_type_id = pitch_type.id WHERE questions.is_delete = false";
 
 
 		if (type) {
-			query =
-				`SELECT questions.questions, category_type.name, category_type.description, pitch_type.description FROM questions INNER JOIN category_type ON questions.category_type_id = category_type.id INNER JOIN pitch_type ON questions.pitch_type_id = pitch_type.id WHERE questions.isDelete = false AND questions.pitch_type_id = ${type}`;
+			query = `SELECT questions.id, questions.questions, category_type.name, category_type.description, pitch_type.pitch_type_name FROM questions INNER JOIN category_type ON questions.category_type_id = category_type.id INNER JOIN pitch_type ON questions.pitch_type_id = pitch_type.id WHERE questions.is_delete = false AND questions.pitch_type_id = ${type}`;
 		}
 
 		connectDb.query(query)
