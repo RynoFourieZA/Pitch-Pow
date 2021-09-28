@@ -14,6 +14,17 @@ router.get("/users", async (_, res) => {
 	}
 });
 
+router.get("/users/all", async (_, res) => {
+	try {
+		connectDb
+			.query("SELECT role_type.role_name, users.name, users.email, users.student_number, users.biography, users.confirm, users.is_delete FROM users INNER JOIN role_type ON users.role_type_id = role_type.id ORDER BY name")
+			.then((result) => res.json(result.rows));
+	} catch (e) {
+		console.error(e.message);
+		res.status(500).send("Server error");
+	}
+});
+
 router.get("/users/students", async (_, res) => {
     try {
         connectDb
@@ -52,7 +63,7 @@ router.get("/users/mentors/search", async (req, res) => {
 	try {
 		const { email } = req.query;
 		connectDb
-			.query("SELECT name, email, student_number, biography FROM users WHERE  email = $1 AND confirm = true AND is_delete = false",[email])
+			.query("SELECT name, email, biography FROM users WHERE  email = $1 AND confirm = true AND is_delete = false", [email])
 			.then((result) => res.json(result.rows));
 	} catch (e) {
 		console.error(e.message);
