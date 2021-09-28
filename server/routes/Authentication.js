@@ -8,53 +8,52 @@ const validInfo = require("../middleware/validInfo");
 //Signup / Register route
 router.post("/signup", validInfo, async (req, res) => {
     try {
-        //1. Destructure the req.body {email, password, full name, role}
-        const { name, email, password, student_number, roles } = req.body;
 
-        //2. Check if user exists (if user exists throw error)
-        //Check if student or mentor exists
-        if (roles === "student"){
-            const user = await connectDb.query("SELECT * FROM users WHERE  email = $1", [email]);
-            if(user.rows.length !== 0){
-                return res.status(401).send("User Already Exists");
-            }
-        } else if (roles === "mentor"){
-            const user = await connectDb.query("SELECT * FROM users WHERE  email = $1", [email]);
-            if(user.rows.length !== 0){
-                return res.status(401).send("User Already Exists");
-            }
-        }
+			//1. Destructure the req.body {email, password, full name, role}
+			const { full_name, email, password, roles } = req.body;
 
-        //3. Bcrypt the user password
-        const saltRounds = 10;
-        const salt = await bcrypt.genSalt(saltRounds);
-        const bcryptPassword = await bcrypt.hash(password, salt);
-        //Add user to the database (mentor or student)
-        // const student_id = email.replace("@myuwc.ac.za", "");
-        
-        if (roles === "student") {
-            const newUser = await connectDb.query(
-                "INSERT INTO users (name, email, password, student_number, roles) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-                [name, email, bcryptPassword, student_number, roles]
-            );
+			//2. Check if user exists (if user exists throw error)
+			const user = await connectDb.query("SELECT * FROM users WHERE email = $1", [email]);
 
-            //5. Generating our jwt token
-            const token = jwtGenerator(newUser.rows[0].id);
-            return res.json({ token });
+			if (user.rows.length !== 0) {
+				return res.status(401).send("User Already Exists");
+			}
 
-        } else if (roles === "mentor") {
-            const newUser = await connectDb.query(
-                "INSERT INTO users (name, email, password, roles) VALUES ($1, $2, $3, $4) RETURNING *",
-                [name, email, bcryptPassword, roles]
-            );
+			//3. Bcrypt the user password
+			const saltRounds = 10;
+			const salt = await bcrypt.genSalt(saltRounds);
+			const bcryptPassword = await bcrypt.hash(password, salt);
 
-            //5. Generating out jwt token
-            const token = jwtGenerator(newUser.rows[0].id);
-            return res.json({ token });
-        }
+			const role = await connectDb.query(
+				"SELECT id FROM role_type WHERE role_name = $1",
+				[roles]
+			);
 
-    } catch(err) {
+			const roleValue = role.rows[0].id;
+
+			if (roleValue === 1) {
+				const student_id = await email.replace("@myuwc.ac.za", "");
+
+				const newUser = await connectDb.query(
+					"INSERT INTO users (role_type_id, name, email, password, student_number) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+					[roleValue, full_name, email, bcryptPassword, student_id]
+				);
+				//5. Generating our jwt token
+				const token = jwtGenerator(newUser.rows[0].id);
+				return res.json({ token });
+			} else if (roleValue === 2) {
+				const newUser = await connectDb.query(
+					"INSERT INTO users (role_type_id, name, email, password) VALUES ($1, $2, $3, $4) RETURNING *",
+					[roleValue, full_name, email, bcryptPassword]
+				);
+
+				//5. Generating our jwt token
+				const token = jwtGenerator(newUser.rows[0].id);
+				return res.json({ token });
+			}
+		} catch(err) {
         console.error(err.message);
+
         res.status(500).send("Server Error");
     }
 });
@@ -62,13 +61,14 @@ router.post("/signup", validInfo, async (req, res) => {
 router.post("/login", validInfo, async (req, res) => {
     try {
         const { email, password } = req.body;
+
         const user = await connectDb.query("SELECT * FROM users WHERE email = $1", [email]);
 
-        if (user.rows.length === 0) {
+		if (user.rows.length === 0) {
             return res.status(401).send("User Does Not Exist")
         }
 
-        if (user.rows.length > 0 ) {
+		if (user.rows.length > 0 ) {
             const validPassword = await bcrypt.compare(password, user.rows[0].password);
 
             if (!validPassword) {
@@ -77,19 +77,19 @@ router.post("/login", validInfo, async (req, res) => {
 
             const token = jwtGenerator(user.rows[0].id)
             return res.json({ token });
-        } 
+        }
 
-    } catch (err) {
-        console.error(err.message);
+    } catch (e) {
+        console.error(e.message);
         res.status(500).send("Server Error")
     };
 });
 
-router.get("/verify", authorization, async (re1, res) => {
+router.get("/verify", authorization, async (req, res) => {
     try {
         res.json(true);
-    } catch (err) {
-        console.error(err.message);
+    } catch (e) {
+        console.error(e.message);
         res.status(500).send("Server Error")
     };
 });
