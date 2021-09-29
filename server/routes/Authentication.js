@@ -7,90 +7,90 @@ const validInfo = require("../middleware/validInfo");
 
 //Signup / Register route
 router.post("/signup", validInfo, async (req, res) => {
-    try {
+	try {
+		//1. Destructure the req.body {email, password, full name, role}
+		const { full_name, email, password, roles } = req.body;
 
-			//1. Destructure the req.body {email, password, full name, role}
-			const { full_name, email, password, roles } = req.body;
+		//2. Check if user exists (if user exists throw error)
+		const user = await connectDb.query("SELECT * FROM users WHERE email = $1", [
+			email,
+		]);
 
-			//2. Check if user exists (if user exists throw error)
-			const user = await connectDb.query("SELECT * FROM users WHERE email = $1", [email]);
+		if (user.rows.length !== 0) {
+			return res.status(401).json("User Already Exists");
+		}
 
-			if (user.rows.length !== 0) {
-				return res.status(401).send("User Already Exists");
-			}
+		//3. Bcrypt the user password
+		const saltRounds = 10;
+		const salt = await bcrypt.genSalt(saltRounds);
+		const bcryptPassword = await bcrypt.hash(password, salt);
 
-			//3. Bcrypt the user password
-			const saltRounds = 10;
-			const salt = await bcrypt.genSalt(saltRounds);
-			const bcryptPassword = await bcrypt.hash(password, salt);
+		const role = await connectDb.query(
+			"SELECT id FROM role_type WHERE role_name = $1",
+			[roles]
+		);
 
-			const role = await connectDb.query(
-				"SELECT id FROM role_type WHERE role_name = $1",
-				[roles]
+		const roleValue = role.rows[0].id;
+
+		if (roleValue === 1) {
+			const student_id = await email.replace("@myuwc.ac.za", "");
+
+			const newUser = await connectDb.query(
+				"INSERT INTO users (role_type_id, name, email, password, student_number) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+				[roleValue, full_name, email, bcryptPassword, student_id]
 			);
 
-			const roleValue = role.rows[0].id;
+			const token = jwtGenerator(newUser.rows[0].id);
+			return res.json({ token });
+		} else if (roleValue === 2) {
+			const newUser = await connectDb.query(
+				"INSERT INTO users (role_type_id, name, email, password) VALUES ($1, $2, $3, $4) RETURNING *",
+				[roleValue, full_name, email, bcryptPassword]
+			);
 
-			if (roleValue === 1) {
-				const student_id = await email.replace("@myuwc.ac.za", "");
-
-				const newUser = await connectDb.query(
-					"INSERT INTO users (role_type_id, name, email, password, student_number) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-					[roleValue, full_name, email, bcryptPassword, student_id]
-				);
-				
-				const token = jwtGenerator(newUser.rows[0].id);
-				return res.json({ token });
-				
-			} else if (roleValue === 2) {
-				const newUser = await connectDb.query(
-					"INSERT INTO users (role_type_id, name, email, password) VALUES ($1, $2, $3, $4) RETURNING *",
-					[roleValue, full_name, email, bcryptPassword]
-				);
-
-				const token = jwtGenerator(newUser.rows[0].id);
-				return res.json({ token });
-			}
-		}catch(err) {
-        console.error(err.message);
+			const token = jwtGenerator(newUser.rows[0].id);
+			return res.json({ token });
+		}
+	} catch (err) {
+		console.error(err.message);
 		res.status(500).send("Server Error");
-    }
+	}
 });
 
 router.post("/login", validInfo, async (req, res) => {
-    try {
-        const { email, password } = req.body;
+	try {
+		const { email, password } = req.body;
 
-        const user = await connectDb.query("SELECT * FROM users WHERE email = $1", [email]);
+		const user = await connectDb.query("SELECT * FROM users WHERE email = $1", [
+			email,
+		]);
 
 		if (user.rows.length === 0) {
-            return res.status(401).send("User Does Not Exist")
-        }
+			return res.status(401).json("Password or Email is incorrect");
+		}
 
-		if (user.rows.length > 0 ) {
-            const validPassword = await bcrypt.compare(password, user.rows[0].password);
+		const validPassword = await bcrypt.compare(password, user.rows[0].password);
 
-            if (!validPassword) {
-                return res.status(401).send("User Does Not Exist 1")
-            }
+		if (!validPassword) {
+			return res.status(401).json("User Does Not Exist 1");
+		}
 
-            const token = jwtGenerator(user.rows[0].id)
-            return res.json({ token });
-        }
+		const token = jwtGenerator(user.rows[0].id);
 
-    } catch (e) {
-        console.error(e.message);
-        res.status(500).send("Server Error")
-    };
+		res.json({ token });
+	} catch (e) {
+		console.error(e.message);
+		res.status(500).send("Server Error");
+	}
 });
 
 router.get("/verify", authorization, async (req, res) => {
-    try {
-        res.json(true);
-    } catch (e) {
-        console.error(e.message);
-        res.status(500).send("Server Error")
-    };
+	try {
+		res.json(true);
+	} catch (e) {
+		console.error(e.message);
+		res.status(500).send("Server Error");
+	}
 });
 
 module.exports = router;

@@ -17,6 +17,7 @@ import MyPitch from "./myPitch";
 import Resources from "./resources";
 import Competitions from "./competitions";
 import MyProfile from "../student/profile";
+import QuestionsAndAnswers from "./questionsAndAnswer"
 
 function StudentDashboard({ setAuth }) {
 	const [pitchData, setPitch] = useState([]);
@@ -44,6 +45,7 @@ function StudentDashboard({ setAuth }) {
 								<MyProfile />
 							</Route>
 						</Switch>
+                        <QuestionsAndAnswers />
 					</div>
 				</div>
 			</div>

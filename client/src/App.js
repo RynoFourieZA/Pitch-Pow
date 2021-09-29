@@ -18,6 +18,11 @@ import LoginPage from "./pages/LoginPage";
 import Dashboard from "./pages/Dashboard";
 import MentorDashboard from "./components/mentor/MentorDashboard";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
+
 const App = () => {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 

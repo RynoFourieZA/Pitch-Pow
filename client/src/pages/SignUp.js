@@ -6,6 +6,7 @@ import logo from "../assets/images/pitch-pow-logo.png";
 import ceiLogo from "../assets/images/cei-logo.png";
 //Components
 import AuthHeaderLogin from "../components/authHeaderLogIn";
+import { toast } from "react-toastify";
 
 // import YellowButton from '../components/YellowButton';
 
@@ -35,11 +36,16 @@ const SignUp = ({ setAuth }) => {
 			});
 
 			const parseRes = await response.json();
-			console.log(parseRes);
 
-			localStorage.setItem("token", parseRes.token);
+			if (parseRes.token) {
+				localStorage.setItem("token", parseRes.token);
 
-			setAuth(true);
+				setAuth(true);
+				toast.success("Registered Successfully");
+			} else {
+				setAuth(false);
+				toast.error(parseRes);
+			}
 		} catch (err) {
 			console.error(err.message);
 		}

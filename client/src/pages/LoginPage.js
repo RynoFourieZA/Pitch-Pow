@@ -8,6 +8,7 @@ import ceiLogo from "../assets/images/cei-logo.png";
 import AuthHeaderSignup from "../components/authHeaderSignup";
 import showPwdImg from "../assets/images/show-password.svg";
 import hidePwdImg from "../assets/images/hide-password.svg";
+import { toast } from "react-toastify";
 
 const Login = ({ setAuth }) => {
 	const [inputs, setInputs] = useState({
@@ -34,11 +35,18 @@ const Login = ({ setAuth }) => {
 			});
 
 			const parseRes = await response.json();
-			console.log(parseRes);
 
-			localStorage.setItem("token", parseRes.token);
-			setAuth(true);
+			if (parseRes.token) {
+				localStorage.setItem("token", parseRes.token);
 
+				setAuth(true);
+
+				toast.success("login successfully!");
+			} else {
+				setAuth(false);
+
+				toast.error(parseRes);
+			}
 		} catch (err) {
 			console.error(err.message);
 		}

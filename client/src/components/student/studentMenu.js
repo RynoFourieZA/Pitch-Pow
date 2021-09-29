@@ -8,6 +8,7 @@ import {
 	faTrophy,
 	faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
 
 //
 import profileImage from "../../assets/images/brad.png";
@@ -36,6 +37,7 @@ export default function StudentMenu({ setAuth }) {
 		e.preventDefault();
 		localStorage.removeItem("token");
 		setAuth(false);
+        toast.success("Logged out successfully");
 	}
 
 	useEffect(() => {
