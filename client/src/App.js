@@ -1,5 +1,5 @@
 //React Router
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
 	BrowserRouter as Router,
 	Route,
@@ -24,6 +24,27 @@ const App = () => {
 	const setAuth = (boolean) => {
 		setIsAuthenticated(boolean);
 	};
+
+	async function isAuth() {
+		try {
+
+			const response = await fetch("http://localhost:3100/auth/verify", {
+				method: "GET",
+				headers: { token: localStorage.token }
+			});
+
+			const parseRes = await response.json();
+			
+			parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false)
+
+		} catch (e) {
+			console.error(e.message);
+		}
+	}
+
+	useEffect(() => {
+		isAuth();
+	}, [])
 
 	return (
 		<Switch>
