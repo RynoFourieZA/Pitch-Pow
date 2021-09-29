@@ -8,7 +8,6 @@ import {
 	faTrophy,
 	faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import YellowButton from "../YellowButton";
 
 //
 import profileImage from "../../assets/images/brad.png";

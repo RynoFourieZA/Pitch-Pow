@@ -13,7 +13,7 @@ import YellowButton from "../YellowButton";
 //
 import profileImage from "../../assets/images/brad.png";
 
-export default function StudentMenu() {
+export default function MentorMenu({ setAuth }) {
 	let match = useRouteMatch();
 
 	const [mentorName, setMentorName] = useState("");
@@ -81,7 +81,9 @@ export default function StudentMenu() {
 			</div>
 
 			<div className="text-center">
-				<YellowButton href={"/logout"} text={"Logout"} />
+				<button className="yellowButton" onClick={(e) => logout(e)}>
+					Logout
+				</button>
 			</div>
 		</div>
 	);

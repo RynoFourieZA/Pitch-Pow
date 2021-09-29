@@ -27,16 +27,14 @@ const App = () => {
 
 	async function isAuth() {
 		try {
-
 			const response = await fetch("http://localhost:3100/auth/verify", {
 				method: "GET",
-				headers: { token: localStorage.token }
+				headers: { token: localStorage.token },
 			});
 
 			const parseRes = await response.json();
-			
-			parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false)
 
+			parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
 		} catch (e) {
 			console.error(e.message);
 		}
@@ -44,15 +42,15 @@ const App = () => {
 
 	useEffect(() => {
 		isAuth();
-	}, [])
+	}, []);
 
 	return (
 		<Switch>
-		{/* THIS ROUTE IS FOR TESTING PURPOSES ONLY */}
-		<Route path="/mentor-test">
-			<MentorDashboard/>
-		</Route>
-    
+			{/* THIS ROUTE IS FOR TESTING PURPOSES ONLY */}
+			<Route path="/mentor-test">
+				<MentorDashboard />
+			</Route>
+
 			<Route
 				path="/signup"
 				render={(props) =>
