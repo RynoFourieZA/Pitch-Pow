@@ -8,7 +8,6 @@ import ceiLogo from "../assets/images/cei-logo.png";
 import AuthHeaderSignup from "../components/authHeaderSignup";
 import showPwdImg from "../assets/images/show-password.svg";
 import hidePwdImg from "../assets/images/hide-password.svg";
-// import YellowButton from '../components/YellowButton';
 
 const Login = ({ setAuth }) => {
 	const [inputs, setInputs] = useState({
@@ -37,8 +36,9 @@ const Login = ({ setAuth }) => {
 			const parseRes = await response.json();
 			console.log(parseRes);
 
-			localStorage.setItem("studentToken", parseRes.token);
+			localStorage.setItem("token", parseRes.token);
 			setAuth(true);
+
 		} catch (err) {
 			console.error(err.message);
 		}
@@ -94,16 +94,15 @@ const Login = ({ setAuth }) => {
 								<img
 									className="showhide"
 									title={isRevealPwd ? "Hide password" : "Show password"}
-									src={isRevealPwd ? hidePwdImg : showPwdImg}
-									onClick={() => setIsRevealPwd(prevState => !prevState)}
+									src={isRevealPwd ? showPwdImg : hidePwdImg}
+									onClick={() => setIsRevealPwd((prevState) => !prevState)}
 									width="25px"
-                                />
+								/>
 
 								<div className="my-2">
 									<button className="yellowButton" id="login">
 										Login
 									</button>
-									{/* <YellowButton text={"Login"}/> */}
 								</div>
 							</form>
 						</div>
