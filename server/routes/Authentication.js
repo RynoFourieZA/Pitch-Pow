@@ -10,7 +10,7 @@ router.post("/signup", validInfo, async (req, res) => {
 	try {
 		//1. Destructure the req.body {email, password, full name, role}
 		const { full_name, email, password, roles } = req.body;
-
+		
 		//2. Check if user exists (if user exists throw error)
 		const user = await connectDb.query("SELECT * FROM users WHERE email = $1", [
 			email,
@@ -30,6 +30,7 @@ router.post("/signup", validInfo, async (req, res) => {
 			[roles]
 		);
 
+		console.log("value: ",role);
 		const roleValue = role.rows[0].id;
 
 		if (roleValue === 1) {
@@ -72,7 +73,7 @@ router.post("/login", validInfo, async (req, res) => {
 		const validPassword = await bcrypt.compare(password, user.rows[0].password);
 
 		if (!validPassword) {
-			return res.status(401).json("User Does Not Exist 1");
+			return res.status(401).json("User Does Not Exist");
 		}
 
 		const token = jwtGenerator(user.rows[0].id);

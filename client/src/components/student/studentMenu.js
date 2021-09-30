@@ -17,7 +17,6 @@ export default function StudentMenu({ setAuth }) {
 	let match = useRouteMatch();
 
 	const [studentName, setStudentName] = useState("");
-	const [studentNumber, setStudentBumber] = 
 
 	async function getName() {
 		try {
