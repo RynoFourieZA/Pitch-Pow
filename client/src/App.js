@@ -12,6 +12,8 @@ import SignUp from "./pages/SignUp";
 import LoginPage from "./pages/LoginPage";
 import Dashboard from "./pages/Dashboard";
 import MentorDashboard from "./components/mentor/MentorDashboard";
+//TEST PURPOSES
+import RichTextEditor from '../src/components/student/RichTextEditor';
 
 const App = () => {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -29,6 +31,10 @@ const App = () => {
 		{/* THIS ROUTE IS FOR TESTING PURPOSES ONLY */}
 		<Route path="/mentor-test">
 			<MentorDashboard/>
+		</Route>
+
+		<Route path="/rich-text">
+			<RichTextEditor />
 		</Route>
 		</Switch>
 )};

@@ -27,7 +27,7 @@ export default function StudentMenu() {
                         </li>
 
                         <li>
-                            <NavLink to={`${match.url}/student/resources`}><FontAwesomeIcon icon={faPuzzlePiece} /> Resources</NavLink>
+                            <NavLink to={`${match.url}/mentor/resources`}><FontAwesomeIcon icon={faPuzzlePiece} /> Resources</NavLink>
                         </li>
 
                         <li>
