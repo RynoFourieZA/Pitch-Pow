@@ -12,15 +12,14 @@ const chevronDown = <FontAwesomeIcon icon={faChevronDown} />;
 const times = <FontAwesomeIcon icon={faTimes} />;
 
 export default function QuestionsAndAnswers() {
-	
 	const [myQuestions, setMyQuestions] = useState("");
 	const [busDescription, setBusDescription] = useState("");
 	const [pitch, setPitch] = useState("false");
-	const [arr, setArr] = useState("")
+	const [arr, setArr] = useState([]);
 
 	const [isSelect, setIsSelect] = useState({
 		activeObject: null,
-		objectsc: arr
+		objects: arr,
 	});
 
 	async function getQuestions() {
@@ -32,7 +31,7 @@ export default function QuestionsAndAnswers() {
 
 			const parseRes = await response.json();
 			console.log(parseRes[0]);
-			
+
 			setArr(parseRes);
 			setMyQuestions(parseRes[myQuestions]);
 			setBusDescription(parseRes[0].description);
@@ -54,17 +53,16 @@ export default function QuestionsAndAnswers() {
 				<p className="qNa-text">{busDescription}</p>
 				<p className="qNa-text">{pitch}</p>
 
-
 				<button className="qNa-toggle">
 					? <i className="fa-chevron-down">{chevronDown}</i>
 					<i className="fas fa-times">{times}</i>
 				</button>
 			</div>
-				{isSelect.objectsc.map((element, index) => {
-					<div key={index} className="qNa active">
-						<h1>{element.questions}</h1>
-					</div>
-				})}
+			{isSelect.objects.map((element, index) => {
+				<div key={index} className="qNa active">
+					<h1>{element.questions}</h1>
+				</div>;
+			})}
 		</div>
 	);
 }

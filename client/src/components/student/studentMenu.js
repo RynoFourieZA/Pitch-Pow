@@ -17,6 +17,7 @@ export default function StudentMenu({ setAuth }) {
 	let match = useRouteMatch();
 
 	const [studentName, setStudentName] = useState("");
+	const [studentNumber, setStudentBumber] = 
 
 	async function getName() {
 		try {
@@ -48,7 +49,9 @@ export default function StudentMenu({ setAuth }) {
 		<div>
 			<div className="text-center pt-4">
 				<img src={profileImage} alt="image-of-user" width="100px" />
-				<p className="pt-2">Student: {studentName}</p>
+				<p className="pt-2">{studentName}</p>
+				<p className="pt-2 student-num">Student no: {studentName}</p>
+
 			</div>
 
 			<div className="py-5">

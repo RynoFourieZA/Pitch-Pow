@@ -3,6 +3,7 @@ import React from 'react';
 
 //
 import noPitchImage from '../../assets/images/no-pitch-image.png';
+import QuestionsAndAnswers from './questionsAndAnswer';
 
 //
 import YellowButton from '../YellowButton'
@@ -27,6 +28,7 @@ export default function MyPitch() {
                         text={"Create New Pitch"}
                     />
                 </div>
+                <QuestionsAndAnswers />
             </div>
         </section>
     )

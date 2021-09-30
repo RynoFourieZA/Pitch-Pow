@@ -45,7 +45,6 @@ function StudentDashboard({ setAuth }) {
 								<MyProfile />
 							</Route>
 						</Switch>
-                        <QuestionsAndAnswers />
 					</div>
 				</div>
 			</div>
