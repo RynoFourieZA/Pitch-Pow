@@ -1,50 +1,91 @@
-import {
-    useRouteMatch,
-} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useRouteMatch } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFileAlt, faPuzzlePiece, faTrophy, faUserCircle } from '@fortawesome/free-solid-svg-icons'
-import YellowButton from '../YellowButton';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+	faFileAlt,
+	faPuzzlePiece,
+	faTrophy,
+	faUserCircle,
+} from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
 
 //
-import profileImage from '../../assets/images/brad.png';
+import profileImage from "../../assets/images/brad.png";
 
 export default function StudentMenu({ setAuth }) {
-    let match = useRouteMatch();
+	let match = useRouteMatch();
 
-    return (
-        <div>
-            <div className="text-center pt-4">
-                <img src={profileImage} alt="image-of-user" width="100px"/>
-                <p className="pt-2">Bradley Mubenga</p>
-            </div>
+	const [studentName, setStudentName] = useState("");
 
-            <div className="py-5">
-                <div className="text-start px-5">
-                    <ul>
-                        <li>
-                            <NavLink to={`${match.url}/student/pitch`}><FontAwesomeIcon icon={faFileAlt} /> My Pitch</NavLink>
-                        </li>
+	async function getName() {
+		try {
+			const response = await fetch("http://localhost:3100/api/dashboard/", {
+				method: "GET",
+				headers: { token: localStorage.token },
+			});
 
-                        <li>
-                            <NavLink to={`${match.url}/student/resources`}><FontAwesomeIcon icon={faPuzzlePiece} /> Resources</NavLink>
-                        </li>
+			const parseRes = await response.json();
+			console.log(parseRes);
+			setStudentName(parseRes.name);
+		} catch (e) {
+			console.error(e.message);
+		}
+	}
 
-                        <li>
-                            <NavLink to={`${match.url}/student/competitions`}><FontAwesomeIcon icon={faTrophy} /> Competitions</NavLink>
-                        </li>
+	function logout(e) {
+		e.preventDefault();
+		localStorage.removeItem("token");
+		setAuth(false);
+        toast.success("Logged out successfully");
+	}
 
-                        <li>
-                            <NavLink to={`${match.url}/student/myprofile`}><FontAwesomeIcon icon={faUserCircle} /> My Profile</NavLink>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+	useEffect(() => {
+		getName();
+	}, []);
 
-            <div className="text-center">
-            <button onClick={() => setAuth(false)}></button>
-                <YellowButton href={"/logout"} text={"Logout"}/>
-            </div>
-        </div>
-    )
+	return (
+		<div>
+			<div className="text-center pt-4">
+				<img src={profileImage} alt="image-of-user" width="100px" />
+				<p className="pt-2">Student: {studentName}</p>
+			</div>
+
+			<div className="py-5">
+				<div className="text-start px-5">
+					<ul>
+						<li>
+							<NavLink to={`${match.url}/student/pitch`}>
+								<FontAwesomeIcon icon={faFileAlt} /> My Pitch
+							</NavLink>
+						</li>
+
+						<li>
+							<NavLink to={`${match.url}/student/resources`}>
+								<FontAwesomeIcon icon={faPuzzlePiece} /> Resources
+							</NavLink>
+						</li>
+
+						<li>
+							<NavLink to={`${match.url}/student/competitions`}>
+								<FontAwesomeIcon icon={faTrophy} /> Competitions
+							</NavLink>
+						</li>
+
+						<li>
+							<NavLink to={`${match.url}/student/myprofile`}>
+								<FontAwesomeIcon icon={faUserCircle} /> My Profile
+							</NavLink>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div className="text-center">
+				<button className="yellowButton" onClick={(e) => logout(e)}>
+					Logout
+				</button>
+			</div>
+		</div>
+	);
 }

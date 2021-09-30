@@ -1,30 +1,45 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { faLongArrowAltUp } from "@fortawesome/free-solid-svg-icons";
 
 //CSS
-import '../assets/css/dashboard.css';
+import "../assets/css/dashboard.css";
 
 //
 import MentorDashboard from "../components/mentor/MentorDashboard";
 import StudentDashboard from "../components/student/StudentDashboard";
 
-function Dashboard( {setAuth} ) {
-    const [ userRole, setUserRole ] = useState("None");
-	
-    useEffect(() => {
-        // User in the database { role }
-        setUserRole("Student")
+function Dashboard({ setAuth }) {
+	const [id, setId] = useState("");
+
+	async function getId() {
+		try {
+			const response = await fetch("http://localhost:3100/api/dashboard/", {
+				method: "GET",
+				headers: { token: localStorage.token },
+			});
+
+			const parseRes = await response.json();
+			console.log(parseRes);
+			setId(parseRes.role_type_id);
+		} catch (e) {
+			console.error(e.message);
+		}
+	}
+
+	useEffect(() => {
+		getId();
 	}, []);
 
 	return (
 		<main className="main">
-            {
-                userRole === "Student" 
-                ? (<StudentDashboard setAuth={setAuth}/>)
-                : userRole === "mentor" 
-                ? (<MentorDashboard setAuth={setAuth}/>)
-                : (<h1>404: NOT AUTHORIZED</h1>)
-            }
+			{parseInt(id) === 1 ? (
+				<StudentDashboard setAuth={setAuth} />
+			) : parseInt(id) === 2 ? (
+				<MentorDashboard setAuth={setAuth} />
+			) : (
+				<h1>404: NOT AUTHORIZED</h1>
+			)}
 		</main>
 	);
 }
