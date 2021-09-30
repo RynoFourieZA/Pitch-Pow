@@ -9,12 +9,12 @@ import AuthHeaderLogin from '../components/authHeaderLogIn';
 
 // import YellowButton from '../components/YellowButton';
 
-const SignUp = ({setAuth}) => {
+const SignUp = ({ setAuth }) => {
     const [inputs, setInputs] = useState({
         full_name: "",
         email: "",
         password: "",
-        roles: "student"
+        roles: "Student"
     });
 
     const {full_name, email, password, roles} = inputs;
@@ -38,7 +38,7 @@ const onSubmitForm = async (e) => {
         const parseRes = await response.json();
         console.log(parseRes);
 
-        localStorage.setItem("studentToken", parseRes.token);
+        localStorage.setItem("token", parseRes.token);
 
         setAuth(true);
 
@@ -84,8 +84,8 @@ const onSubmitForm = async (e) => {
                             <h6 className="mt-3 mb-0">Role</h6>
                             <div>
                                 <select name="roles" id="roles" className="input" value={roles} onChange={e => onChange(e)} required>
-                                    <option value="student">Student</option>
-                                    <option value="mentor">Mentor</option>
+                                    <option value="Student">Student</option>
+                                    <option value="Mentor">Mentor</option>
                                 </select>
                             </div>
 
