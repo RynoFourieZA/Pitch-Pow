@@ -1,0 +1,54 @@
+.main {
+    height: 100vh;
+}
+
+.dashboardNav {
+    background-color: #222359;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: #C1AA74;
+}
+
+li {
+    list-style-type: none;
+    line-height: 35px;
+}
+
+ul {
+    padding: 0;
+}
+
+.active {
+    color: #C1AA74;
+}
+
+h4 {
+    color: #C1AA74;
+    font-weight: bolder;
+}
+
+.heading {
+    font-weight: bolder;
+}
+
+.underline {
+    padding: 2px 50px;
+    border-top: 5px solid #222359;
+}
+
+.pitchCard {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(229, 229, 229, 0.3);
+    margin: 0rem 0rem 1.5rem 0;
+    padding: 1.5rem 1.5rem;
+}

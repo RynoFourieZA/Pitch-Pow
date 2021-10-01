@@ -3,27 +3,26 @@ import connectDb from "../db";
 
 const router = new Router();
 
-// The route takes a query of type which checks the question_type and return the question type (new or existing question template).
+
 router.get("/questions", async (req, res) => {
 	try {
 		const { type } = req.query;
-		console.log(req.query);
+		
+		let query =
+			"SELECT questions.id, questions.questions, category_type.name, category_type.description, pitch_type.pitch_type_name FROM questions INNER JOIN category_type ON questions.category_type_id = category_type.id INNER JOIN pitch_type ON questions.pitch_type_id = pitch_type.id WHERE questions.is_delete = false";
 
-		let query = "SELECT * FROM pitch_questions";
 
 		if (type) {
-			query = `SELECT * FROM pitch_questions WHERE question_type = ${type}`;
+			query = `SELECT questions.id, questions.questions, category_type.name, category_type.description, pitch_type.pitch_type_name FROM questions INNER JOIN category_type ON questions.category_type_id = category_type.id INNER JOIN pitch_type ON questions.pitch_type_id = pitch_type.id WHERE questions.is_delete = false AND questions.pitch_type_id = ${type}`;
 		}
 
-		connectDb
-			.query(query)
-			.then((result) => res.json(result.rows));
-	} catch (error) {
-		console.error(error.message);
+		connectDb.query(query)
+		.then((result) => res.json(result.rows));
+
+	} catch (e) {
+		console.error(e.message);
 		res.status(500).send("Server error");
 	}
 });
-
-//NB!!! After MVP is created questions must be able to be updated.
 
 module.exports = router;
