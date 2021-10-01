@@ -35,10 +35,8 @@ function Dashboard({ setAuth }) {
 		<main className="main">
 			{parseInt(id) === 1 ? (
 				<StudentDashboard setAuth={setAuth} />
-			) : parseInt(id) === 2 ? (
+			) :  (
 				<MentorDashboard setAuth={setAuth} />
-			) : (
-				<h1>404: NOT AUTHORIZED</h1>
 			)}
 		</main>
 	);
