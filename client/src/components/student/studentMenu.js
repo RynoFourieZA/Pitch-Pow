@@ -27,7 +27,6 @@ export default function StudentMenu({ setAuth }) {
 
 			const parseRes = await response.json();
 			console.log(parseRes);
-			setStudentName(parseRes.name);
 		} catch (e) {
 			console.error(e.message);
 		}
