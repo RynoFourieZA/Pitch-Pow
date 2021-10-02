@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 //CSS
 import "../assets/css/authPages.css";
 //Images
-import logo from "../assets/images/pitch-pow-logo.png";
+import logo from "../assets/images/pitch-pow-logo-white.png";
 import ceiLogo from "../assets/images/cei-logo.png";
 //Components
 import AuthHeaderSignup from "../components/authHeaderSignup";
