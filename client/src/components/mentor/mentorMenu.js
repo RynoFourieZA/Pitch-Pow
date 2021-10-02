@@ -12,7 +12,7 @@ import YellowButton from "../YellowButton";
 import { toast } from "react-toastify";
 
 //
-import profileImage from "../../assets/images/brad.png";
+import profileImage from "../../assets/images/business-man.png";
 
 export default function MentorMenu({ setAuth }) {
 	let match = useRouteMatch();
@@ -27,8 +27,8 @@ export default function MentorMenu({ setAuth }) {
 			});
 
 			const parseRes = await response.json();
-			console.log(parseRes);
 			setMentorName(parseRes.name);
+			
 		} catch (e) {
 			console.error(e.message);
 		}
