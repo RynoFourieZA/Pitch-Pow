@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //CSS
 import "../assets/css/authPages.css";
 //Images
@@ -24,16 +24,31 @@ const SignUp = ({ setAuth }) => {
 		setInputs({ ...inputs, [e.target.name]: e.target.value });
 	};
 
+	const [ origin, setOrigin ] = useState();
+
+	useEffect(() => {
+		if (window.location.origin === "http://localhost:3000") {
+			setOrigin("http://localhost:3100/auth/signup")
+		}
+
+		else {
+			setOrigin("https://pitch-pow.herokuapp.com/auth/login")
+		}
+
+		console.log(origin)
+	}, [])
+
 	const onSubmitForm = async (e) => {
 		e.preventDefault();
 		try {
 			const body = { full_name, email, password, roles };
-			console.log(full_name, email, password, roles);
-			const response = await fetch("http://localhost:3100/auth/signup", {
+			const response = await fetch(origin, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(body),
 			});
+
+			console.log(response)
 
 			const parseRes = await response.json();
 

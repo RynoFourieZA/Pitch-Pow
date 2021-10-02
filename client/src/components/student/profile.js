@@ -6,13 +6,25 @@ export default function Profile() {
     const [email,setEmail] = useState("");
 	const [studentNumber, setStudentNumber] = useState("");
 	const [biography, setBiography] = useState("");
-    const [createDate, setCreateDate] = useState("")
+    const [createDate, setCreateDate] = useState("");
+
+	const [ origin, setOrigin ] = useState();
+
+	useEffect(() => {
+		if (window.location.origin === "http://localhost:3000") {
+			setOrigin("http://localhost:3100/api/dashboard/profile")
+		}
+
+		else {
+			setOrigin("https://pitch-pow.herokuapp.com/api/dashboard/profile")
+		}
+	}, [])
 
 	async function getProfile() {
 		try {
             
 			const response = await fetch(
-				"http://localhost:3100/api/dashboard/profile",
+				origin,
 				{
 					method: "GET",
 					headers: { token: localStorage.token },
@@ -20,7 +32,7 @@ export default function Profile() {
 			);
 
 			const parseRes = await response.json();
-                console.log(parseRes);
+            console.log(parseRes);
             setStudentNumber(parseRes.student_number);
 			setStudentName(parseRes.name);
             setEmail(parseRes.email)
