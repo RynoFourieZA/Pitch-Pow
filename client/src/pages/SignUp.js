@@ -32,7 +32,7 @@ const SignUp = ({ setAuth }) => {
 		}
 
 		else {
-			setOrigin("https://pitch-pow.herokuapp.com/auth/login")
+			setOrigin("https://pitch-pow.herokuapp.com/auth/signup")
 		}
 
 		console.log(origin)
