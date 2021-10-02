@@ -11,12 +11,14 @@ import {
 import { toast } from "react-toastify";
 
 //
-import profileImage from "../../assets/images/brad.png";
+import profileImage from "../../assets/images/business-man.png";
 
 export default function StudentMenu({ setAuth }) {
 	let match = useRouteMatch();
 
 	const [studentName, setStudentName] = useState("");
+	const [studentNumber, setStudentNumber] = useState("");
+
 
 	async function getName() {
 		try {
@@ -27,6 +29,9 @@ export default function StudentMenu({ setAuth }) {
 
 			const parseRes = await response.json();
 			console.log(parseRes);
+			setStudentName(parseRes.name)
+			setStudentNumber(parseRes.student_number);
+			
 		} catch (e) {
 			console.error(e.message);
 		}
@@ -44,36 +49,40 @@ export default function StudentMenu({ setAuth }) {
 	}, []);
 
 	return (
-		<div>
+		<div className="dashMenu">
 			<div className="text-center pt-4">
 				<img src={profileImage} alt="image-of-user" width="100px" />
 				<p className="pt-2">{studentName}</p>
-				<p className="pt-2 student-num">Student no: {studentName}</p>
-
+				<p className="pt-2 student-num">Student no: {studentNumber}</p>
 			</div>
 
-			<div className="py-5">
+			<div className="py-5 dashNav">
 				<div className="text-start px-5">
 					<ul>
-						<li>
+						<li className="nav_link">
 							<NavLink to={`${match.url}/student/pitch`}>
 								<FontAwesomeIcon icon={faFileAlt} /> My Pitch
 							</NavLink>
 						</li>
+						<li className="nav_link">
+							<NavLink to={`${match.url}/student/questions`}>
+								<FontAwesomeIcon icon={faFileAlt} /> Questions
+							</NavLink>
+						</li>
 
-						<li>
+						<li className="nav_link">
 							<NavLink to={`${match.url}/student/resources`}>
 								<FontAwesomeIcon icon={faPuzzlePiece} /> Resources
 							</NavLink>
 						</li>
 
-						<li>
+						<li className="nav_link">
 							<NavLink to={`${match.url}/student/competitions`}>
 								<FontAwesomeIcon icon={faTrophy} /> Competitions
 							</NavLink>
 						</li>
 
-						<li>
+						<li className="nav_link">
 							<NavLink to={`${match.url}/student/myprofile`}>
 								<FontAwesomeIcon icon={faUserCircle} /> My Profile
 							</NavLink>

@@ -17,7 +17,7 @@ import MyPitch from "./myPitch";
 import Resources from "./resources";
 import Competitions from "./competitions";
 import MyProfile from "../student/profile";
-import QuestionsAndAnswers from "./questionsAndAnswer"
+import Questions from "../Q&A/Questions";
 
 function StudentDashboard({ setAuth }) {
 	const [pitchData, setPitch] = useState([]);
@@ -34,6 +34,9 @@ function StudentDashboard({ setAuth }) {
 						<Switch>
 							<Route path={`/dashboard/student/pitch`}>
 								<MyPitch />
+							</Route>
+							<Route path={`/dashboard/student/questions`}>
+								<Questions />
 							</Route>
 							<Route path={`/dashboard/student/resources`}>
 								<Resources />

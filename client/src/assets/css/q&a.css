@@ -1,38 +1,41 @@
 @import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
 
 h1 {
-	margin: 50px;
+	margin: 10px;
 	text-align: center;
 }
 
-.qNa-container {
-	max-width: 600px;
+.questions-answers-container {
+	max-width: 768px;
 	margin: 0 auto;
+	border: 2px solid #000;
+	padding: 25px;
 }
 
-.qNa {
+.questions-answers {
 	font-family: "Muli", sans-serif;
+	font-size: 1rem;
 	background-color: transparent;
-	border: 1px solid #c3c7ca;
-	border-radius: 10px;
-	margin: 20px 0;
-	padding: 30px;
+	border: 1px solid #b6c3cc;
+	border-radius: 8px;
+	margin: 15px 0;
+	padding: 15px;
 	position: relative;
 	overflow: hidden; /* so nothing comes out of the container */
 	transition: 0.3s ease;
 }
 
-.qNa.active {
+.questions-answers.active {
 	background-color: #fff;
 	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
-.qNa.active::before,
-.qNa.active::after {
+.questions-answers.active::before,
+.questions-answers.active::after {
 	content: "\f075";
 	font-family: "Font Awesome\ 5 Free";
 	color: #2ecc71;
-	font-size: 7rem;
+	font-size: 1rem;
 	position: absolute;
 	opacity: 0.2;
 	top: 20px;
@@ -40,27 +43,27 @@ h1 {
 	z-index: 0;
 }
 
-.qNa.active::before {
+.questions-answers.active::before {
 	color: #3498db;
 	top: -10px;
 	left: -30px;
 	transform: rotateY(180deg);
 }
 
-.qNa-title {
+.questions-answers-title {
 	margin: 0 35px 0 0;
 }
 
-.qNa-text {
+.questions-answers-text {
 	display: none;
 	margin: 30px 0 0;
 }
 
-.qNa.active .qNa-text {
+.questions-answers.active .questions-answers-text {
 	display: block;
 }
 
-.qNa-toggle {
+.questions-answers-toggle {
 	background-color: transparent;
 	border: 0;
 	border-radius: 50%;
@@ -77,23 +80,23 @@ h1 {
 	width: 30px;
 }
 
-.qNa-toggle:focus {
+.questions-answers-toggle:focus {
 	outline: 0;
 }
 
-.qNa-toggle .fa-times {
+.questions-answers-toggle .fa-times {
 	display: none;
 }
 
-.qNa.active .qNa-toggle .fa-times {
+.questions-answers.active .questions-answers-toggle .fa-times {
 	color: #fff;
 	display: block;
 }
 
-.qNa.active .qNa-toggle .fa-chevron-down {
+.questions-answers.active .questions-answers-toggle .fa-chevron-down {
 	display: none;
 }
 
-.qNa.active .qNa-toggle {
+.questions-answers.active .questions-answers-toggle {
 	background-color: #9fa4a8;
 }
