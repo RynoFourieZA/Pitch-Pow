@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 //Assets
 import noSubmission from '../../assets/images/pitch-submission.png';
 //Components
-import YellowButton from '../YellowButton'
+import YellowButton from '../YellowButton';
 
 export default function Submissions({ pitchData }) {
     return (
@@ -56,4 +56,4 @@ export default function Submissions({ pitchData }) {
             }
         </section>
     )
-}
+};

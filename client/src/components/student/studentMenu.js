@@ -59,30 +59,30 @@ export default function StudentMenu({ setAuth }) {
 			<div className="py-5 dashNav">
 				<div className="text-start px-5">
 					<ul>
-						<li className="nav_link">
+						<li>
 							<NavLink to={`${match.url}/student/pitch`}>
 								<FontAwesomeIcon icon={faFileAlt} /> My Pitch
 							</NavLink>
 						</li>
-						<li className="nav_link">
+						<li>
 							<NavLink to={`${match.url}/student/questions`}>
 								<FontAwesomeIcon icon={faFileAlt} /> Questions
 							</NavLink>
 						</li>
 
-						<li className="nav_link">
+						<li>
 							<NavLink to={`${match.url}/student/resources`}>
 								<FontAwesomeIcon icon={faPuzzlePiece} /> Resources
 							</NavLink>
 						</li>
 
-						<li className="nav_link">
+						<li>
 							<NavLink to={`${match.url}/student/competitions`}>
 								<FontAwesomeIcon icon={faTrophy} /> Competitions
 							</NavLink>
 						</li>
 
-						<li className="nav_link">
+						<li>
 							<NavLink to={`${match.url}/student/myprofile`}>
 								<FontAwesomeIcon icon={faUserCircle} /> My Profile
 							</NavLink>

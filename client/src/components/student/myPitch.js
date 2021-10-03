@@ -1,8 +1,5 @@
 //React
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
-import Header from '../Q&A/Header';
-import ChooseYourBusiness from './ChooseYourBusiness';
 
 //
 import noPitchImage from '../../assets/images/no-pitch-image.png';
@@ -24,13 +21,10 @@ export default function MyPitch() {
                         <img src={noPitchImage} className="img-fluid"/>
                         <h4 className="dashH4">You have no active pitches.</h4>
                     </div>
-                    <Link>
-                        <YellowButton 
-                            href={"/student/create-pitch"}
-                            text={"Create New Pitch"}
-                        />
-                        <ChooseYourBusiness/>
-                    </Link>
+                    <YellowButton 
+                        href={"/student/create-pitch"}
+                        text={"Create New Pitch"}
+                    />
                 </div>
             </div>
         </section>
