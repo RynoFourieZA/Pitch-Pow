@@ -72,7 +72,7 @@ const App = () => {
 					!isAuthenticated ? (
 						<LoginPage {...props} setAuth={setAuth} />
 					) : (
-						<Redirect to="/dashboard/student/pitch" />
+						<Redirect to="/dashboard" />
 					)
 				}
 			/>

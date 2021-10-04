@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 
 import profileImage from "../../assets/images/business-man.png";
 
-async function getName(setMentorxName, setError) {
+async function getName(setMentorName, setError) {
 	try {
 		const response = await fetch("http://localhost:3100/api/dashboard/", {
 			method: "GET",
@@ -51,7 +51,7 @@ export default function MentorMenu({ setAuth }) {
 		<div>
 			<div className="text-center pt-4">
 				<img src={profileImage} alt="image-of-user" width="100px" />
-				<p className="pt-2">Mentor: {mentorName}</p>
+				<p className="pt-2">{mentorName}</p>
 			</div>
 
 			<div className="py-5">
@@ -60,12 +60,6 @@ export default function MentorMenu({ setAuth }) {
 						<li>
 							<NavLink to={`${match.url}/mentor/submission`}>
 								<FontAwesomeIcon icon={faFileAlt} /> Submissions
-							</NavLink>
-						</li>
-
-						<li>
-							<NavLink to={`${match.url}/mentor/comments`}>
-								<FontAwesomeIcon icon={faFileAlt} /> Comments
 							</NavLink>
 						</li>
 
