@@ -20,8 +20,8 @@ function Dashboard({ setAuth }) {
 			});
 
 			const parseRes = await response.json();
-			console.log(parseRes);
 			setId(parseRes.role_type_id);
+			
 		} catch (e) {
 			console.error(e.message);
 		}

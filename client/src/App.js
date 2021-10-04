@@ -72,7 +72,7 @@ const App = () => {
 					!isAuthenticated ? (
 						<LoginPage {...props} setAuth={setAuth} />
 					) : (
-						<Redirect to="/dashboard/student/pitch" />
+						<Redirect to="/dashboard" />
 					)
 				}
 			/>
@@ -86,6 +86,8 @@ const App = () => {
 					)
 				}
 			/>
+
+			<Route path="*" render={() => <h1>404 Route not found</h1>} />
 		</Switch>
 	);
 };

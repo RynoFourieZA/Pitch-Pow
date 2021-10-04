@@ -45,14 +45,14 @@ export default function Profile() {
 					<span className="underline"></span>
 				</div>
 
-				<div className="text-center">
+				<div className="text-center card">
 					<div className="text-center pb-3">
-						<h4 className="dashH4">Here we will have my profile.</h4>
-                        <h4 className="dashH4">{role} Name: {studentName}</h4>
-                        <h4 className="dashH4">{role} Email: {email}</h4>
-                        <h4 className="dashH4">{role} number: {studentNumber}</h4>
-                        <h4 className="dashH4">{role} biography: {biography}</h4>
-                        <h4 className="dashH4">Date profile create: {createDate.substring(0,10)}</h4>
+						<br/>
+                        <h2 className="dashH4">{studentName}</h2>
+                        <h4 className="dashH4 title">Email: {email}</h4>
+                        <h4 className="dashH4 title">Number: {studentNumber}</h4>
+                        <h4 className="dashH4 title">Biography: Waylen has spent his life using his personal and career experiences to help his clients overcome post-traumatic stress disorder and provide them with the support they need when their life seems to be more than they can handle. .</h4>
+                        <h4 className="dashH4 title">Date profile create: {createDate.substring(0,10)}</h4>
 					</div>
 				</div>
 			</div>

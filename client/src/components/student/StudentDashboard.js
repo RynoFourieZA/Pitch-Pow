@@ -1,11 +1,9 @@
 //React Router
 import {
-	BrowserRouter as Router,
+	BrowserRouter,
 	Switch,
 	Route,
-	Link,
-	useRouteMatch,
-	useParams,
+	Link
 } from "react-router-dom";
 
 //
@@ -17,7 +15,7 @@ import MyPitch from "./myPitch";
 import Resources from "./resources";
 import Competitions from "./competitions";
 import MyProfile from "../student/profile";
-import QuestionsAndAnswers from "./questionsAndAnswer"
+import Questions from "../Q&A/Questions";
 
 function StudentDashboard({ setAuth }) {
 	const [pitchData, setPitch] = useState([]);
@@ -32,18 +30,11 @@ function StudentDashboard({ setAuth }) {
 				<div className="col-sm-12 col-md-12 col-lg-9 col-xl-9">
 					<div className="">
 						<Switch>
-							<Route path={`/dashboard/student/pitch`}>
-								<MyPitch />
-							</Route>
-							<Route path={`/dashboard/student/resources`}>
-								<Resources />
-							</Route>
-							<Route path={`/dashboard/student/competitions`}>
-								<Competitions />
-							</Route>
-							<Route path={`/dashboard/student/myprofile`}>
-								<MyProfile />
-							</Route>
+							<Route path={`/dashboard/student/pitch`} component={MyPitch}/>
+							<Route path={`/dashboard/student/questions`} component={Questions}/>
+							<Route path={`/dashboard/student/resources`} component={Resources}/>
+							<Route path={`/dashboard/student/competitions`} component={Competitions}/>
+							<Route path={`/dashboard/student/myprofile`} component={MyProfile}/>
 						</Switch>
 					</div>
 				</div>

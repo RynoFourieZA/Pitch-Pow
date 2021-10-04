@@ -1,13 +1,18 @@
-//React Router
-import { Switch, Route } from "react-router-dom";
 //Hooks
 import { useEffect, useState } from "react";
+//React Router
+import {
+	BrowserRouter,
+	Switch,
+	Route
+} from "react-router-dom";
 //React Components
 import MentorMenu from "../mentor/mentorMenu";
 import Submissions from "./submissions";
 import Resources from "./resources";
 import Competitions from "./competitions";
 import MyProfile from "../student/profile";
+import Comments from "./Comments";
 
 function MentorDashboard({ setAuth }) {
 	const [pitchData, setPitch] = useState([]);
@@ -40,8 +45,11 @@ function MentorDashboard({ setAuth }) {
 					<div className="dashboardPage">
 						<Switch>
 							{/*Change This Route to /dashboard and not /mentor-test for production*/}
-							<Route path={`/mentor-test/mentor/submission`}>
+							<Route path={`/dashboard/mentor/submission`}>
 								<Submissions pitchData={pitchData} />
+							</Route>
+							<Route path={`/dashboard/mentor/comment`}>
+								<Comments/>
 							</Route>
 							<Route path={`/dashboard/mentor/resources`}>
 								<Resources />
