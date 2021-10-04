@@ -16,22 +16,6 @@ import profileImage from "../../assets/images/brad.png";
 export default function StudentMenu({ setAuth }) {
 	let match = useRouteMatch();
 
-	const [studentName, setStudentName] = useState("");
-
-	async function getName() {
-		try {
-			const response = await fetch("http://localhost:3100/api/dashboard/", {
-				method: "GET",
-				headers: { token: localStorage.token },
-			});
-
-			const parseRes = await response.json();
-			console.log(parseRes);
-		} catch (e) {
-			console.error(e.message);
-		}
-	}
-
 	function logout(e) {
 		e.preventDefault();
 		localStorage.removeItem("token");
@@ -39,8 +23,40 @@ export default function StudentMenu({ setAuth }) {
         toast.success("Logged out successfully");
 	}
 
+	const [role, SetRole] = useState("Student");
+	const [studentName, setStudentName] = useState("");
+    const [email,setEmail] = useState("");
+	const [studentNumber, setStudentNumber] = useState("");
+	const [biography, setBiography] = useState("");
+    const [createDate, setCreateDate] = useState("");
+
+	async function getProfile() {
+		try {
+            
+			const response = await fetch(
+				"http://localhost:3100/api/dashboard/profile",
+				{
+					method: "GET",
+					headers: { token: localStorage.token },
+				}
+			);
+
+			const parseRes = await response.json();
+            console.log(parseRes);
+            setStudentNumber(parseRes.student_number);
+			setStudentName(parseRes.name);
+            setEmail(parseRes.email)
+            setBiography(parseRes.biography);
+            setCreateDate(parseRes.create_date);
+
+
+		} catch (e) {
+			console.error(e.message);
+		}
+	}
+
 	useEffect(() => {
-		getName();
+		getProfile();
 	}, []);
 
 	return (
@@ -48,7 +64,7 @@ export default function StudentMenu({ setAuth }) {
 			<div className="text-center pt-4">
 				<img src={profileImage} alt="image-of-user" width="100px" />
 				<p className="pt-2">{studentName}</p>
-				<p className="pt-2 student-num">Student no: {studentName}</p>
+				<p className="pt-2 student-num">Student no: {studentNumber}</p>
 
 			</div>
 
