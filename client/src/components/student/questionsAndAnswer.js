@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 
 //
 import YellowButton from "../YellowButton";
-import "../../assets/css/q&a.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { elementType } from "prop-types";

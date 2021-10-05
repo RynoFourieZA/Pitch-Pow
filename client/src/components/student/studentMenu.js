@@ -26,6 +26,7 @@ export default function StudentMenu({ setAuth }) {
 	const [role, SetRole] = useState("Student");
 	const [studentName, setStudentName] = useState("");
 	const [studentNumber, setStudentNumber] = useState("");
+	const [ path, setPathName ] = useState("");
 
 
 	async function getProfile() {
@@ -54,7 +55,55 @@ export default function StudentMenu({ setAuth }) {
 	}, []);
 
 	return (
-		<div className="dashMenu">
+		window.location.pathname === "/dashboard/student/create-new-biz-pitch" ? (
+		<div className="dashMenu text-center">
+			<div className="text-center pt-4">
+				<img src={profileImage} alt="image-of-user" width="30px" />
+			</div>
+
+			<div className="py-5 dashNav">
+				<div className="text-start px-2">
+					<ul>
+						<li className="text-center">
+							<NavLink to={`${match.url}/student/pitch`}>
+								<FontAwesomeIcon icon={faFileAlt} />
+							</NavLink>
+						</li>
+						<li className="text-center">
+							<NavLink to={`${match.url}/student/questions`}>
+								<FontAwesomeIcon icon={faFileAlt} />
+							</NavLink>
+						</li>
+
+						<li className="text-center">
+							<NavLink to={`${match.url}/student/resources`}>
+								<FontAwesomeIcon icon={faPuzzlePiece} />
+							</NavLink>
+						</li>
+
+						<li className="text-center">
+							<NavLink to={`${match.url}/student/competitions`}>
+								<FontAwesomeIcon icon={faTrophy} />
+							</NavLink>
+						</li>
+
+						<li className="text-center">
+							<NavLink to={`${match.url}/student/myprofile`}>
+								<FontAwesomeIcon icon={faUserCircle} />
+							</NavLink>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div className="text-center">
+				<button className="yellowButton">
+					Save
+				</button>
+			</div>
+		</div>
+		) : (
+			<div className="dashMenu">
 			<div className="text-center pt-4">
 				<img src={profileImage} alt="image-of-user" width="100px" />
 				<p className="pt-2">{studentName}</p>
@@ -102,5 +151,6 @@ export default function StudentMenu({ setAuth }) {
 				</button>
 			</div>
 		</div>
+		)
 	);
 }
