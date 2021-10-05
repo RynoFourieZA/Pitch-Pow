@@ -38,7 +38,7 @@ router.get("/comments", async (_, res) => {
 	try {
 		connectDb
 			.query(
-				"SELECT users.name, users.email, comments.comments FROM comments INNER JOIN users ON comments.createby = users.id ORDER BY users.name")
+				"SELECT comments.id, users.name, users.email, comments.comments FROM comments INNER JOIN users ON comments.createby = users.id ORDER BY users.name")
 			.then((result) => res.json(result.rows));
 	} catch (e) {
 		console.error(e.message);
