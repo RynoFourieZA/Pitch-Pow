@@ -124,3 +124,6 @@ function Questions() {
 }
 
 export default Questions;
+
+
+// We still need an if statement for the new and exiting pitch we can do it inside of the chooseyourbusiness component

@@ -1,5 +1,5 @@
 import React from 'react';
-import WriteComments from "./Comments";
+import WriteComments from "./Comments/WriteComments";
 
 
 export default function Resources() {
