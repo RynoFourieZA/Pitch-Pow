@@ -1,8 +1,11 @@
 import React from 'react';
+import WriteComments from "./Comments/WriteComments";
+
 
 export default function Resources() {
     return (
         <section className="rightColumn">
+            <WriteComments />
             <div className="container py-5">
                 <div>
                     <h1 className="heading pb-2">Resources</h1>

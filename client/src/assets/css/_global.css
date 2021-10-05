@@ -25,3 +25,29 @@ body {
 	color: white;
 	border: none;
 }
+
+.dashH4 {
+	margin-top: 30px;
+	padding: 5px;
+}
+
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	max-width: 600px;
+	height: 500px;
+	margin: auto;
+	text-align: center;
+  }
+
+  .title {
+	margin-left: 10px;
+	padding-left: 6px !important;
+	font-size: 18px;
+	text-align: start !important;
+  }
+
+  .student-num {
+	font-size: 12px !important;
+	font-weight: bold;
+	font-family: sans-serif;
+  }

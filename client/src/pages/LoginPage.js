@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //CSS
 import "../assets/css/authPages.css";
 //Images
-import logo from "../assets/images/pitch-pow-logo.png";
+import logo from "../assets/images/pitch-pow-logo-white.png";
 import ceiLogo from "../assets/images/cei-logo.png";
 //Components
 import AuthHeaderSignup from "../components/authHeaderSignup";
 import showPwdImg from "../assets/images/show-password.svg";
 import hidePwdImg from "../assets/images/hide-password.svg";
-// import YellowButton from '../components/YellowButton';
+import { toast } from "react-toastify";
 
 const Login = ({ setAuth }) => {
 	const [inputs, setInputs] = useState({
@@ -23,22 +23,44 @@ const Login = ({ setAuth }) => {
 		setInputs({ ...inputs, [e.target.name]: e.target.value });
 	};
 
+	const [ origin, setOrigin ] = useState();
+
+	useEffect(() => {
+		if (window.location.origin === "http://localhost:3000") {
+			setOrigin("http://localhost:3100/auth/login")
+		}
+
+		else {
+			setOrigin("https://pitch-pow.herokuapp.com/auth/login")
+		}
+
+		console.log(origin)
+	}, [])
+
 	const onSubmitForm = async (e) => {
 		e.preventDefault();
 		try {
 			const body = { email, password };
 
-			const response = await fetch("http://localhost:3100/auth/login", {
+			const response = await fetch(origin, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(body),
 			});
 
 			const parseRes = await response.json();
-			console.log(parseRes);
 
-			localStorage.setItem("studentToken", parseRes.token);
-			setAuth(true);
+			if (parseRes.token) {
+				localStorage.setItem("token", parseRes.token);
+
+				setAuth(true);
+
+				toast.success("login successfully!");
+			} else {
+				setAuth(false);
+
+				toast.error(parseRes);
+			}
 		} catch (err) {
 			console.error(err.message);
 		}
@@ -94,16 +116,15 @@ const Login = ({ setAuth }) => {
 								<img
 									className="showhide"
 									title={isRevealPwd ? "Hide password" : "Show password"}
-									src={isRevealPwd ? hidePwdImg : showPwdImg}
-									onClick={() => setIsRevealPwd(prevState => !prevState)}
+									src={isRevealPwd ? showPwdImg : hidePwdImg}
+									onClick={() => setIsRevealPwd((prevState) => !prevState)}
 									width="25px"
-                                />
+								/>
 
 								<div className="my-2">
 									<button className="yellowButton" id="login">
 										Login
 									</button>
-									{/* <YellowButton text={"Login"}/> */}
 								</div>
 							</form>
 						</div>
