@@ -8,23 +8,11 @@ export default function Profile() {
 	const [biography, setBiography] = useState("");
     const [createDate, setCreateDate] = useState("");
 
-	const [ origin, setOrigin ] = useState();
-
-	useEffect(() => {
-		if (window.location.origin === "http://localhost:3000") {
-			setOrigin("http://localhost:3100/api/dashboard/profile")
-		}
-
-		else {
-			setOrigin("https://pitch-pow.herokuapp.com/api/dashboard/profile")
-		}
-	}, [])
-
 	async function getProfile() {
 		try {
             
 			const response = await fetch(
-				origin,
+				"http://localhost:3100/api/dashboard/profile",
 				{
 					method: "GET",
 					headers: { token: localStorage.token },

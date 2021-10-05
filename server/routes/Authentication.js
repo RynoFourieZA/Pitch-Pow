@@ -29,9 +29,8 @@ router.post("/signup", validInfo, async (req, res) => {
 			"SELECT id FROM role_type WHERE role_name = $1",
 			[roles]
 		);
-		
+    
 		const roleValue = role.rows[0].id;
-		console.log("RoleValue", roleValue)
 
 		if (roleValue === 1) {
 			const student_id = await email.replace("@myuwc.ac.za", "");

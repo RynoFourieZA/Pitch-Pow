@@ -24,24 +24,11 @@ const SignUp = ({ setAuth }) => {
 		setInputs({ ...inputs, [e.target.name]: e.target.value });
 	};
 
-	const [ origin, setOrigin ] = useState();
-
-	useEffect(() => {
-		if (window.location.origin === "http://localhost:3000") {
-			setOrigin("http://localhost:3100/auth/signup")
-		}
-
-		else {
-			setOrigin("https://pitch-pow.herokuapp.com/auth/signup")
-		}
-
-		console.log(origin)
-	}, [])
-
 	const onSubmitForm = async (e) => {
 		e.preventDefault();
 		try {
 			const body = { full_name, email, password, roles };
+			const origin = "http://localhost:3100/auth/signup";
 			const response = await fetch(origin, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
