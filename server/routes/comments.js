@@ -12,11 +12,11 @@ router.post("/comments", async (req, res) => {
 			let base64Url = token.split(".")[1];
 			let base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
 			let jsonPayload = decodeURIComponent(atob(base64)
-			.split("")
-			.map(function (c) {
-				return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-                })
-                .join("")
+				.split("")
+				.map(function (c) {
+					return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+            	})
+            	.join("")
             );
 
             return JSON.parse(jsonPayload);
@@ -35,5 +35,18 @@ router.post("/comments", async (req, res) => {
 		res.status(500).send("Server error");
 	};
 });
+
+router.get("/comments", async (_, res) => {
+	try {
+		connectDb
+			.query("SELECT users.name, users.email, comments.comments FROM comments ORDER BY users.name")
+			.then((result) => res.json(result.rows));
+	} catch (e) {
+		console.error(e.message);
+		res.status(500).send("Server error");
+	};
+});
+
+router.get();
 
 module.exports = router;

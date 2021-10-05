@@ -54,7 +54,7 @@ CREATE TABLE questions (
 CREATE TABLE comments (
 	id SERIAL PRIMARY KEY,
 	comments varchar(500), 
-	createby uuid REFERENCES DEFAULT users(id),
+	createby uuid REFERENCES users(id),
 	create_date date not null default CURRENT_DATE,
 	modifyby uuid REFERENCES users(id),
 	modify_date date not null default CURRENT_DATE,
