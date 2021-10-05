@@ -76,7 +76,7 @@ export default function MentorMenu({ setAuth }) {
 						</li>
 
 						<li>
-							<NavLink to={`${match.url}/mentor/myprofile`}>
+							<NavLink to={`${match.url}/mentor/profile`}>
 								<FontAwesomeIcon icon={faUserCircle} /> My Profile
 							</NavLink>
 						</li>

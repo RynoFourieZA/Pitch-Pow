@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Profile() {
+export default function MentorsProfile() {
     return (
     <section className="rightColumn">
         <div className="container py-5">
