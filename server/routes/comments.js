@@ -8,8 +8,6 @@ router.post("/comments", async (req, res) => {
 		const { string } = req.body;
 		const token = req.header("token");
 
-		console.log(token);
-
 		function parseJwt(token) {
 			let base64Url = token.split(".")[1];
 			let base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
@@ -26,7 +24,6 @@ router.post("/comments", async (req, res) => {
 
 		if (token) {
 			const user = parseJwt(token).user;
-			console.log(user);
 			connectDb
 				.query("INSERT INTO comments (comments, createby) VALUES($1, $2)", [string, user])
 				.then(() => res.send("Your comment was submitted"));
@@ -54,9 +51,7 @@ router.get("/comments/search", async (req, res) => {
 		const { mentor } = req.query;
 
 		connectDb
-			.query(
-				"SELECT users.name, users.email, comments.comments FROM comments INNER JOIN users ON comments.createby = users.id WHERE users.name = $1", [mentor]
-			)
+			.query("SELECT users.name, users.email, comments.comments FROM comments INNER JOIN users ON comments.createby = users.id WHERE users.name = $1", [mentor])
 			.then((result) => res.json(result.rows));
 	} catch (e) {
 		console.error(e.message);
