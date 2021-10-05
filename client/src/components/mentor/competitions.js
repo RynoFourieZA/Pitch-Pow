@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 export default function Competitions() {
+	const [marsPhotoData, setMarsPhotoData] = useState("");
 
 	useEffect(() => {
 		console.log("Fetching data from NASA");

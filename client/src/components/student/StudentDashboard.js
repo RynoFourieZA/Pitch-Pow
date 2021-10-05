@@ -15,7 +15,7 @@ import MyPitch from "./myPitch";
 import Resources from "./resources";
 import Competitions from "./competitions";
 import MyProfile from "../student/profile";
-import Questions from "../Q&A/Questions";
+import ChooseYourBusiness from "./ChooseYourBusiness";
 
 function StudentDashboard({ setAuth }) {
 	const [pitchData, setPitch] = useState([]);
@@ -31,7 +31,6 @@ function StudentDashboard({ setAuth }) {
 					<div className="">
 						<Switch>
 							<Route path={`/dashboard/student/pitch`} component={MyPitch}/>
-							<Route path={`/dashboard/student/questions`} component={Questions}/>
 							<Route path={`/dashboard/student/resources`} component={Resources}/>
 							<Route path={`/dashboard/student/competitions`} component={Competitions}/>
 							<Route path={`/dashboard/student/myprofile`} component={MyProfile}/>
@@ -39,6 +38,7 @@ function StudentDashboard({ setAuth }) {
 					</div>
 				</div>
 			</div>
+			<ChooseYourBusiness  />
 		</main>
 	);
 }

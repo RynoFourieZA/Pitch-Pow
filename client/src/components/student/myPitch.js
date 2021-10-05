@@ -3,14 +3,15 @@ import React, { useState } from 'react';
 
 //
 import noPitchImage from '../../assets/images/no-pitch-image.png';
-
+import Questions from "../Q&A/Questions"
 //
-import YellowButton from '../YellowButton'
+import YellowButton from '../YellowButton';
 
 export default function MyPitch() {
     return (
         <section className="rightColumn">
             <div className="container py-5 dashNav" >
+                <Questions />
                 <div>
                     <h1 className="heading pb-2">My Profile</h1>
                     <span className="underline"></span>

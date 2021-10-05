@@ -64,11 +64,6 @@ export default function StudentMenu({ setAuth }) {
 								<FontAwesomeIcon icon={faFileAlt} /> My Pitch
 							</NavLink>
 						</li>
-						<li>
-							<NavLink to={`${match.url}/student/questions`}>
-								<FontAwesomeIcon icon={faFileAlt} /> Questions
-							</NavLink>
-						</li>
 
 						<li>
 							<NavLink to={`${match.url}/student/resources`}>

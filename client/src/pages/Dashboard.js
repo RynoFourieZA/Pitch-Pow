@@ -34,7 +34,7 @@ function Dashboard({ setAuth }) {
 	return (
 		<main className="main">
 			{parseInt(id) === 1 ? (
-				<StudentDashboard setAuth={setAuth} />
+					<StudentDashboard setAuth={setAuth} />
 			) :  (
 				<MentorDashboard setAuth={setAuth} />
 			)}
