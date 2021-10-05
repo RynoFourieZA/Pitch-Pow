@@ -29,7 +29,7 @@ router.post("/signup", validInfo, async (req, res) => {
 			"SELECT id FROM role_type WHERE role_name = $1",
 			[roles]
 		);
-
+    
 		const roleValue = role.rows[0].id;
 
 		if (roleValue === 1) {
