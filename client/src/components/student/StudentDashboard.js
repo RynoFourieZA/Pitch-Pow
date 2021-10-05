@@ -17,7 +17,6 @@ import Competitions from "./competitions";
 import MyProfile from "../student/profile";
 import ChooseYourBusiness from "../student/ChooseYourBusiness";
 import RichTextEditor from '../RichTextEditor';
-import ChooseYourBusiness from "./ChooseYourBusiness";
 
 function StudentDashboard({ setAuth }) {
 	const [pitchData, setPitch] = useState([]);
