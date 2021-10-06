@@ -1,10 +1,8 @@
 import React from 'react';
 
-
 export default function Resources() {
     return (
         <section className="rightColumn">
-            <WriteComments />
             <div className="container py-5">
                 <div>
                     <h1 className="heading pb-2">Resources</h1>

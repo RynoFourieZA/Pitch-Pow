@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import "../../assets/css/profile.css";
+import profileImage from "../../assets/images/business-man_grey.png";
 
 export default function Profile() {
     const [role, SetRole] = useState("Student");
@@ -20,7 +22,7 @@ export default function Profile() {
 			);
 
 			const parseRes = await response.json();
-            console.log(parseRes);
+			
             setStudentNumber(parseRes.student_number);
 			setStudentName(parseRes.name);
             setEmail(parseRes.email)
@@ -39,23 +41,84 @@ export default function Profile() {
 
 	return (
 		<section className="rightColumn">
-			<div className="container py-5">
-				<div>
-					<h1 className="heading pb-2">My Profile</h1>
-					<span className="underline"></span>
-				</div>
-
-				<div className="text-center card">
-					<div className="text-center pb-3">
-						<br/>
-                        <h2 className="dashH4">{studentName}</h2>
-                        <h4 className="dashH4 title">Email: {email}</h4>
-                        <h4 className="dashH4 title">Number: {studentNumber}</h4>
-                        <h4 className="dashH4 title">Biography: Waylen has spent his life using his personal and career experiences to help his clients overcome post-traumatic stress disorder and provide them with the support they need when their life seems to be more than they can handle. .</h4>
-                        <h4 className="dashH4 title">Date profile create: {createDate.substring(0,10)}</h4>
-					</div>
-				</div>
-			</div>
+			<div className="container emp-profile">
+            <form method="post">
+                <div className="row">
+                    <div className="col-md-4">
+                        <div className="profile-img">
+                            <img src={profileImage} alt=""/>
+                            <div className="file btn btn-lg btn-primary">
+                                Change Photo
+                                <input type="file" name="file"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-6">
+                        <div className="profile-head">
+                                    <h5>
+                                    {studentName}
+                                    </h5>
+                            <ul className="nav nav-tabs" id="myTab" role="tablist">
+                                <li className="nav-item">
+                                    <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="col-md-2">
+                        <input type="submit" className="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-8">
+                        <div className="tab-content profile-tab" id="myTabContent">
+                            <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <label>Student Number</label>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <p>{studentNumber}</p>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <label>Name</label>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <p>{studentName}</p>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <label>Email</label>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <p>{email}</p>
+                                            </div>
+                                        </div>
+                                        {/* <div className="row">
+                                            <div className="col-md-6">
+                                                <label>Biography</label>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <p></p>
+                                            </div>
+                                        </div> */}
+										<div className="row">
+                                            <div className="col-md-6">
+                                                <label>Date profile create:</label>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <p>{createDate.substring(0,10)}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                    </div>
+                </div>
+            </form>           
+        </div>
 		</section>
 	);
 }

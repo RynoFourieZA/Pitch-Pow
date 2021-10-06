@@ -20,16 +20,7 @@ import ChooseYourBusiness from "../student/ChooseYourBusiness";
 import RichTextEditor from '../RichTextEditor';
 
 function StudentDashboard({ setAuth }) {
-	const [pitchData, setPitch] = useState([]);
-	const [pathName, setPathName] = useState("");
-
-	useEffect(() => {
-		setPathName(window.location.pathname)
-		console.log(pathName)
-	}, [])
-	
-	const location = useLocation();
-	
+	const [pitchData, setPitch] = useState([]);;
 
 	return (
 		location.pathname === "/dashboard/student/create-new-biz-pitch" ? (
