@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 //
 import profileImage from "../../assets/images/business-man.png";
 
-export default function StudentMenu({ setAuth }) {
+export default function StudentMenu({ setAuth, pathName }) {
 	let match = useRouteMatch();
 
 	function logout(e) {
@@ -26,7 +26,6 @@ export default function StudentMenu({ setAuth }) {
 	const [role, SetRole] = useState("Student");
 	const [studentName, setStudentName] = useState("");
 	const [studentNumber, setStudentNumber] = useState("");
-	const [ path, setPathName ] = useState("");
 
 
 	async function getProfile() {
@@ -50,12 +49,8 @@ export default function StudentMenu({ setAuth }) {
 		}
 	}
 
-	useEffect(() => {
-		getProfile();
-	}, []);
-
 	return (
-		window.location.pathname === "/dashboard/student/create-new-biz-pitch" ? (
+		pathName === "/dashboard/student/create-new-biz-pitch" ? (
 		<div className="dashMenu text-center">
 			<div className="text-center pt-4">
 				<img src={profileImage} alt="image-of-user" width="30px" />

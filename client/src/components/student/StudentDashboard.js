@@ -3,7 +3,8 @@ import {
 	BrowserRouter,
 	Switch,
 	Route,
-	Link
+	Link,
+	useLocation
 } from "react-router-dom";
 
 //
@@ -20,13 +21,22 @@ import RichTextEditor from '../RichTextEditor';
 
 function StudentDashboard({ setAuth }) {
 	const [pitchData, setPitch] = useState([]);
+	const [pathName, setPathName] = useState("");
+
+	useEffect(() => {
+		setPathName(window.location.pathname)
+		console.log(pathName)
+	}, [])
+	
+	const location = useLocation();
+	
 
 	return (
-		window.location.pathname === "/dashboard/student/create-new-biz-pitch" ? (
+		location.pathname === "/dashboard/student/create-new-biz-pitch" ? (
 		<main>
 			<div className="d-flex">
 				<div className="dashboardNav py-3 col-sm-12 col-md-12 col-lg-1 col-xl-1">
-					<StudentMenu setAuth={setAuth} />
+					<StudentMenu setAuth={setAuth} pathName={location.pathname}/>
 				</div>
 
 				<div className="col-sm-12 col-md-12 col-lg-11 col-xl-11 overflow-auto">
@@ -57,7 +67,7 @@ function StudentDashboard({ setAuth }) {
 			</div>
 		</main> 
 		) 
-		: window.pathname.location === "/dashboard/student/create-exist-biz-pitch" ? (
+		: location.pathname === "/dashboard/student/create-exist-biz-pitch" ? (
 			<main>
 			<div className="d-flex">
 				<div className="dashboardNav py-3 col-sm-12 col-md-12 col-lg-1 col-xl-1">

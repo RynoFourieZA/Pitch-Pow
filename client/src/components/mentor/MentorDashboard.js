@@ -7,12 +7,11 @@ import {
 	Route
 } from "react-router-dom";
 //React Components
-import MentorMenu from "./MentorMenu";
-import Submissions from "./Submissions";
-import Resources from "./Resources";
-import Competitions from "./Competitions";
+import MentorMenu from "./mentorMenu";
+import Submissions from "./submissions";
+import Resources from "./resources";
+import Competitions from "./competitions";
 import MentorsProfile from "./MentorsProfile";
-import WriteComments from "./Comments/WriteComments";
 
 function MentorDashboard({ setAuth }) {
 	const [pitchData, setPitch] = useState([]);
@@ -82,9 +81,6 @@ function MentorDashboard({ setAuth }) {
 							{/*Change This Route to /dashboard and not /mentor-test for production*/}
 							<Route path={`/dashboard/mentor/submission`}>
 								<Submissions pitchData={pitchData} />
-							</Route>
-							<Route path={`/dashboard/mentor/comment`}>
-								<WriteComments/>
 							</Route>
 							<Route path={`/dashboard/mentor/resources`}>
 								<Resources />
