@@ -36,9 +36,9 @@ router.post("/categories", async (req, res) => {
 	}
 });
 
-router.get("/categories", async (req, res) => {
+router.get("/categories", async (_, res) => {
     try {
-		let query = "SELECT name, description FROM category_type WHERE isDELETE = 'False'";
+		let query = "SELECT name, description FROM category_type WHERE is_delete = 'false'";
 
 		connectDb
         .query(query)

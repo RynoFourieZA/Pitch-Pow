@@ -4,6 +4,7 @@ const jwtGenerator = require("../utils/jwtGenerator");
 import connectDb from "../db";
 const authorization = require("../middleware/authorization");
 const validInfo = require("../middleware/validInfo");
+import date from "../utils/date";
 
 //Signup / Register route
 router.post("/signup", validInfo, async (req, res) => {
@@ -36,16 +37,16 @@ router.post("/signup", validInfo, async (req, res) => {
 			const student_id = await email.replace("@myuwc.ac.za", "");
 
 			const newUser = await connectDb.query(
-				"INSERT INTO users (role_type_id, name, email, password, student_number) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-				[roleValue, full_name, email, bcryptPassword, student_id]
+				"INSERT INTO users (role_type_id, name, email, password, student_number, created_date) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+				[roleValue, full_name, email, bcryptPassword, student_id, date]
 			);
 
 			const token = jwtGenerator(newUser.rows[0].id);
 			return res.json({ token });
 		} else if (roleValue === 2) {
 			const newUser = await connectDb.query(
-				"INSERT INTO users (role_type_id, name, email, password) VALUES ($1, $2, $3, $4) RETURNING *",
-				[roleValue, full_name, email, bcryptPassword]
+				"INSERT INTO users (role_type_id, name, email, password, created_date) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+				[roleValue, full_name, email, bcryptPassword, date]
 			);
 
 			const token = jwtGenerator(newUser.rows[0].id);
