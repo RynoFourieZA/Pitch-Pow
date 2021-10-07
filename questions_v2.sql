@@ -1,6 +1,6 @@
 -- Inserting data into the category_type table.
 INSERT INTO category_type (name, description)
-VALUES ('Business Description', 'Details of the Business Idea and what it does.');
+VALUES ('Business Description', 'Details of the business idea and what it does.');
 
 INSERT INTO category_type (name, description)
 VALUES ('Innovation', 'How innovative and unique is the Business approach?');
@@ -12,7 +12,7 @@ INSERT INTO category_type (name, description)
 VALUES ('Product or Service Analysis', 'The specifics of the product or service.');
 
 INSERT INTO category_type (name, description)
-VALUES ('Competition', ': Identify current and potential competitors');
+VALUES ('Competition', 'Identify current and potential competitors');
 
 INSERT INTO category_type (name, description)
 VALUES ('Marketing Strategy', 'How will sales be achieved?');
@@ -26,12 +26,21 @@ VALUES ('Finances', 'An overview of the required resources.');
 INSERT INTO category_type (name, description)
 VALUES ('Management/Technical complexity', 'An assessment of the entrepreneur/team.');
 
+UPDATE category_type
+SET created_by = 'Emma Keet', created_date = CURRENT_DATE
+WHERE created_by IS NULL AND created_date IS NULL;
+
+
 -- Inserting data into the pitch_type table.
 INSERT INTO pitch_type (pitch_type_name) VALUES ('New');
 
 INSERT INTO pitch_type (pitch_type_name) VALUES ('Existing');
 
--- Inserting data into the questions table for new business questions.
+UPDATE pitch_type
+SET created_by = 'Emma Keet', created_date = CURRENT_DATE
+WHERE created_by IS NULL AND created_date IS NULL;
+
+-- -- Inserting data into the questions table for new business questions.
 INSERT INTO questions (questions, category_type_id, pitch_type_id)
 VALUES ('What problem is being addressed?', 1, 1);
 
@@ -239,3 +248,7 @@ VALUES ('What are the necessary resources and skills been identified to implemen
 
 INSERT INTO questions (questions, category_type_id, pitch_type_id)
 VALUES ('What is the cost implication for the level of complexity?', 9, 2);
+
+UPDATE questions
+SET created_by = 'Emma Keet', created_date = CURRENT_DATE
+WHERE created_by IS NULL AND created_date IS NULL;
