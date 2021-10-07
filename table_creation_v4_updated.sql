@@ -14,9 +14,9 @@ CREATE TABLE users (
 	student_number int,
 	biography varchar(250),
 	profile_picture varchar(600),
-	create_date date,
-	modifyby varchar(50),
-	modify_date date,
+	created_date date,
+	modified_by varchar(50),
+	modified_date date,
 	is_delete boolean not null DEFAULT false 
 );
 
@@ -26,8 +26,8 @@ CREATE TABLE  category_type (
 	description varchar(250),
 	created_by varchar(50),
 	created_date date,
-	modifyby varchar(50),
-	modify_date date,
+	modified_by varchar(50),
+	modified_date date,
 	is_delete boolean not null DEFAULT false
 );
 
@@ -36,8 +36,8 @@ CREATE TABLE pitch_type(
 	pitch_type_name varchar(10),
 	created_by varchar(50),
 	created_date date,
-	modifyby varchar(50),
-	modify_date date,
+	modified_by varchar(50),
+	modified_date date,
 	is_delete boolean not null DEFAULT false
 );
 
@@ -48,8 +48,8 @@ CREATE TABLE questions (
 	pitch_type_id int REFERENCES pitch_type(id),
 	created_by varchar(50),
 	created_date date,
-	modifyby varchar(50),
-	modify_date date,
+	modified_by varchar(50),
+	modified_date date,
 	is_delete boolean not null DEFAULT false
 );
 
@@ -60,8 +60,8 @@ CREATE TABLE answers (
     student_number int NOT NULL,
     created_by varchar(50),
 	created_date date,
-	modifyby varchar(50),
-	modify_date date,
+	modified_by varchar(50),
+	modified_date date,
 	is_delete boolean not null DEFAULT false
 );
 
@@ -70,8 +70,8 @@ CREATE TABLE comments (
 	comment varchar(500),
     created_by varchar(50),
 	created_date date,
-	modifyby varchar(50),
-	modify_date date,
+	modified_by varchar(50),
+	modified_date date,
 	is_delete boolean not null DEFAULT false
 );
 
