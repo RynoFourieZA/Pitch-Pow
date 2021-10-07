@@ -14,10 +14,9 @@ CREATE TABLE users (
 	student_number int,
 	biography varchar(250),
 	profile_picture varchar(600),
-	create_date date not null default CURRENT_DATE,
+	create_date date,
 	modifyby varchar(50),
-	modify_date date not null default CURRENT_DATE,
-	confirm boolean NOT NULL DEFAULT false,
+	modify_date date,
 	is_delete boolean not null DEFAULT false 
 );
 
@@ -25,19 +24,21 @@ CREATE TABLE  category_type (
 	id SERIAL PRIMARY KEY,
 	name varchar(150),
 	description varchar(250),
-	create_date date not null default CURRENT_DATE,
-	modifyby uuid REFERENCES users(id),
-	modify_date date not null default CURRENT_DATE,
+	created_by varchar(50),
+	created_date date,
+	modifyby varchar(50),
+	modify_date date,
 	is_delete boolean not null DEFAULT false
 );
 
 CREATE TABLE pitch_type(
 	id SERIAL PRIMARY KEY,
 	pitch_type_name varchar(10),
-	create_date date not null default CURRENT_DATE,
-	modifyby uuid REFERENCES users(id),
-	modify_date date not null default CURRENT_DATE,
-    is_delete boolean not null DEFAULT false
+	created_by varchar(50),
+	created_date date,
+	modifyby varchar(50),
+	modify_date date,
+	is_delete boolean not null DEFAULT false
 );
 
 CREATE TABLE questions (
@@ -45,10 +46,11 @@ CREATE TABLE questions (
 	questions varchar(250) NOT NULL,
 	category_type_id int REFERENCES category_type(id),
 	pitch_type_id int REFERENCES pitch_type(id),
-	create_date date not null default CURRENT_DATE,
-	modifyby uuid REFERENCES users(id),
-	modify_date date not null default CURRENT_DATE,
-    is_delete boolean not null DEFAULT false
+	created_by varchar(50),
+	created_date date,
+	modifyby varchar(50),
+	modify_date date,
+	is_delete boolean not null DEFAULT false
 );
 
 CREATE TABLE answers (
@@ -56,21 +58,21 @@ CREATE TABLE answers (
 	answer varchar(150),
 	question_id int REFERENCES questions(id),
     student_number int NOT NULL,
-    createby uuid REFERENCES users(id),
-	create_date date not null default CURRENT_DATE,
-	modifyby uuid REFERENCES users(id),
-	modify_date date not null default CURRENT_DATE,
-    is_delete boolean not null DEFAULT false
+    created_by varchar(50),
+	created_date date,
+	modifyby varchar(50),
+	modify_date date,
+	is_delete boolean not null DEFAULT false
 );
 
 CREATE TABLE comments (
 	id SERIAL PRIMARY KEY,
-	comments varchar(500),
-    createby uuid REFERENCES users(id),
-	create_date date not null default CURRENT_DATE,
-	modifyby uuid REFERENCES users(id),
-	modify_date date not null default CURRENT_DATE,
-    is_delete boolean not null DEFAULT false
+	comment varchar(500),
+    created_by varchar(50),
+	created_date date,
+	modifyby varchar(50),
+	modify_date date,
+	is_delete boolean not null DEFAULT false
 );
 
 CREATE TABLE pitch (
@@ -79,9 +81,5 @@ CREATE TABLE pitch (
 	answer_id int REFERENCES answers(id),
 	pitch_type_id int REFERENCES pitch_type(id),
 	comment_id int REFERENCES comments(id),
-	user_id uuid REFERENCES users(id),
-	create_date date not null default CURRENT_DATE,
-	modifyby uuid REFERENCES users(id),
-	modify_date date not null default CURRENT_DATE,
 	is_delete boolean not null DEFAULT false
 );
