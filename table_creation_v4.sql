@@ -54,6 +54,7 @@ CREATE TABLE questions (
 CREATE TABLE answers (
 	id SERIAL PRIMARY KEY,
 	answer varchar(150),
+	question_id int REFERENCES questions(id),
     student_number int NOT NULL,
     createby uuid REFERENCES users(id),
 	create_date date not null default CURRENT_DATE,
@@ -75,7 +76,6 @@ CREATE TABLE comments (
 CREATE TABLE pitch (
 	id SERIAL PRIMARY KEY,
     student_number int NOT NULL,
-	question_id int REFERENCES questions(id),
 	answer_id int REFERENCES answers(id),
 	pitch_type_id int REFERENCES pitch_type(id),
 	comment_id int REFERENCES comments(id),
