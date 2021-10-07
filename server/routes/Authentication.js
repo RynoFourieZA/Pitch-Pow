@@ -43,7 +43,7 @@ router.post("/signup", validInfo, async (req, res) => {
 
 			const token = jwtGenerator(newUser.rows[0].id);
 			return res.json({ token });
-		} else if (roleValue === 2) {
+		} else if (roleValue === 2 || roleValue === 3) {
 			const newUser = await connectDb.query(
 				"INSERT INTO users (role_type_id, name, email, password, created_date) VALUES ($1, $2, $3, $4, $5) RETURNING *",
 				[roleValue, full_name, email, bcryptPassword, date]
