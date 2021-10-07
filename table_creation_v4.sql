@@ -33,7 +33,7 @@ CREATE TABLE  category_type (
 
 CREATE TABLE pitch_type(
 	id SERIAL PRIMARY KEY,
-	pitch_type_name varchar(10),,
+	pitch_type_name varchar(10),
 	create_date date not null default CURRENT_DATE,
 	modifyby uuid REFERENCES users(id),
 	modify_date date not null default CURRENT_DATE,
