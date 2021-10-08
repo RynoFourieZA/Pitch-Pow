@@ -30,7 +30,6 @@ if (app.get("env") === "production") {
 }
 
 // Routes
-
 app.use(auth, require("./routes/Authentication"));
 app.use(auth, require("./routes/users"));
 app.use(apiRoot, require("./routes/dashboard"));
@@ -39,6 +38,7 @@ app.use(apiRoot, require("./routes/Admin"));
 app.use(apiRoot, require("./routes/questions"));
 app.use(apiRoot, require("./routes/answers_v2"));
 app.use(apiRoot, require("./routes/pitch"));
+app.use(apiRoot, require("./routes/comment"));
 
 // Config middleware
 app.use(express.static(staticDir));

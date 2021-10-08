@@ -18,7 +18,7 @@ router.post("/answers_v2", async (req, res) => {
 		const student_no = await user.rows[0].student_number;
 
         connectDb
-            .query("INSERT INTO answers (answer, question_id, student_number, created_by, created_date) VALUES ($1, $2, $3, $4, $5)",[string, question, student_no, user_name, date])
+            .query("INSERT INTO answers (answer, question_id, users_id, student_number, created_by, created_date) VALUES ($1, $2, $3, $4, $5, $6)",[string, question, userID, student_no, user_name, date])
             .then(() => res.send("Your answer has been saved."));
     } catch (e) {
 		console.error(e.message);
@@ -99,10 +99,7 @@ router.put("/answers_v2/restore", async (req, res) => {
 		const user_name = await user.rows[0].name;
 
 		connectDb
-			.query(
-				"Update users SET is_delete = false modified_by = $1, modified_date = $2 WHERE id = $3",
-				[user_name, date, userID]
-			)
+			.query("Update users SET is_delete = false modified_by = $1, modified_date = $2 WHERE id = $3", [user_name, date, userID])
 			.then(() => res.send("User has been deleted."));
 	} catch (e) {
 		console.error(e.message);
