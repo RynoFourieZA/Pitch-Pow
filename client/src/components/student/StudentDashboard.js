@@ -17,7 +17,9 @@ import Resources from "./resources";
 import Competitions from "./competitions";
 import MyProfile from "../student/profile";
 import ChooseYourBusiness from "../student/ChooseYourBusiness";
-import RichTextEditor from '../RichTextEditor';
+import Questions_New from "../Q&A/Questions_New";
+import Questions_Existing from "../Q&A/Questions_Existing";
+
 
 function StudentDashboard({ setAuth }) {
 	const [pitchData, setPitch] = useState([]);;
@@ -33,25 +35,7 @@ function StudentDashboard({ setAuth }) {
 				<div className="col-sm-12 col-md-12 col-lg-11 col-xl-11 overflow-auto">
 					<div className="row">
 						<div className="col-sm-12 col-md-12 col-lg-9 col-xl-9">
-							<RichTextEditor />
-						</div>
-
-						<div className="col-sm-12 col-md-12 col-lg-3 col-xl-3 questionsColumn">
-							<div className="py-2">
-								<h5>Questions</h5>
-
-								<div className="questionsCard">
-									<div className="question">
-										<h6>1. Business Description</h6>
-										<p>Tell us more about your business and what it does.</p>
-									</div>
-									
-									<div className="commentCard">
-										<h6>Mentor Name</h6>
-										<p>Good job!</p>
-									</div>
-								</div>
-							</div>
+							<Questions_New />
 						</div>
 					</div>
 				</div>
@@ -68,25 +52,7 @@ function StudentDashboard({ setAuth }) {
 				<div className="col-sm-12 col-md-12 col-lg-11 col-xl-11 overflow-auto">
 					<div className="row">
 						<div className="col-sm-12 col-md-12 col-lg-9 col-xl-9">
-							<RichTextEditor />
-						</div>
-
-						<div className="col-sm-12 col-md-12 col-lg-3 col-xl-3 questionsColumn">
-							<div className="py-2">
-								<h5>Questions</h5>
-
-								<div className="questionsCard">
-									<div className="question">
-										<h6>1. Business Description</h6>
-										<p>Tell us more about your business and what it does.</p>
-									</div>
-									
-									<div className="commentCard">
-										<h6>Mentor Name</h6>
-										<p>Good job!</p>
-									</div>
-								</div>
-							</div>
+							<Questions_Existing />
 						</div>
 					</div>
 				</div>

@@ -121,7 +121,7 @@ const SignUp = ({ setAuth }) => {
 								<input
 									className="input"
 									type="password"
-									id="passsword"
+									id="password"
 									name="password"
 									value={password}
 									onChange={(e) => onChange(e)}

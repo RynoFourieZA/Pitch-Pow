@@ -1,1 +1,1 @@
-export default origin = "http//localhost:3100";
+const origin = "http//localhost:3100";

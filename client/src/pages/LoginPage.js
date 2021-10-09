@@ -85,7 +85,7 @@ const Login = ({ setAuth }) => {
 									type="text"
 									id="email"
 									name="email"
-									alue={email}
+									value={email}
 									onChange={(e) => onChange(e)}
 								/>
 
