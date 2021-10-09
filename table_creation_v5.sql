@@ -1,4 +1,4 @@
--- CREATE EXTENSION "uuid-ossp";
+CREATE EXTENSION "uuid-ossp";
 
 CREATE TABLE role_type (
 	id SERIAL PRIMARY KEY,

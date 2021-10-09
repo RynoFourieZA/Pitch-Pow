@@ -12,7 +12,7 @@ INSERT INTO category_type (name, description)
 VALUES ('Product or Service Analysis', 'The specifics of the product or service.');
 
 INSERT INTO category_type (name, description)
-VALUES ('Competition', ': Identify current and potential competitors');
+VALUES ('Competition', 'Identify current and potential competitors');
 
 INSERT INTO category_type (name, description)
 VALUES ('Marketing Strategy', 'How will sales be achieved?');
