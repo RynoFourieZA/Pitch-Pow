@@ -11,26 +11,10 @@ import {
 import { toast } from "react-toastify";
 
 //
-import profileImage from "../../assets/images/brad.png";
+import profileImage from "../../assets/images/business-man.png";
 
-export default function StudentMenu({ setAuth }) {
+export default function StudentMenu({ setAuth, pathName }) {
 	let match = useRouteMatch();
-
-	const [studentName, setStudentName] = useState("");
-
-	async function getName() {
-		try {
-			const response = await fetch("http://localhost:3100/api/dashboard/", {
-				method: "GET",
-				headers: { token: localStorage.token },
-			});
-
-			const parseRes = await response.json();
-			console.log(parseRes);
-		} catch (e) {
-			console.error(e.message);
-		}
-	}
 
 	function logout(e) {
 		e.preventDefault();
@@ -39,20 +23,89 @@ export default function StudentMenu({ setAuth }) {
         toast.success("Logged out successfully");
 	}
 
-	useEffect(() => {
-		getName();
-	}, []);
+	const [role, SetRole] = useState("Student");
+	const [studentName, setStudentName] = useState("");
+	const [studentNumber, setStudentNumber] = useState("");
+
+
+	async function getProfile() {
+		try {
+            
+			const response = await fetch(
+				"http://localhost:3100/api/dashboard/profile",
+				{
+					method: "GET",
+					headers: { token: localStorage.token },
+				}
+			);
+
+			const parseRes = await response.json();
+			console.log(parseRes);
+			setStudentName(parseRes.name)
+			setStudentNumber(parseRes.student_number);
+			
+		} catch (e) {
+			console.error(e.message);
+		}
+	}
 
 	return (
-		<div>
+		pathName === "/dashboard/student/create-new-biz-pitch" ? (
+		<div className="dashMenu text-center">
+			<div className="text-center pt-4">
+				<img src={profileImage} alt="image-of-user" width="30px" />
+			</div>
+
+			<div className="py-5 dashNav">
+				<div className="text-start px-2">
+					<ul>
+						<li className="text-center">
+							<NavLink to={`${match.url}/student/pitch`}>
+								<FontAwesomeIcon icon={faFileAlt} />
+							</NavLink>
+						</li>
+						<li className="text-center">
+							<NavLink to={`${match.url}/student/questions`}>
+								<FontAwesomeIcon icon={faFileAlt} />
+							</NavLink>
+						</li>
+
+						<li className="text-center">
+							<NavLink to={`${match.url}/student/resources`}>
+								<FontAwesomeIcon icon={faPuzzlePiece} />
+							</NavLink>
+						</li>
+
+						<li className="text-center">
+							<NavLink to={`${match.url}/student/competitions`}>
+								<FontAwesomeIcon icon={faTrophy} />
+							</NavLink>
+						</li>
+
+						<li className="text-center">
+							<NavLink to={`${match.url}/student/myprofile`}>
+								<FontAwesomeIcon icon={faUserCircle} />
+							</NavLink>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div className="text-center">
+				<button className="yellowButton">
+					Save
+				</button>
+			</div>
+		</div>
+		) : (
+			<div className="dashMenu">
 			<div className="text-center pt-4">
 				<img src={profileImage} alt="image-of-user" width="100px" />
 				<p className="pt-2">{studentName}</p>
-				<p className="pt-2 student-num">Student no: {studentName}</p>
-
+				<p className="pt-2 student-num">Student no: {studentNumber}</p>
 			</div>
 
-			<div className="py-5">
+			<div className="py-5 dashNav">
 				<div className="text-start px-5">
 					<ul>
 						<li>
@@ -88,5 +141,6 @@ export default function StudentMenu({ setAuth }) {
 				</button>
 			</div>
 		</div>
+		)
 	);
 }

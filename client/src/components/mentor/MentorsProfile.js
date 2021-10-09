@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
 import "../../assets/css/profile.css";
 import profileImage from "../../assets/images/business-man_grey.png";
 
-export default function Profile() {
-    const [role, SetRole] = useState("Student");
-	const [studentName, setStudentName] = useState("");
+export default function MentorsProfile() {
+    const [mentorName, setMentorName] = useState("");
     const [email,setEmail] = useState("");
-	const [studentNumber, setStudentNumber] = useState("");
 	const [biography, setBiography] = useState("");
     const [createDate, setCreateDate] = useState("");
 
-	async function getProfile() {
+    async function getProfile() {
 		try {
             
 			const response = await fetch(
@@ -22,10 +20,8 @@ export default function Profile() {
 			);
 
 			const parseRes = await response.json();
-			
-            setStudentNumber(parseRes.student_number);
-			setStudentName(parseRes.name);
-            setEmail(parseRes.email)
+			setMentorName(parseRes.name);
+            setEmail(parseRes.email);
             setBiography(parseRes.biography);
             setCreateDate(parseRes.create_date);
 
@@ -39,9 +35,9 @@ export default function Profile() {
 		getProfile();
 	}, []);
 
-	return (
-		<section className="rightColumn">
-			<div className="container emp-profile">
+    return (
+    <section className="rightColumn">
+        <div className="container emp-profile">
             <form method="post">
                 <div className="row">
                     <div className="col-md-4">
@@ -56,7 +52,7 @@ export default function Profile() {
                     <div className="col-md-6">
                         <div className="profile-head">
                                     <h5>
-                                    {studentName}
+                                        {mentorName}
                                     </h5>
                             <ul className="nav nav-tabs" id="myTab" role="tablist">
                                 <li className="nav-item">
@@ -75,18 +71,10 @@ export default function Profile() {
                             <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <div className="row">
                                             <div className="col-md-6">
-                                                <label>Student Number</label>
-                                            </div>
-                                            <div className="col-md-6">
-                                                <p>{studentNumber}</p>
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            <div className="col-md-6">
                                                 <label>Name</label>
                                             </div>
                                             <div className="col-md-6">
-                                                <p>{studentName}</p>
+                                                <p>{mentorName}</p>
                                             </div>
                                         </div>
                                         <div className="row">
@@ -102,10 +90,10 @@ export default function Profile() {
                                                 <label>Biography</label>
                                             </div>
                                             <div className="col-md-6">
-                                                <p></p>
+                                                <p>{biography}</p>
                                             </div>
                                         </div> */}
-										<div className="row">
+                                        <div className="row">
                                             <div className="col-md-6">
                                                 <label>Date profile create:</label>
                                             </div>
@@ -119,6 +107,6 @@ export default function Profile() {
                 </div>
             </form>           
         </div>
-		</section>
-	);
+    </section>
+    )
 }

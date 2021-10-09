@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import Comment from "./Comments/Comment";
 
 export default function Competitions() {
+	const [marsPhotoData, setMarsPhotoData] = useState("");
 
 	useEffect(() => {
 		console.log("Fetching data from NASA");
@@ -17,6 +19,7 @@ export default function Competitions() {
 	return (
 		<section className="rightColumn">
 			<div className="container py-5">
+				<Comment />
 				<div className="">
 					<h1 className="heading pb-2">Competitions</h1>
 					<span className="underline"></span>

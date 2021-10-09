@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //CSS
 import "../assets/css/authPages.css";
 //Images
-import logo from "../assets/images/pitch-pow-logo.png";
+import logo from "../assets/images/pitch-pow-logo-white.png";
 import ceiLogo from "../assets/images/cei-logo.png";
 //Components
 import AuthHeaderLogin from "../components/authHeaderLogIn";
@@ -28,12 +28,14 @@ const SignUp = ({ setAuth }) => {
 		e.preventDefault();
 		try {
 			const body = { full_name, email, password, roles };
-			console.log(full_name, email, password, roles);
-			const response = await fetch("http://localhost:3100/auth/signup", {
+			const origin = "http://localhost:3100/auth/signup";
+			const response = await fetch(origin, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(body),
 			});
+
+			console.log(response)
 
 			const parseRes = await response.json();
 

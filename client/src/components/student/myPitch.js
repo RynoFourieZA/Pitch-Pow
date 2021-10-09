@@ -1,34 +1,31 @@
 //React
-import React from 'react';
+import React, { useState } from 'react';
 
 //
 import noPitchImage from '../../assets/images/no-pitch-image.png';
-import QuestionsAndAnswers from './questionsAndAnswer';
-
+import Questions from "../Q&A/Questions"
 //
-import YellowButton from '../YellowButton'
+import YellowButton from '../YellowButton';
 
 export default function MyPitch() {
     return (
         <section className="rightColumn">
-            <div className="container py-5">
-                <div>
+            <div className="container py-5 dashNav" >
+                <div className="text-start">
                     <h1 className="heading pb-2">My Profile</h1>
                     <span className="underline"></span>
                 </div>
 
                 <div className="text-center">
-                    <div className="text-center pb-3">
+                    <div className="text-center">
                         <img src={noPitchImage} className="img-fluid"/>
-                        <h4 className="dashH4">You have no active pitches.</h4>
+                        <h4 className="dashH4">You have no active pitches</h4>
                     </div>
-
                     <YellowButton 
-                        href={"/student/create-pitch"}
+                        href={"/dashboard/student/create-pitch"}
                         text={"Create New Pitch"}
                     />
                 </div>
-                <QuestionsAndAnswers />
             </div>
         </section>
     )

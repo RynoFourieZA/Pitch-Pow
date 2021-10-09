@@ -20,8 +20,8 @@ function Dashboard({ setAuth }) {
 			});
 
 			const parseRes = await response.json();
-			console.log(parseRes);
 			setId(parseRes.role_type_id);
+			
 		} catch (e) {
 			console.error(e.message);
 		}
@@ -34,7 +34,7 @@ function Dashboard({ setAuth }) {
 	return (
 		<main className="main">
 			{parseInt(id) === 1 ? (
-				<StudentDashboard setAuth={setAuth} />
+					<StudentDashboard setAuth={setAuth} />
 			) :  (
 				<MentorDashboard setAuth={setAuth} />
 			)}
