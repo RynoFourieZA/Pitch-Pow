@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import newBiz from '../../assets/images/new-biz.png';
 import existBiz from '../../assets/images/exist-biz.png';
 
-function ChooseYourBusiness() {
+const ChooseYourBusiness = () => {
     return (
         <section className="rightColumn">
 			<div className="container py-5">
