@@ -6,7 +6,7 @@ const colors = {
 	grey: "#a9a9a9",
 };
 
-function Comment(props) {
+const InputComment = (props) => {
 	const { handleCommentsSubmit } = props;
 
 	const stars = Array(5).fill(0);
@@ -95,4 +95,4 @@ const styles = {
 	},
 };
 
-export default Comment;
+export default InputComment;

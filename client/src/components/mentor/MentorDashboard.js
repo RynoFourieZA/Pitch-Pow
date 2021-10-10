@@ -44,7 +44,6 @@ function MentorDashboard({ setAuth }) {
 				<div className="col-sm-12 col-md-12 col-lg-11 col-xl-11 overflow-auto">
 					<div className="row">
 						<div className="col-sm-12 col-md-12 col-lg-9 col-xl-9">
-							<RichTextEditor />
 						</div>
 
 						<div className="col-sm-12 col-md-12 col-lg-3 col-xl-3 questionsColumn">
