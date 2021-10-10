@@ -42,6 +42,7 @@ router.post("/signup", validInfo, async (req, res) => {
 			);
 
 			const token = jwtGenerator(newUser.rows[0].id);
+			
 			return res.json({ token });
 		} else if (roleValue === 2 || roleValue === 3) {
 			const newUser = await connectDb.query(

@@ -27,7 +27,7 @@ export default function Profile() {
 			setStudentName(parseRes.name);
             setEmail(parseRes.email)
             setBiography(parseRes.biography);
-            setCreateDate(parseRes.create_date);
+            setCreateDate(parseRes.created_date);
 
 
 		} catch (e) {
@@ -97,14 +97,14 @@ export default function Profile() {
                                                 <p>{email}</p>
                                             </div>
                                         </div>
-                                        {/* <div className="row">
+                                        <div className="row">
                                             <div className="col-md-6">
                                                 <label>Biography</label>
                                             </div>
                                             <div className="col-md-6">
                                                 <p></p>
                                             </div>
-                                        </div> */}
+                                        </div>
 										<div className="row">
                                             <div className="col-md-6">
                                                 <label>Date profile create:</label>
