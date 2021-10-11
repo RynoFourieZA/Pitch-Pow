@@ -2,36 +2,19 @@
 import { useEffect, useState } from "react";
 //React Router
 import {
-	BrowserRouter,
+	BrowserRouter as Router,
 	Switch,
 	Route
-} from "react-router-dom";
+  } from "react-router-dom";
 //React Components
 import MentorMenu from "./mentorMenu";
 import Submissions from "./submissions";
 import Resources from "./resources";
 import Competitions from "./competitions";
 import MentorsProfile from "./MentorsProfile";
+import ViewPitch from "./ViewPitch";
 
 function MentorDashboard({ setAuth }) {
-	const [pitchData, setPitch] = useState([]);
-
-	useEffect(() => {
-		setPitch([
-			{
-				name: "My Wonderful Business Pitch",
-				author: "Bradley Mubenga",
-			},
-			{
-				name: "Another Business Pitch",
-				author: "Ryno Fourie",
-			},
-			{
-				name: "Another Business Pitch",
-				author: "Ryno Fourie",
-			},
-		]);
-	}, []);
 
 	return (
 		window.location.pathname === "/dashboard/mentor/review-pitch/:id" ? (
@@ -78,18 +61,11 @@ function MentorDashboard({ setAuth }) {
 					<div className="dashboardPage">
 						<Switch>
 							{/*Change This Route to /dashboard and not /mentor-test for production*/}
-							<Route path={`/dashboard/mentor/submission`}>
-								<Submissions pitchData={pitchData} />
-							</Route>
-							<Route path={`/dashboard/mentor/resources`}>
-								<Resources />
-							</Route>
-							<Route path={`/dashboard/mentor/competitions`}>
-								<Competitions />
-							</Route>
-							<Route path={`/dashboard/mentor/profile`}>
-								<MentorsProfile />
-							</Route>
+							<Route exact path={`/dashboard/mentor/submission`} component={Submissions}/>
+							<Route path={`/dashboard/mentor/submission/review-pitch`} component={ViewPitch}/>
+							<Route path={`/dashboard/mentor/resources`} component={Resources}/>
+							<Route path={`/dashboard/mentor/competitions`} component={Competitions}/>
+							<Route path={`/dashboard/mentor/profile`} component={MentorsProfile}/>
 						</Switch>
 					</div>
 				</div>

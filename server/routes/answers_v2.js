@@ -19,10 +19,10 @@ router.post("/answers_v2", async (req, res) => {
 
         connectDb
             .query("INSERT INTO answers (answer, question_id, users_id, student_number, created_by, created_date) VALUES ($1, $2, $3, $4, $5, $6)",[string, question, userID, student_no, user_name, date])
-            .then(() => res.send("Your answer has been saved."));
+            .then(() => res.json("Your answer has been saved."));
     } catch (e) {
 		console.error(e.message);
-		res.status(500).send("Server error");
+		res.status(500).json("Server error");
 	}
 });
 
@@ -33,7 +33,7 @@ router.get("/answers_v2", async (_, res) => {
 			.then((result) => res.json(result.rows));
     } catch (e) {
 		console.error(e.message);
-		res.status(500).send("Server error");
+		res.status(500).json("Server error");
 	}
 });
 
@@ -46,7 +46,7 @@ router.get("/answers_v2/search", async (req, res) => {
 			.then((result) => res.json(result.rows));
     } catch (e) {
 		console.error(e.message);
-		res.status(500).send("Server error");
+		res.status(500).json("Server error");
 	}
 });
 
@@ -65,10 +65,10 @@ router.put("/answers_v2", async (req, res) => {
 
         connectDb
             .query("UPDATE answers SET answer = $1, modified_by = $2, modified_date = $3 WHERE question_id = $4 AND student_number = $5", [string, user_name, date, id, student_no])
-            .then(() => res.send("Your answer was updated."));
+            .then(() => res.json("Your answer was updated."));
     } catch (e) {
 		console.error(e.message);
-		res.status(500).send("Server error");
+		res.status(500).json("Server error");
 	}
 });
 
@@ -84,10 +84,10 @@ router.put("/answers_v2/delete", async (req, res) => {
 				"Update users SET is_delete = true modified_by = $1, modified_date = $2 WHERE id = $3",
 				[user_name, date, userID]
 			)
-			.then(() => res.send("User has been deleted."));
+			.then(() => res.json("User has been deleted."));
 	} catch (e) {
 		console.error(e.message);
-		res.status(500).send("Server error");
+		res.status(500).json("Server error");
 	}
 });
 
@@ -100,10 +100,10 @@ router.put("/answers_v2/restore", async (req, res) => {
 
 		connectDb
 			.query("Update users SET is_delete = false modified_by = $1, modified_date = $2 WHERE id = $3", [user_name, date, userID])
-			.then(() => res.send("User has been deleted."));
+			.then(() => res.json("User has been deleted."));
 	} catch (e) {
 		console.error(e.message);
-		res.status(500).send("Server error");
+		res.status(500).json("Server error");
 	}
 });
 

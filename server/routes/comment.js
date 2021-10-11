@@ -18,10 +18,10 @@ router.post("/comments", async (req, res) => {
 
         connectDb
             .query("INSERT INTO comments (comment, answer_id, users_id, created_by, created_date) VALUES ($1, $2, $3, $4, $5)", [string, answer_id, userID, user_name, date])
-            .then(() => res.send("Your comment was submitted."))
+            .then(() => res.json("Your comment was submitted."))
 	} catch (e) {
 		console.error(e.message);
-		res.status(500).send("Server error");
+		res.status(500).json("Server error");
 	}
 });
 
@@ -32,7 +32,7 @@ router.get("/comments", async (_, res) => {
 			.then((result) => res.json(result.rows));
 	} catch (e) {
 		console.error(e.message);
-		res.status(500).send("Server error");
+		res.status(500).json("Server error");
 	}
 });
 
@@ -46,7 +46,7 @@ router.get("/comments/search", async (req, res) => {
 
     } catch (e) {
 		console.error(e.message);
-		res.status(500).send("Server error");
+		res.status(500).json("Server error");
 	}
 });
 

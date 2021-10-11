@@ -50,7 +50,7 @@ const Questions_Existing = () => {
 	return (
 		<div className="container mt-3">
 			{currentQuestions.map((questionEl) => (
-				<div key={questionEl.id}>
+				<div key={questionEl.id} className="questions-answer-box">
 					<InputAnswer questionEl={questionEl} />
 				</div>
 			))}

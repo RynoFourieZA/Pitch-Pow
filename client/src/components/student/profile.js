@@ -60,13 +60,13 @@ export default function Profile() {
                                     </h5>
                             <ul className="nav nav-tabs" id="myTab" role="tablist">
                                 <li className="nav-item">
-                                    <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                    <a className="nav-link active" data-toggle="modal" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div className="col-md-2">
-                        <input type="submit" className="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                        <input type="button" type="submit" className="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
                     </div>
                 </div>
                 <div className="row">

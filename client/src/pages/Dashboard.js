@@ -1,7 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { faLongArrowAltUp } from "@fortawesome/free-solid-svg-icons";
-
 //CSS
 import "../assets/css/dashboard.css";
 

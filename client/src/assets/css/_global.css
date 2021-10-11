@@ -32,6 +32,10 @@ body {
 	padding: 5px;
 }
 
+.mentors-comment {
+	text-align: center;
+}
+
 .card {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	max-width: 600px;
@@ -51,4 +55,21 @@ body {
 	font-size: 12px !important;
 	font-weight: bold;
 	font-family: sans-serif;
+  }
+
+  .questions-answer-box {
+	width: 500px !important;
+	height: 300px !important;
+	margin: 10px !important;
+  }
+
+  textarea { 
+	width: 400px !important;
+	height: 200px !important;
+	border: 3px solid #cccccc;
+	padding: 5px;
+	font-family: Tahoma, sans-serif;
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	resize: none;
   }

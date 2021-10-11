@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 
 const colors = {
@@ -9,27 +9,64 @@ const colors = {
 const InputComment = (props) => {
 	const { handleCommentsSubmit } = props;
 
-	const stars = Array(5).fill(0);
+	// const stars = Array(5).fill(0);
 
-	const [currentValue, setCurrentValue] = useState(0);
-	const [hoverValue, setHoverValue] = useState(undefined);
+	// const [currentValue, setCurrentValue] = useState(0);
+	// const [hoverValue, setHoverValue] = useState(undefined);
 	const [comment, setComment] = useState("");
+	const [id, setId] = useState("");
 
-	const handleClick = (value) => {
-		setCurrentValue(value);
+
+	const onSubmitNewForm = async (e) => {
+        e.preventDefault();
+
+        try {
+
+            const myHeaders = new Headers();
+
+            myHeaders.append("Content-Type", "application/json");
+            myHeaders.append("token", localStorage.token);
+			console.log(myHeaders);
+            const body = { string, answer_id: id};
+
+			console.log(body);
+
+            const response = await fetch("http://localhost:3100/api/comments", {
+                method: "POST",
+                headers: myHeaders,
+                body: JSON.stringify(body),
+            });
+
+            const parseResponse = await response.json();
+			console.log(parseResponse);
+			setString(parseResponse.string);
+			setId(parseResponse.answer_id);
+
+        } catch (err) {
+            console.log(err.message);
+        }
+    } 
+
+	console.log(comment, id);
+	const onChange = (e) => {
+		setString(e.target.value);
 	};
 
-	const handleMouseOver = (value) => {
-		setHoverValue(value);
-	};
+	// const handleClick = (value) => {
+	// 	setCurrentValue(value);
+	// };
 
-	const handleMouseLeave = () => {
-		setHoverValue(undefined);
-	};
+	// const handleMouseOver = (value) => {
+	// 	setHoverValue(value);
+	// };
+
+	// const handleMouseLeave = () => {
+	// 	setHoverValue(undefined);
+	// };
 
 	return (
 		<div style={styles.container}>
-			<h2>Star Ratings For Pitch</h2>
+			{/* <h2>Star Ratings For Pitch</h2>
 			<div style={styles.stars}>
 				{stars.map((_, index) => {
 					return (
@@ -51,7 +88,7 @@ const InputComment = (props) => {
 						/>
 					);
 				})}
-			</div>
+			</div> */}
 			<textarea
 				name="comment"
 				value={comment}
@@ -63,7 +100,7 @@ const InputComment = (props) => {
 			<button
 				style={styles.button}
 				onClick={(e) => {
-					handleCommentsSubmit(comment);
+					onSubmitNewForm(comment);
 					setComment("");
 				}}
 			>

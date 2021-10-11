@@ -51,11 +51,6 @@ const App = () => {
 
 	return (
 		<Switch>
-			{/* THIS ROUTE IS FOR TESTING PURPOSES ONLY */}
-			<Route path="/mentor-test">
-				<MentorDashboard />
-			</Route>
-
 			<Route
 				path="/signup"
 				render={(props) =>
