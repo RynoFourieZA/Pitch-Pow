@@ -5,6 +5,10 @@ html {
 .sideImage {
 	background-image: url(../images/column-image.png);
 	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-content: center;
 }
 
 .input {
@@ -20,4 +24,10 @@ input.input:focus {
 .showhide {
 	position: absolute;
 	transform: translate(200px, 103px);
+}
+
+.about-text {
+	color: rgba(255, 255, 255, .8);
+	font-weight: 550;
+	padding: 20px;
 }

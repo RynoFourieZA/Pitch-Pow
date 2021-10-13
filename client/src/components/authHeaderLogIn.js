@@ -16,7 +16,7 @@ const AuthHeaderLogin = () => (
                 <div className="w-50 d-flex align-items-center">
                     <h6>Already have an account?</h6>
                 </div>
-                 
+                
                 <Link>
                     <BlueButton 
                         href={"/login"} 

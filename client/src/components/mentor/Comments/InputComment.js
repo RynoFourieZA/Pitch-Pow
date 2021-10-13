@@ -24,7 +24,7 @@ const InputComment = () => {
             myHeaders.append("Content-Type", "application/json");
             myHeaders.append("token", localStorage.token);
 			console.log(myHeaders);
-            const body = { string, answer_id};
+            const body = { string, answer_id };
 			console.log(myHeaders);
 
 			console.log(body);

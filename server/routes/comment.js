@@ -28,7 +28,7 @@ router.post("/comments", async (req, res) => {
 router.get("/comments", async (_, res) => {
 	try {
 		connectDb
-			.query("SELECT id, comment, created_by FROM comments ORDER BY created_by")
+			.query("SELECT answer_id, comment, created_by FROM comments ORDER BY created_by")
 			.then((result) => res.json(result.rows));
 	} catch (e) {
 		console.error(e.message);
