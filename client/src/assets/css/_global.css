@@ -39,28 +39,28 @@ body {
 	height: 500px;
 	margin: auto;
 	text-align: center;
-  }
+}
 
-  .title {
+.title {
 	margin-left: 10px;
 	padding-left: 6px !important;
 	font-size: 18px;
 	text-align: start !important;
-  }
+}
 
-  .student-num {
+.student-num {
 	font-size: 12px !important;
 	font-weight: bold;
 	font-family: sans-serif;
-  }
+}
 
-  .questions-answer-box {
+.questions-answer-box {
 	width: 500px !important;
 	height: 300px !important;
 	margin: 10px !important;
-  }
+}
 
-  textarea { 
+textarea { 
 	width: 400px !important;
 	height: 200px !important;
 	border: 3px solid #cccccc;
@@ -69,4 +69,4 @@ body {
 	background-position: bottom right;
 	background-repeat: no-repeat;
 	resize: none;
-  }
+}
