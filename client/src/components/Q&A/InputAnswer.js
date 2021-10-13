@@ -15,8 +15,8 @@ const InputAnswer = ({ questionEl }) => {
 
             myHeaders.append("Content-Type", "application/json");
             myHeaders.append("token", localStorage.token);
-			console.log(myHeaders);
             const body = { string, question: questions};
+			console.log(myHeaders);
 
 			console.log(body);
 

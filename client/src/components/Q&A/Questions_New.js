@@ -1,11 +1,12 @@
 import React, { useState, useEffect} from "react";
 import Pagination from "./Pagination";
-import InputAnswer from "./InputAnswer";
+// import InputAnswer from "./InputAnswer";
+import Accordion from "./Accordion";
 
 const Questions_New = () => {
     const [data, setData] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
-	const [questionPerPage] = useState(5);
+	const [questionPerPage] = useState(2);
 
     async function getNewQuestions() {
 		try {
@@ -15,9 +16,8 @@ const Questions_New = () => {
 			});
 
 			const parseRes = await response.json();
-            console.log(parseRes);
             const newData = parseRes.filter(item => item.pitch_type_name === "New")
-			setData(parseRes);
+			setData(newData);
 
 		} catch (e) {
 			console.error(e.message);
@@ -41,10 +41,11 @@ const Questions_New = () => {
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
-        <div className="container mt-3">
-			{currentQuestions.map((questionEl) => (
-				<div key={questionEl.id} className="questions-answer-box" >
-					<InputAnswer questionEl={questionEl}/>
+        <div className="container mt-3s">
+			{data.map((questions) => (
+				<div key={questions.id} className="questions-answer-box" >
+					<Accordion questions={questions}/>
+					{/* <InputAnswer questions={questions}/> */}
 					</div>
 			))}
 			<Pagination

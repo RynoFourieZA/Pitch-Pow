@@ -41,7 +41,9 @@ const ListAnswers = () => {
         getProfile();
       }, []);
 
-      const paginate = (pageNumber) => setCurrentPage(pageNumber);
+      const paginate = (pageNumber) => {
+          setCurrentPage(pageNumber)
+        };
 
 	return (
         <div>

@@ -17,6 +17,7 @@ import SignUp from "./pages/SignUp";
 import LoginPage from "./pages/LoginPage";
 import Dashboard from "./pages/Dashboard";
 import MentorDashboard from "./components/mentor/MentorDashboard";
+import StudentDashboard from "./components/student/StudentDashboard";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -25,6 +26,7 @@ toast.configure();
 
 const App = () => {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
+	const [id, setId] = useState("");
 
 	const setAuth = (boolean) => {
 		setIsAuthenticated(boolean);
@@ -45,9 +47,29 @@ const App = () => {
 		}
 	}
 
+
+	async function getId() {
+		try {
+			const response = await fetch("http://localhost:3100/api/dashboard/", {
+				method: "GET",
+				headers: { token: localStorage.token },
+			});
+
+			const parseRes = await response.json();
+			setId(parseRes.role_type_id);
+			
+		} catch (e) {
+			console.error(e.message);
+		}
+	}
+
 	useEffect(() => {
 		isAuth();
+		getId();
 	}, []);
+
+
+	
 
 	return (
 		<Switch>
@@ -67,7 +89,7 @@ const App = () => {
 					!isAuthenticated ? (
 						<LoginPage {...props} setAuth={setAuth} />
 					) : (
-						<Redirect to="/dashboard" />
+						parseInt(id) !== 1 ? <Redirect to="/dashboard/student/pitch" /> : <Redirect to="/dashboard/mentor/submission" />
 					)
 				}
 			/>

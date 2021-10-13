@@ -42,6 +42,10 @@ const EditAnswers = () => {
 		setString(e.target.value);
 	};
 
+	function finished() {
+		alert("Your pitch has been sent to mentor for review");
+	};
+
 	return (
 			<form className="form-control" onSubmit={onSubmitNewForm} >
 				<h3>{questionEl.questions}</h3>
@@ -50,10 +54,11 @@ const EditAnswers = () => {
 					placeholder="Type your answer here..."
 					value={string}
 					onChange={(e) => onChange(e)}
+					required
 				/>
 				<div className="my-2">
-					<button className="yellowButton">
-						Sent
+					<button className="yellowButton" onClick={finished}>
+						Submit
 					</button>
 				</div>
 			</form>

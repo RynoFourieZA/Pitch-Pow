@@ -7,7 +7,7 @@ const Questions_Existing = () => {
 	
 	const [data, setData] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
-	const [questionPerPage] = useState(5);
+	const [questionPerPage] = useState(2);
 
 	// Get for questions
 
@@ -19,12 +19,8 @@ const Questions_Existing = () => {
 			});
 
 			const parseRes = await response.json();
-			const newData = parseRes.filter(
-				(item) => item.pitch_type_name === "Existing"
-			);
-			console.log(newData);
-			setData(parseRes);
-			console.log(parseRes);
+			const newData = parseRes.filter((item) => item.pitch_type_name === "Existing");
+			setData(newData);
 		} catch (e) {
 			console.error(e.message);
 		}

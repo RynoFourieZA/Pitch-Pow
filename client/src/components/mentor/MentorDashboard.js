@@ -17,43 +17,9 @@ import ViewPitch from "./ViewPitch";
 function MentorDashboard({ setAuth }) {
 
 	return (
-		window.location.pathname === "/dashboard/mentor/review-pitch/:id" ? (
-			<main>
-			<div className="d-flex">
-				<div className="dashboardNav py-3 col-sm-12 col-md-12 col-lg-1 col-xl-1">
-					<MentorMenu setAuth={setAuth} />
-				</div>
-
-				<div className="col-sm-12 col-md-12 col-lg-11 col-xl-11 overflow-auto">
-					<div className="row">
-						<div className="col-sm-12 col-md-12 col-lg-9 col-xl-9">
-						</div>
-
-						<div className="col-sm-12 col-md-12 col-lg-3 col-xl-3 questionsColumn">
-							<div className="py-2">
-								<h5>Questions</h5>
-
-								<div className="questionsCard">
-									<div className="question">
-										<h6>1. Business Description</h6>
-										<p>Tell us more about your business and what it does.</p>
-									</div>
-									
-									<div className="commentCard">
-										<h6>Mentor Name</h6>
-										<p>Good job!</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</main> 
-		) : (
-			<main>
+		<main>
 			<div className="row main">
-				<div className="dashboardNav py-3 container col-sm-12 col-md-12 col-lg-3 col-xl-3 overflow-hidden">
+				<div className="dashboardNav py-3 container col-sm-12 col-md-12 col-lg-3 col-xl-3">
 					<MentorMenu setAuth={setAuth} />
 				</div>
 
@@ -72,7 +38,6 @@ function MentorDashboard({ setAuth }) {
 			</div>
 		</main>
 		)
-	);
 }
 
 export default MentorDashboard;

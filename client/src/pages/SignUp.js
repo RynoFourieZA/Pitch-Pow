@@ -72,10 +72,10 @@ const SignUp = ({ setAuth }) => {
 
 				<div className="col-sm-12 col-md-12 col-lg-8 col-xl-8">
 					<AuthHeaderLogin />
-					<div className="d-flex justify-content-center align-tems-center">
+					<div className="d-flex justify-content-center align-items-center">
 						<div>
 							<div className="text-center">
-								<img src={ceiLogo} alt="cei-logo" width="65px" />
+								<img src={ceiLogo} alt="cei-logo" width="200px" />
 								<p className="pt-1">Welcome! Sign up to get started.</p>
 							</div>
 

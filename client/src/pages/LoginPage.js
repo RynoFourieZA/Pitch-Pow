@@ -74,7 +74,7 @@ const Login = ({ setAuth }) => {
 					<div className="d-flex justify-content-center align-items-center">
 						<div>
 							<div className="text-center">
-								<img src={ceiLogo} alt="cei-logo" width="65px" />
+								<img src={ceiLogo} alt="cei-logo" width="200px" />
 								<p className="pt-1">Welcome! Sign up to get started.</p>
 							</div>
 

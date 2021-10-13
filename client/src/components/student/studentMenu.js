@@ -15,14 +15,7 @@ import profileImage from "../../assets/images/business-man.png";
 
 export default function StudentMenu({ setAuth, pathName }) {
 	let match = useRouteMatch();
-
-	function logout(e) {
-		e.preventDefault();
-		localStorage.removeItem("token");
-		setAuth(false);
-        toast.success("Logged out successfully");
-	}
-
+	
 	const [role, SetRole] = useState("Student");
 	const [studentName, setStudentName] = useState("");
 	const [studentNumber, setStudentNumber] = useState("");
@@ -40,8 +33,9 @@ export default function StudentMenu({ setAuth, pathName }) {
 			);
 
 			const parseRes = await response.json();
-			console.log(parseRes);
+			console.log("Hi",parseRes);
 			setStudentName(parseRes.name)
+			
 			setStudentNumber(parseRes.student_number);
 			
 		} catch (e) {
@@ -49,9 +43,20 @@ export default function StudentMenu({ setAuth, pathName }) {
 		}
 	}
 
+	useEffect(() => {
+		getProfile();
+	}, []);
+
+	function logout(e) {
+		e.preventDefault();
+		localStorage.removeItem("token");
+		setAuth(false);
+		toast.success("Logged out successfully");
+	}
+	
 	return (
 		pathName === "/dashboard/student/create-new-biz-pitch" ? (
-		<div className="dashMenu text-center">
+			<div className="dashMenu text-center">
 			<div className="text-center pt-4">
 				<img src={profileImage} alt="image-of-user" width="30px" />
 			</div>

@@ -35,6 +35,7 @@ function Dashboard({ setAuth }) {
 			) :  (
 				<MentorDashboard setAuth={setAuth} />
 			)}
+			
 		</main>
 	);
 }

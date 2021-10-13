@@ -20,10 +20,9 @@ async function getName(setMentorName, setError) {
 		});
 
 		const parseRes = await response.json();
-		console.log(parseRes);
 		setMentorName(parseRes.name);
 	} catch (e) {
-		toast.error("An oopsy has happened");
+		toast.error("something has gone wrong");
 		setError("something has gone wrong");
 	}
 }

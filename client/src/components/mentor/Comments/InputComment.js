@@ -6,8 +6,7 @@ const colors = {
 	grey: "#a9a9a9",
 };
 
-const InputComment = (props) => {
-	const { handleCommentsSubmit } = props;
+const InputComment = () => {
 
 	// const stars = Array(5).fill(0);
 
@@ -17,9 +16,7 @@ const InputComment = (props) => {
 	const [id, setId] = useState("");
 
 
-	const onSubmitNewForm = async (e) => {
-        e.preventDefault();
-
+	const onSubmitNewForm = async () => {
         try {
 
             const myHeaders = new Headers();
@@ -27,10 +24,10 @@ const InputComment = (props) => {
             myHeaders.append("Content-Type", "application/json");
             myHeaders.append("token", localStorage.token);
 			console.log(myHeaders);
-            const body = { string, answer_id: id};
+            const body = { string, answer_id};
+			console.log(myHeaders);
 
 			console.log(body);
-
             const response = await fetch("http://localhost:3100/api/comments", {
                 method: "POST",
                 headers: myHeaders,
@@ -38,9 +35,9 @@ const InputComment = (props) => {
             });
 
             const parseResponse = await response.json();
-			console.log(parseResponse);
-			setString(parseResponse.string);
-			setId(parseResponse.answer_id);
+			console.log('string',parseResponse);
+			// setComment(parseResponse.string);
+			// setId(parseResponse.answer_id);
 
         } catch (err) {
             console.log(err.message);
@@ -99,9 +96,10 @@ const InputComment = (props) => {
 			/>
 			<button
 				style={styles.button}
-				onClick={(e) => {
-					onSubmitNewForm(comment);
-					setComment("");
+				onClick={(e) => { 
+					e.preventDefault();
+					onSubmitNewForm();
+					// setComment("");
 				}}
 			>
 				Submit
