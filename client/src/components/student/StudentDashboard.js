@@ -33,8 +33,8 @@ function StudentDashboard({ setAuth }) {
 				</div>
 
 				<div className="col-sm-12 col-md-12 col-lg-11 col-xl-11">
-					<div className="rowss">
-						<div className="col-sm-12 col-md-12 col-lg-9 col-xl-9 overflow-auto">
+					<div className="row">
+						<div className="col-sm-12 col-md-12 col-lg-9 col-xl-9">
 							<Questions_New />
 						</div>
 					</div>
@@ -49,7 +49,7 @@ function StudentDashboard({ setAuth }) {
 					<StudentMenu setAuth={setAuth} />
 				</div>
 
-				<div className="col-sm-12 col-md-12 col-lg-11 col-xl-11 overflow-auto">
+				<div className="col-sm-12 col-md-12 col-lg-11 col-xl-11">
 					<div className="row">
 						<div className="col-sm-12 col-md-12 col-lg-9 col-xl-9">
 							<Questions_Existing />

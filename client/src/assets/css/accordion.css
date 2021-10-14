@@ -1,21 +1,26 @@
+.container-accordion {
+    margin: auto !important;
+}
+
 .accordion-section {
     display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
     align-items: center;
-    align-content: space-between;
+    padding: 2rem;
 }
 
 .accordion {
     background-color: #eee;
     color: #444;
     cursor: pointer;
-    padding: 18px;
+    padding: 10px;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     border: none;
     outline: none;
     transition: background-color 0.6s ease;
+    width: 100%;
 }
 
 .accordion:hover, .active {
@@ -38,10 +43,11 @@
 .accordion-icon {
     margin-left: auto;
     transition: transform 0.6s ease;
+    transform: rotate(90deg);
 }
 
 .rotate {
-    transform: rotate(90deg);
+    transform: rotate(270deg);
 }
 
 .accordion-content {

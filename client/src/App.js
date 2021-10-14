@@ -16,17 +16,26 @@ import "./assets/css/_responsive.css";
 import SignUp from "./pages/SignUp";
 import LoginPage from "./pages/LoginPage";
 import Dashboard from "./pages/Dashboard";
-import MentorDashboard from "./components/mentor/MentorDashboard";
-import StudentDashboard from "./components/student/StudentDashboard";
-
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+// import SideMenu, { menuItems } from "./components/SideMenu";
 
 toast.configure();
+
+// const Dashboard1 = () => <h1>Dashboard</h1>;
+// const Content = () => <h1>Content</h1>;
+// const Courses = () => <h1>Content/Courses</h1>;
+// const Videos = () => <h1>Content/Videos</h1>;
+// const Design = () => <h1>Design</h1>;
+// const Content2 = () => <h1>Content2</h1>;
+// const Courses2 = () => <h1>Content/Courses 2</h1>;
+// const Videos2 = () => <h1>Content/Videos 2</h1>;
+// const Design2 = () => <h1>Design 2</h1>;
 
 const App = () => {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 	const [id, setId] = useState("");
+	// const [inactive, setInactive] = useState(false);
 
 	const setAuth = (boolean) => {
 		setIsAuthenticated(boolean);
@@ -72,6 +81,7 @@ const App = () => {
 	
 
 	return (
+		<div>
 		<Switch>
 			<Route
 				path="/signup"
@@ -89,7 +99,17 @@ const App = () => {
 					!isAuthenticated ? (
 						<LoginPage {...props} setAuth={setAuth} />
 					) : (
-						parseInt(id) !== 1 ? <Redirect to="/dashboard/student/pitch" /> : <Redirect to="/dashboard/mentor/submission" />
+						<Redirect to="/dashboard" />
+					)
+				}
+			/>
+			<Route
+				path="/login"
+				render={(props) =>
+					!isAuthenticated ? (
+						<LoginPage {...props} setAuth={setAuth} />
+					) : (
+						<Redirect to="/dashboard" />
 					)
 				}
 			/>
@@ -105,7 +125,63 @@ const App = () => {
 			/>
 
 			<Route path="*" render={() => <h1>404 Route not found</h1>} />
+			{/* <Route path="*" render={() => <SideMenu onCollapse={(inactive) => {
+            console.log(inactive);
+            setInactive(inactive);
+          }}/>} /> */}
+			{/* <Router path="*">
+        <SideMenu
+          onCollapse={(inactive) => {
+            console.log(inactive);
+            setInactive(inactive);
+          }}
+        /> */}
+
+        {/* <div className={`container ${inactive ? "inactive" : ""}`}> */}
+          {/* improvememt, not recorded in video, its just looping through menuItems
+          instead of hard coding all the routes */}
+          {/* {menuItems.map((menu, index) => (
+            <>
+              <Route key={menu.name} exact={menu.exact} path={menu.to}>
+                <h1>{menu.name}</h1>
+              </Route>
+            </>
+          ))} */}
+
+          {/* <Switch>
+            <Route exact path={"/"}>
+              <Dashboard />
+            </Route>
+            <Route exact path={"/content"}>
+              <Content />
+            </Route>
+            <Route path={"/content/courses"}>
+              <Courses />
+            </Route>
+            <Route path={"/content/videos"}>
+              <Videos />
+            </Route>
+            <Route path={"/design"}>
+              <Design />
+            </Route>
+            <Route exact path={"/content-2"}>
+              <Content2 />
+            </Route>
+            <Route path={"/content-2/courses"}>
+              <Courses2 />
+            </Route>
+            <Route path={"/content-2/videos"}>
+              <Videos2 />
+            </Route>
+            <Route path={"/design-2"}>
+              <Design2 />
+            </Route>
+          </Switch> */}
+        {/* </div>
+      </Router> */}
+
 		</Switch>
+		</div>
 	);
 };
 

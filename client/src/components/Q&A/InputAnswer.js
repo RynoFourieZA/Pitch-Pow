@@ -49,7 +49,7 @@ const InputAnswer = ({ item }) => {
 				/>
 				<div className="my-2">
 					<button className="yellowButton" onClick={onSubmitNewForm}>
-						Sent
+						Save
 					</button>
 				</div>
 				</>
