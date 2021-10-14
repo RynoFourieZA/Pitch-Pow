@@ -1,6 +1,9 @@
 .accordion-section {
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center;
+    align-content: space-between;
 }
 
 .accordion {
@@ -20,8 +23,15 @@
 }
 
 .accordion-title {
+    margin-bottom: 2px;
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
+    font-size: 16px;
+}
+
+.accordion-description {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
     font-size: 14px;
 }
 
@@ -45,4 +55,10 @@
     font-weight: 400;
     font-size: 14px;
     padding: 18px;
+}
+
+.accordion-block {
+    margin: 0;
+    align-items: center;
+
 }
