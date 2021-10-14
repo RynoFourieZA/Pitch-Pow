@@ -1,6 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
-html,body{overflow-y: scroll; }
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+html,
+body {
+	overflow-y: scroll;
+}
 
 body {
 	font-family: "Open Sans", sans-serif !important;
@@ -53,6 +61,7 @@ body {
 	font-weight: bold;
 	font-family: sans-serif;
 }
+<<<<<<< Updated upstream
 
 .questions-answer-box {
 	width: 500px !important;
@@ -61,8 +70,12 @@ body {
 }
 
 textarea { 
+=======
+
+textarea {
+>>>>>>> Stashed changes
 	width: 400px !important;
-	height: 200px !important;
+	height: 100px !important;
 	border: 3px solid #cccccc;
 	padding: 5px;
 	font-family: Tahoma, sans-serif;
