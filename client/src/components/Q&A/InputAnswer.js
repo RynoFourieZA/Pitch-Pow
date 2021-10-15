@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 const InputAnswer = ({ item }) => {
     const [string, setString] = useState("");
 	const [questions, setQuestions] = useState(item.id);
+	console.log(item.id);
 
 
 	// Post for answer

@@ -30,7 +30,7 @@ const ChooseYourBusiness = () => {
 					</div>
 
 					<div 
-						className="col-sm-12 col-md-12 col-lg-6 col-xl-6 justify-content-center"
+						className="col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex justify-content-center"
 					>
 						<Link to="/dashboard/student/create-exist-biz-pitch">
 							<div>

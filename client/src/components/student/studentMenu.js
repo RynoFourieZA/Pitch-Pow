@@ -69,7 +69,7 @@ export default function StudentMenu({ setAuth, pathName }) {
 								<FontAwesomeIcon icon={faFileAlt} />
 							</NavLink>
 						</li>
-						<li className="text-center">
+						{/* <li className="text-center">
 							<NavLink to={`${match.url}/student/questions`}>
 								<FontAwesomeIcon icon={faFileAlt} />
 							</NavLink>
@@ -85,7 +85,7 @@ export default function StudentMenu({ setAuth, pathName }) {
 							<NavLink to={`${match.url}/student/competitions`}>
 								<FontAwesomeIcon icon={faTrophy} />
 							</NavLink>
-						</li>
+						</li> */}
 
 						<li className="text-center">
 							<NavLink to={`${match.url}/student/myprofile`}>
@@ -119,7 +119,7 @@ export default function StudentMenu({ setAuth, pathName }) {
 							</NavLink>
 						</li>
 
-						<li>
+						{/* <li>
 							<NavLink to={`${match.url}/student/resources`}>
 								<FontAwesomeIcon icon={faPuzzlePiece} /> Resources
 							</NavLink>
@@ -129,7 +129,7 @@ export default function StudentMenu({ setAuth, pathName }) {
 							<NavLink to={`${match.url}/student/competitions`}>
 								<FontAwesomeIcon icon={faTrophy} /> Competitions
 							</NavLink>
-						</li>
+						</li> */}
 
 						<li>
 							<NavLink to={`${match.url}/student/myprofile`}>

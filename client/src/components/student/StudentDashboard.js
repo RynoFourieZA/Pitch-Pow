@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 //React Router
 import {
 	BrowserRouter,
@@ -8,13 +9,12 @@ import {
 } from "react-router-dom";
 
 //
-import { useEffect, useState } from "react";
 
 //React Components
 import StudentMenu from "../student/studentMenu";
 import MyPitch from "./myPitch";
-import Resources from "./resources";
-import Competitions from "./competitions";
+// import Resources from "./resources";
+// import Competitions from "./competitions";
 import MyProfile from "../student/profile";
 import ChooseYourBusiness from "../student/ChooseYourBusiness";
 import Questions_New from "../Q&A/Questions_New";
@@ -70,8 +70,8 @@ function StudentDashboard({ setAuth }) {
 					<div className="">
 						<Switch>
 							<Route path={`/dashboard/student/pitch`} component={MyPitch}/>
-							<Route path={`/dashboard/student/resources`} component={Resources}/>
-							<Route path={`/dashboard/student/competitions`} component={Competitions}/>
+							{/* <Route path={`/dashboard/student/resources`} component={Resources}/>
+							<Route path={`/dashboard/student/competitions`} component={Competitions}/> */}
 							<Route path={`/dashboard/student/myprofile`} component={MyProfile}/>	
 							<Route path={`/dashboard/student/create-pitch`} component={ChooseYourBusiness}/>
 						</Switch>

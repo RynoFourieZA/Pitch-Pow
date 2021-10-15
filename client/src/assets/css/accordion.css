@@ -47,7 +47,7 @@
 }
 
 .rotate {
-    transform: rotate(270deg);
+    transform: rotate(180deg);
 }
 
 .accordion-content {
@@ -67,4 +67,8 @@
     margin: 0;
     align-items: center;
 
+}
+
+.questions-answer-box {
+    padding-left: 50px !important;
 }
