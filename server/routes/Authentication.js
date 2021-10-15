@@ -30,7 +30,6 @@ router.post("/signup", validInfo, async (req, res) => {
 			[roles]
 		);
 
-		console.log("value: ",role);
 		const roleValue = role.rows[0].id;
 
 		if (roleValue === 1) {
