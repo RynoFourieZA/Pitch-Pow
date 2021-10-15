@@ -27,6 +27,27 @@ router.post("/pitch", authorization, async (req, res) => {
 	}
 });
 
+router.get("/pitch", authorization, async (_, res) => {
+    try {
+        connectDb
+            .query("SELECT id, created_by, student_number, email, pitch FROM pitch")
+            .then((result) => res.json(result.rows));
+    } catch (e) {
+		console.error(e.message);
+		res.status(500).json("Server error");
+	}
+});
 
+router.get("/pitch", authorization, async (req, res) => {
+	try {
+        const { student_no } = req.query;
+		connectDb
+			.query("SELECT id, created_by, student_number, email, pitch FROM pitch WHERE student_number = $1", [student_no])
+			.then((result) => res.json(result.rows));
+	} catch (e) {
+		console.error(e.message);
+		res.status(500).json("Server error");
+	}
+});
 
 module.exports = router;
