@@ -14,8 +14,6 @@ import "./assets/css/_responsive.css";
 import SignUp from "./pages/SignUp";
 import LoginPage from "./pages/LoginPage";
 import Dashboard from "./pages/Dashboard";
-import MentorDashboard from "./components/mentor/MentorDashboard";
-import StudentDashboard from "./components/student/StudentDashboard";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -45,7 +43,6 @@ const App = () => {
 		}
 	}
 
-
 	async function getId() {
 		try {
 			const response = await fetch("http://localhost:3100/api/dashboard/", {
@@ -66,9 +63,6 @@ const App = () => {
 		getId();
 	}, []);
 
-
-	
-
 	return (
 		<Switch>
 			<Route
@@ -86,8 +80,7 @@ const App = () => {
 				render={(props) =>
 					!isAuthenticated ? (
 						<LoginPage {...props} setAuth={setAuth} />
-					) : (
-						parseInt(id) !== 1 ? <Redirect to="/dashboard/student/pitch" /> : <Redirect to="/dashboard/mentor/submission" />
+					) : (parseInt(id) !== 1 ? <Redirect to="/dashboard/student/pitch" /> : <Redirect to="/dashboard/mentor/submission" />
 					)
 				}
 			/>

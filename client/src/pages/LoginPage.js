@@ -54,7 +54,7 @@ const Login = ({ setAuth }) => {
 
 	return (
 		<main className="loginPage">
-			<div className="row">
+			<div className="d-flex flex-row">
 				<div className="sideImage  col-sm-12 col-md-12 col-lg-4 col-xl-4">
 					<div className="text-center">
 						<img src={logo} alt="pitch-pwo-logo" width="75%" />
@@ -62,10 +62,7 @@ const Login = ({ setAuth }) => {
 					<p className="about-text">
 						Pitch Pow is a platform where students can journey with a team of
 						advisors to assist with creating business pitches for both new ideas
-						and existing businesses. It allows students to create business
-						pitches using a standard template with prompts to answer key
-						questions that gets reviewed by mentors to provide feedback to
-						students via the platform.
+						and existing businesses.
 					</p>
 				</div>
 

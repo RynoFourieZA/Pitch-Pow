@@ -55,19 +55,16 @@ const SignUp = ({ setAuth }) => {
 
 	return (
 		<main className="loginPage">
-			<div className="row">
-				<div
-					className="
-                    sideImage 
-                    d-flex 
-                    flex-column 
-                    align-items-center 
-                    justify-content-center 
-                    col-sm-12 col-md-12 col-lg-4 col-xl-4"
-				>
+			<div className="d-flex flex-row">
+				<div className="sideImage  col-sm-12 col-md-12 col-lg-4 col-xl-4">
 					<div className="text-center">
 						<img src={logo} alt="pitch-pwo-logo" width="75%" />
 					</div>
+					<p className="about-text">
+						Pitch Pow is a platform where students can journey with a team of
+						advisors to assist with creating business pitches for both new ideas
+						and existing businesses.
+					</p>
 				</div>
 
 				<div className="col-sm-12 col-md-12 col-lg-8 col-xl-8">

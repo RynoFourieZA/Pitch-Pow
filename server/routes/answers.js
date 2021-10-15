@@ -1,81 +1,109 @@
 import { Router } from "express";
 import connectDb from "../db";
+import parseJwt from "../utils/tokenID";
+import date from "../utils/date";
 
 const router = new Router();
 
-router.post("/answers", async (req,res) => {
+router.post("/answers", async (req, res) => {
     try {
-        const { type, id, email} = req.body;
-        const questions = await connectDb.query("SELECT id FROM questions WHERE pitch_type_id = $1  AND id = $2 AND is_delete = false", [type, id]);
-        const question_id =  questions.rows[0].id;
+        const { string, question } = req.body;
+        const token = req.header("token");
 
-        const student = await connectDb.query("SELECT student_number FROM users WHERE email = $1 AND is_delete = false", [email]);
-        const student_no = student.rows[0].student_number;
+        const userID = await parseJwt(token).user;
 
-        const student_pitch = await connectDb.query("SELECT id FROM pitch WHERE student_number = $1", [student_no]);
-        const pitch_id = student_pitch.rows[0].id;
+        const user = await connectDb.query("SELECT name, student_number FROM users WHERE id = $1",[userID]);
 
-        const query = "INSERT INTO answers (question_id, student_number, pitch_id) VALUES ($1, $2, $3)";
+		const user_name = await user.rows[0].name;
+		const student_no = await user.rows[0].student_number;
 
         connectDb
-			.query(query, [question_id, student_no, pitch_id])
-			.then(() => res.send("Question and Answers was created"));
+            .query("INSERT INTO answers (answer, question_id, users_id, student_number, created_by, created_date) VALUES ($1, $2, $3, $4, $5, $6)",[string, question, userID, student_no, user_name, date])
+            .then(() => res.json("Your answer has been saved."));
+    } catch (e) {
+		console.error(e.message);
+		res.status(500).json("Server error");
+	}
+});
 
-	} catch (e) {
-        console.error(e.message);
-		res.status(500).send("Server error");
-    }
+router.get("/answers", async (_, res) => {
+    try {
+        connectDb
+			.query("SELECT answers.created_by, answers.student_number, questions.questions, answers.answer FROM answers INNER JOIN questions ON answers.question_id = questions.id ORDER By student_number")
+			.then((result) => res.json(result.rows));
+    } catch (e) {
+		console.error(e.message);
+		res.status(500).json("Server error");
+	}
 });
 
 router.get("/answers", async (req, res) => {
     try {
-        connectDb
-			.query("SELECT is_answered, question_id, student_number, comment_id FROM answers WHERE is_delete = false")
-			.then((result) => res.json(result.rows));
-
-    } catch (e) {
-        console.error(e.message);
-		res.status(500).send("Server error");
-    }
-});
-
-router.get("/answers/search", async (req, res) => {
-    try {
         const { student } = req.query;
 
         connectDb
-			.query("SELECT is_answered, question_id, comment_id FROM answers WHERE student_number = $1 AND is_delete = false", [student])
+			.query("SELECT answers.created_by, answers.student_number, questions.questions,answers.answer FROM answers INNER JOIN questions ON answers.question_id = questions.id WHERE student_number = $1", [student])
 			.then((result) => res.json(result.rows));
-
     } catch (e) {
-        console.error(e.message);
-		res.status(500).send("Server error");
-    }
+		console.error(e.message);
+		res.status(500).json("Server error");
+	}
 });
 
 router.put("/answers", async (req, res) => {
     try {
-        const { id, student_no, answered } = req.body;
+        const { string, id } = req.body;
+
+        const token = req.header("token");
+
+		const userID = await parseJwt(token).user;
+
+		const user = await connectDb.query("SELECT name, student_number FROM users WHERE id = $1", [userID]);
+
+		const user_name = await user.rows[0].name;
+		const student_no = await user.rows[0].student_number;
 
         connectDb
-            .query("UPDATE answers SET is_answered = $1 WHERE id = $2 AND student_number = $3 AND is_delete = false", [answered, id, student_no])
-            .then(() => res.send("Your answer was updated."));
+            .query("UPDATE answers SET answer = $1, modified_by = $2, modified_date = $3 WHERE question_id = $4 AND student_number = $5", [string, user_name, date, id, student_no])
+            .then(() => res.json("Your answer was updated."));
     } catch (e) {
 		console.error(e.message);
-		res.status(500).send("Server error");
+		res.status(500).json("Server error");
 	}
 });
 
 router.put("/answers/delete", async (req, res) => {
 	try {
-		const { id, student_no, deleted } = req.body;
+		const token = req.header("token");
+		const userID = await parseJwt(token).user;
+
+		const user_name = await user.rows[0].name;
 
 		connectDb
-			.query("UPDATE answers SET is_delete = $1 WHERE id = $2 AND student_number = $3", [deleted, id, student_no])
-			.then(() => res.send("Your answer was deleted."));
+			.query(
+				"Update users SET is_delete = true modified_by = $1, modified_date = $2 WHERE id = $3",
+				[user_name, date, userID]
+			)
+			.then(() => res.json("User has been deleted."));
 	} catch (e) {
 		console.error(e.message);
-		res.status(500).send("Server error");
+		res.status(500).json("Server error");
+	}
+});
+
+router.put("/answers/restore", async (req, res) => {
+	try {
+		const token = req.header("token");
+		const userID = await parseJwt(token).user;
+
+		const user_name = await user.rows[0].name;
+
+		connectDb
+			.query("Update users SET is_delete = false modified_by = $1, modified_date = $2 WHERE id = $3", [user_name, date, userID])
+			.then(() => res.json("User has been deleted."));
+	} catch (e) {
+		console.error(e.message);
+		res.status(500).json("Server error");
 	}
 });
 
