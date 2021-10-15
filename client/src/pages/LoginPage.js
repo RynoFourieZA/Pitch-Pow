@@ -61,7 +61,7 @@ const Login = ({ setAuth }) => {
 					</div>
 					<p className="about-text">
 						Pitch Pow is a platform where students can journey with a team of
-						advisors to assist with creating business pitches for both new ideas
+						mentors to assist with creating business pitches for both new ideas
 						and existing businesses.
 					</p>
 				</div>
