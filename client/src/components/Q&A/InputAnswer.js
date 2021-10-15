@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 
-const InputAnswer = ({ questionEl }) => {
+const InputAnswer = ({ item }) => {
     const [string, setString] = useState("");
-	const [questions, setQuestions] = useState(questionEl.id);
+	const [questions, setQuestions] = useState(item.id);
+
 
 	// Post for answer
-
 	const onSubmitNewForm = async (e) => {
-        e.preventDefault();
+		e.preventDefault();
 
         try {
 
@@ -16,18 +16,14 @@ const InputAnswer = ({ questionEl }) => {
             myHeaders.append("Content-Type", "application/json");
             myHeaders.append("token", localStorage.token);
             const body = { string, question: questions};
-			console.log(myHeaders);
 
-			console.log(body);
-
-            const response = await fetch("http://localhost:3100/api/answers_v2", {
+            const response = await fetch("http://localhost:3100/api/answers", {
                 method: "POST",
                 headers: myHeaders,
                 body: JSON.stringify(body),
             });
 
             const parseResponse = await response.json();
-			console.log(parseResponse);
 			setString(parseResponse.string);
 			setQuestions(parseResponse.question);
 
@@ -36,26 +32,27 @@ const InputAnswer = ({ questionEl }) => {
         }
     } 
 
-	console.log(string, questions);
+	useEffect(() => {
+		onSubmitNewForm;
+	}, []);
+
 	const onChange = (e) => {
 		setString(e.target.value);
 	};
 
 	return (
-			<form className="form-control" onSubmit={onSubmitNewForm} >
-				<h3>{questionEl.questions}</h3>
+				<>
 				<textarea
-					className="form-control"
 					placeholder="Type your answer here..."
 					value={string}
 					onChange={(e) => onChange(e)}
 				/>
 				<div className="my-2">
-					<button className="yellowButton">
-						Sent
+					<button className="yellowButton" onClick={onSubmitNewForm}>
+						Save
 					</button>
 				</div>
-			</form>
+				</>
 	);
 }
 
