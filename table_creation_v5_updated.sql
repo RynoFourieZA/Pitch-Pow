@@ -66,9 +66,11 @@ CREATE TABLE answers (
 	is_delete boolean not null DEFAULT false
 );
 
-CREATE TABLE comments (
+CREATE TABLE pitch (
 	id SERIAL PRIMARY KEY,
-	comment varchar(500),
+	pitch varchar(4800),
+	student_number int,
+	email varchar(50),
     users_id uuid REFERENCES users(id),
     created_by varchar(50),
 	created_date date,
@@ -77,12 +79,10 @@ CREATE TABLE comments (
 	is_delete boolean not null DEFAULT false
 );
 
-CREATE TABLE pitch (
+CREATE TABLE comments (
 	id SERIAL PRIMARY KEY,
-	pitch varchar(4800),
-	student_number int,
-	email varchar(50),
-	comment_id varchar(500),
+	comment varchar(500),
+	pitch_id int REFERENCES pitch(id),
     users_id uuid REFERENCES users(id),
     created_by varchar(50),
 	created_date date,
