@@ -30,9 +30,9 @@ const Accordion = ({ property }) => {
 						onClick={toggleAccordion}
 					>
                         <div className="accordion-block">
-						<h4 className="accordion-title">{obj[0]}</h4>
+						<h2 className="accordion-title">{obj[0]}</h2>
                         <br />
-						<h6 className="accordion-accordion-description">{objDescription[1].description}</h6>
+						<h5 className="accordion-accordion-description">{objDescription[1].description}</h5>
                         </div>
 						<Chevron className={`${setRotate}`} width={10} fill={"#777"} />
 					</button>

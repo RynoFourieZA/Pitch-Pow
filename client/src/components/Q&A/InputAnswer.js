@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../../assets/css/accordion.css";
 
 const InputAnswer = ({ item }) => {
     const [string, setString] = useState("");
@@ -41,18 +42,19 @@ const InputAnswer = ({ item }) => {
 	};
 
 	return (
-				<>
-				<textarea
-					placeholder="Type your answer here..."
-					value={string}
-					onChange={(e) => onChange(e)}
-				/>
-				<div className="my-2">
-					<button className="yellowButton" onClick={onSubmitNewForm}>
-						Save
-					</button>
-				</div>
-				</>
+		<>
+			<input
+				className="accordion-input container-accordion"
+				placeholder="Type your answer here..."
+				value={string}
+				onChange={(e) => onChange(e)}
+			/>
+			<div className="my-2">
+				<button className="yellowButton" onClick={onSubmitNewForm}>
+					Save
+				</button>
+			</div>
+		</>
 	);
 }
 

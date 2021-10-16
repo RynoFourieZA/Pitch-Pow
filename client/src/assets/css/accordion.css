@@ -10,7 +10,7 @@
 
 .accordion {
     background-color: #eee;
-    color: #444;
+    color: #222359;
     cursor: pointer;
     padding: 10px;
     display: flex;
@@ -31,13 +31,11 @@
     margin-bottom: 2px;
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
-    font-size: 16px;
 }
 
 .accordion-description {
     font-family: "Open Sans", sans-serif;
     font-weight: 400;
-    font-size: 14px;
 }
 
 .accordion-icon {
@@ -51,7 +49,9 @@
 }
 
 .accordion-content {
-    background-color: white;
+    background-color: #222359;
+    color: #c1aa74;
+    text-align: center;
     overflow: hidden;
     transition: max-height 0.6s ease;
 }
@@ -59,8 +59,18 @@
 .accordion-text {
     font-family: "Open Sans", sans-serif;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 1.5rem;
     padding: 18px;
+}
+
+.accordion-input {
+    background-color: #222359;
+    border-color: #c1aa74;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-style: solid;
+    width: 800px;
 }
 
 .accordion-block {
