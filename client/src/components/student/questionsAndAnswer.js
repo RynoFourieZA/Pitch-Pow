@@ -36,7 +36,7 @@ export default function QuestionsAndAnswers() {
 		<div className="qNa-container">
 			<h1>Pitch Perfect: The Questions Every Successful Pitch Answers</h1>
 			<div className="qNa active">
-				<h3 className="qNa-title">123</h3>
+				<h3 className="qNa-title">Title</h3>
 				<p className="qNa-text">123</p>
 				<p className="qNa-text">123</p>
 
