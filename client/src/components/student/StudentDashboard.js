@@ -28,10 +28,9 @@ function StudentDashboard({ setAuth }) {
 				<div className="dashboardNav py-3 col-sm-12 col-md-12 col-lg-1 col-xl-1">
 					<StudentMenu setAuth={setAuth} pathName={location.pathname} />
 				</div>
-
-				<div className="col-sm-12 col-md-12 col-lg-11 col-xl-11">
+				<div className="col-sm-12 col-md-12 col-lg-11 col-xl-11 overflow-auto">
 					<div className="d-flex">
-						<div className="col-sm-12 col-md-12 col-lg-9 col-xl-9 overflow-auto">
+						<div>
 							<Questions_New />
 						</div>
 					</div>
@@ -42,11 +41,11 @@ function StudentDashboard({ setAuth }) {
 		<main>
 			<div className="d-flex">
 				<div className="dashboardNav py-3 col-sm-12 col-md-12 col-lg-1 col-xl-1">
-					<StudentMenu setAuth={setAuth} pathName={location.pathname}/>
+					<StudentMenu setAuth={setAuth} pathName={location.pathname} />
 				</div>
 				<div className="col-sm-12 col-md-12 col-lg-11 col-xl-11 overflow-auto">
 					<div className="d-flex">
-						<div className="col-sm-12 col-md-12 col-lg-9 col-xl-9">
+						<div>
 							<Questions_Existing />
 						</div>
 					</div>
