@@ -14,7 +14,7 @@ function Dashboard({ setAuth }) {
 
 	async function getId() {
 		try {
-			const response = await fetch("http://localhost:3100/api/dashboard/", {
+			const response = await fetch("/api/dashboard/", {
 				method: "GET",
 				headers: { token: localStorage.token },
 			});
