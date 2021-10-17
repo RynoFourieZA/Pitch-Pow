@@ -20,8 +20,8 @@ import Questions_Existing from "../Q&A/Questions_Existing";
 
 
 function StudentDashboard({ setAuth }) {
-	const [pitchData, setPitch] = useState([]);;
-
+	const [pitchData, setPitch] = useState([]);
+	
 	return location.pathname === "/dashboard/student/create-new-biz-pitch" ? (
 		<main>
 			<div className="d-flex">
@@ -58,7 +58,6 @@ function StudentDashboard({ setAuth }) {
 				<div className="dashboardNav py-3 container col-sm-12 col-md-12 col-lg-3 col-xl-3">
 					<StudentMenu setAuth={setAuth} />
 				</div>
-
 				<div className="col-sm-12 col-md-12 col-lg-9 col-xl-9">
 					<div className="">
 						<Switch>
