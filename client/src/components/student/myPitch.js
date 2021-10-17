@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 
 //
 import noPitchImage from '../../assets/images/no-pitch-image.png';
-import Questions from "../Q&A/Questions"
 //
 import YellowButton from '../YellowButton';
 

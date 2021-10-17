@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import FormControl from 'react-bootstrap/FormControl';
 import Accordion from "./Accordion";
 
 const Questions_Existing = () => {
@@ -7,7 +6,7 @@ const Questions_Existing = () => {
 
 	async function getExistingQuestions() {
 		try {
-			const response = await fetch("http://localhost:3100/api/questions", {
+			const response = await fetch("/api/questions", {
 				method: "GET",
 				headers: { token: localStorage.token },
 			});
@@ -168,7 +167,7 @@ const Questions_Existing = () => {
 	return (
 		<div className="container-accordion">
 			{data.map((property, index) => (
-				<div key={index} className="questions-answer-box">
+				<div key={index} className="accordion-box">
 					<Accordion property={property} />
 				</div>
 			))}

@@ -80,9 +80,8 @@ const App = () => {
 				render={(props) =>
 					!isAuthenticated ? (
 						<LoginPage {...props} setAuth={setAuth} />
-					) : (parseInt(id) !== 1 ? <Redirect to="/dashboard/student/pitch" /> : <Redirect to="/dashboard/mentor/submission" />
-					)
-				}
+					) :( <Redirect to="/dashboard" />
+					)}
 			/>
 			<Route
 				path="/dashboard"

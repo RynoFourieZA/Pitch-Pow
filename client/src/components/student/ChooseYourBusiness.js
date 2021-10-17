@@ -13,7 +13,7 @@ const ChooseYourBusiness = () => {
 					<span className="underline"></span>
 				</div>
 
-				<div className="row">
+				<div className="d-flex">
 					<div 
 						className="col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex justify-content-center"
 					>

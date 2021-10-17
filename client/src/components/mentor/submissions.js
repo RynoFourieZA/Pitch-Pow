@@ -20,7 +20,7 @@ export default function Submissions() {
 	
 	const getProfile = async () => {
 		try {
-			const res = await fetch("http://localhost:3100/api/answers_v2", {
+			const res = await fetch("/api/answers", {
 				method: "GET",
 				headers: { jwt_token: localStorage.token }
 			});

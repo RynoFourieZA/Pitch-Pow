@@ -6,7 +6,7 @@ const Questions_New = () => {
 
 	async function getNewQuestions() {
 		try {
-			const response = await fetch("http://localhost:3100/api/questions", {
+			const response = await fetch("/api/questions", {
 				method: "GET",
 				headers: { token: localStorage.token },
 			});

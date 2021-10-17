@@ -14,7 +14,7 @@ import profileImage from "../../assets/images/business-man.png";
 
 async function getName(setMentorName, setError) {
 	try {
-		const response = await fetch("http://localhost:3100/api/dashboard/", {
+		const response = await fetch("/api/dashboard/", {
 			method: "GET",
 			headers: { token: localStorage.token },
 		});
@@ -59,18 +59,6 @@ export default function MentorMenu({ setAuth }) {
 						<li>
 							<NavLink to={`${match.url}/mentor/submission`}>
 								<FontAwesomeIcon icon={faFileAlt} /> Submissions
-							</NavLink>
-						</li>
-
-						<li>
-							<NavLink to={`${match.url}/mentor/resources`}>
-								<FontAwesomeIcon icon={faPuzzlePiece} /> Resources
-							</NavLink>
-						</li>
-
-						<li>
-							<NavLink to={`${match.url}/mentor/competitions`}>
-								<FontAwesomeIcon icon={faTrophy} /> Competitions
 							</NavLink>
 						</li>
 

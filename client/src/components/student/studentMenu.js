@@ -25,7 +25,7 @@ export default function StudentMenu({ setAuth, pathName }) {
 		try {
             
 			const response = await fetch(
-				"http://localhost:3100/api/dashboard/profile",
+				"/api/dashboard/profile",
 				{
 					method: "GET",
 					headers: { token: localStorage.token },
@@ -54,9 +54,9 @@ export default function StudentMenu({ setAuth, pathName }) {
 		toast.success("Logged out successfully");
 	}
 	
-	return (
-		pathName === "/dashboard/student/create-new-biz-pitch" ? (
-			<div className="dashMenu text-center">
+	return pathName === "/dashboard/student/create-new-biz-pitch" ||
+		pathName === "/dashboard/student/create-exist-biz-pitch" ? (
+		<div className="dashMenu text-center">
 			<div className="text-center pt-4">
 				<img src={profileImage} alt="image-of-user" width="30px" />
 			</div>
@@ -70,24 +70,6 @@ export default function StudentMenu({ setAuth, pathName }) {
 							</NavLink>
 						</li>
 						<li className="text-center">
-							<NavLink to={`${match.url}/student/questions`}>
-								<FontAwesomeIcon icon={faFileAlt} />
-							</NavLink>
-						</li>
-
-						<li className="text-center">
-							<NavLink to={`${match.url}/student/resources`}>
-								<FontAwesomeIcon icon={faPuzzlePiece} />
-							</NavLink>
-						</li>
-
-						<li className="text-center">
-							<NavLink to={`${match.url}/student/competitions`}>
-								<FontAwesomeIcon icon={faTrophy} />
-							</NavLink>
-						</li>
-
-						<li className="text-center">
 							<NavLink to={`${match.url}/student/myprofile`}>
 								<FontAwesomeIcon icon={faUserCircle} />
 							</NavLink>
@@ -95,15 +77,9 @@ export default function StudentMenu({ setAuth, pathName }) {
 					</ul>
 				</div>
 			</div>
-
-			<div className="text-center">
-				<button className="yellowButton">
-					Save
-				</button>
-			</div>
 		</div>
-		) : (
-			<div className="dashMenu">
+	) : (
+		<div className="dashMenu">
 			<div className="text-center pt-4">
 				<img src={profileImage} alt="image-of-user" width="100px" />
 				<p className="pt-2">{studentName}</p>
@@ -116,18 +92,6 @@ export default function StudentMenu({ setAuth, pathName }) {
 						<li>
 							<NavLink to={`${match.url}/student/pitch`}>
 								<FontAwesomeIcon icon={faFileAlt} /> My Pitch
-							</NavLink>
-						</li>
-
-						<li>
-							<NavLink to={`${match.url}/student/resources`}>
-								<FontAwesomeIcon icon={faPuzzlePiece} /> Resources
-							</NavLink>
-						</li>
-
-						<li>
-							<NavLink to={`${match.url}/student/competitions`}>
-								<FontAwesomeIcon icon={faTrophy} /> Competitions
 							</NavLink>
 						</li>
 
@@ -146,6 +110,5 @@ export default function StudentMenu({ setAuth, pathName }) {
 				</button>
 			</div>
 		</div>
-		)
 	);
 }
