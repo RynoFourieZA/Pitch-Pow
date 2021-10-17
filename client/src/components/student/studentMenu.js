@@ -20,7 +20,7 @@ export default function StudentMenu({ setAuth }) {
 
 	async function getName() {
 		try {
-			const response = await fetch("http://localhost:3100/api/dashboard/", {
+			const response = await fetch("/api/dashboard/", {
 				method: "GET",
 				headers: { token: localStorage.token },
 			});

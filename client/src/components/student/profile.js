@@ -12,7 +12,7 @@ export default function Profile() {
 		try {
             
 			const response = await fetch(
-				"http://localhost:3100/api/dashboard/profile",
+				"/api/dashboard/profile",
 				{
 					method: "GET",
 					headers: { token: localStorage.token },

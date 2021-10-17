@@ -15,7 +15,7 @@ export default function QuestionsAndAnswers() {
 
 	async function getQuestions() {
 		try {
-			const response = await fetch("http://localhost:3100/api/questions", {
+			const response = await fetch("/api/questions", {
 				method: "GET",
 				headers: { token: localStorage.token },
 			});
