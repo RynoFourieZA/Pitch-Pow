@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
+
 //CSS
 import "../assets/css/authPages.css";
+
 //Images
 import logo from "../assets/images/pitch-pow-logo-white.png";
 import ceiLogo from "../assets/images/cei-logo.png";
+
 //Components
 import AuthHeaderLogin from "../components/authHeaderLogIn";
 import { toast } from "react-toastify";
-
-// import YellowButton from '../components/YellowButton';
 
 const SignUp = ({ setAuth }) => {
 	const [inputs, setInputs] = useState({
@@ -28,14 +29,12 @@ const SignUp = ({ setAuth }) => {
 		e.preventDefault();
 		try {
 			const body = { full_name, email, password, roles };
-			const origin = "http://localhost:3100/auth/signup";
+			const origin = "/api/signup";
 			const response = await fetch(origin, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(body),
 			});
-
-			console.log(response)
 
 			const parseRes = await response.json();
 

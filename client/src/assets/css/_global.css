@@ -37,34 +37,31 @@ body {
 	height: 500px;
 	margin: auto;
 	text-align: center;
-  }
+}
 
-  .title {
+.title {
 	margin-left: 10px;
 	padding-left: 6px !important;
 	font-size: 18px;
 	text-align: start !important;
-  }
+}
 
-  .student-num {
+.student-num {
 	font-size: 12px !important;
 	font-weight: bold;
 	font-family: sans-serif;
-  }
+}
 
-  .questions-answer-box {
+.questions-answer-box {
 	width: 500px !important;
 	height: 300px !important;
 	margin: 10px !important;
-  }
+}
 
-  textarea { 
-	width: 400px !important;
-	height: 100px !important;
-	border: 3px solid #cccccc;
+/* textarea { 
 	padding: 5px;
 	font-family: Tahoma, sans-serif;
 	background-position: bottom right;
 	background-repeat: no-repeat;
 	resize: none;
-  }
+} */

@@ -30,7 +30,7 @@ const App = () => {
 
 	async function isAuth() {
 		try {
-			const response = await fetch("http://localhost:3100/auth/verify", {
+			const response = await fetch("http://localhost:3100/api/verify", {
 				method: "GET",
 				headers: { token: localStorage.token },
 			});

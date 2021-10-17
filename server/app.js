@@ -13,7 +13,6 @@ import {
 } from "./middleware/middleware";
 
 // Creating a route value.
-const auth = "/auth";
 const apiRoot = "/api";
 const staticDir = path.join(__dirname, "static");
 
@@ -30,8 +29,8 @@ if (app.get("env") === "production") {
 }
 
 // Routes
-app.use(auth, require("./routes/Authentication"));
-app.use(auth, require("./routes/users"));
+app.use(apiRoot, require("./routes/Authentication"));
+app.use(apiRoot, require("./routes/users"));
 app.use(apiRoot, require("./routes/dashboard"));
 app.use(apiRoot, require("./routes/categories"));
 app.use(apiRoot, require("./routes/questions"));
