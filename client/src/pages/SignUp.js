@@ -29,7 +29,7 @@ const SignUp = ({ setAuth }) => {
 		try {
 			const body = { full_name, email, password, roles };
 			console.log(full_name, email, password, roles);
-			const response = await fetch("http://localhost:3100/auth/signup", {
+			const response = await fetch("http://localhost:3100/api/signup", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(body),
