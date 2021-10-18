@@ -6,7 +6,7 @@ import "../assets/css/dashboard.css";
 
 //
 import MentorDashboard from "../components/mentor/MentorDashboard";
-import StudentDashboard from "../components/student/StudentDashboard";
+// import StudentDashboard from "../components/student/StudentDashboard";
 import Stepper from "../components/student/Stepper";
 import StudentMenu from "../components/student/studentMenu";
 import MyPitch from "../components/student/myPitch";

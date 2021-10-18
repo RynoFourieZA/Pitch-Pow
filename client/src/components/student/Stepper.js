@@ -7,6 +7,7 @@ import Questions_New from "../Q&A/Questions_New";
 import Questions_Existing from "../Q&A/Questions_Existing";
 import MyPitch from "./myPitch";
 import MyProfile from "./profile";
+import WaitingForReview from "../Q&A/WaitingForReview";
 
 import "../../assets/css/_global.css";
 
@@ -40,6 +41,9 @@ const Stepper = ({ setAuth }) => {
 					</Route>
 					<Route exact path="/dashboard/step3">
 						Third Step
+                        <div>
+                            <WaitingForReview /> 
+                        </div>
 						<div className="btnContainer">
 							<Link to="/dashboard/step2">Back</Link>
 							<Link to="/dashboard/step4">Next</Link>
