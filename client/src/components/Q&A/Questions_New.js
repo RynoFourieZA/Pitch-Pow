@@ -4,12 +4,14 @@ import Accordion from "./Accordion";
 
 const Questions_New = () => {
 	const [data, setData] = useState([]);
-
+	const [disabled, setDisabled] = useState("true");
+	const [answer, setAnswer] = useState([]);
+	
 	async function getNewQuestions() {
 		try {
 			const response = await fetch("/api/questions", {
 				method: "GET",
-				headers: { token: localStorage.token },
+				headers: { token: sessionStorage.token },
 			});
 
 			const parseRes = await response.json();
@@ -160,10 +162,30 @@ const Questions_New = () => {
 			console.error(e.message);
 		}
 	}
+	async function getAnswers() {
+		try {
+			const response = await fetch("/api/answers", {
+				method: "GET",
+				headers: { token: sessionStorage.token },
+			});
+
+			const parseRes = await response.json();
+			setAnswer(parseRes);
+		} catch (e) {
+			console.error(e.message);
+		}
+	}
 
 	useEffect(() => {
 		(async () => await getNewQuestions())();
+		(async () => await getAnswers())();
 	}, []);
+
+	console.log(answer);
+
+	// const submitForReview = () => {
+	
+	// }
 
 	return (
 		<div className="container-accordion">
@@ -174,7 +196,13 @@ const Questions_New = () => {
 			))}
 			<Link to="/dashboard/step3">
 				<div className="text-center top">
-					<button className="yellowButton" onClick={(e) => logout(e)}>Submit for Review</button>
+					<button
+						disabled={disabled}
+						className="yellowButton submit"
+						// onClick={ submitForReview }
+						>
+						Submit for Review
+					</button>
 				</div>
 			</Link>
 		</div>

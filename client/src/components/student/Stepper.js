@@ -3,7 +3,10 @@ import { Route, Switch, NavLink, Link } from "react-router-dom";
 import StepIndicator from "./StepIndicator";
 import ChooseYourBusiness from "./ChooseYourBusiness";
 import Questions_New from "../Q&A/Questions_New";
+import Questions_Existing from "../Q&A/Questions_Existing";
 import WaitingForReview from "../Q&A/WaitingForReview";
+import FinalStep from "./FinalStep";
+import SlideShow from "./GoogleSlides";
 import Profile from "./profile";
 
 import "../../assets/css/_global.css";
@@ -30,11 +33,7 @@ const Stepper = ({ setAuth }) => {
 								<div>
 									<Questions_New />
 								</div>
-							 </div>
-							{/*<div className="btnContainer">
-								<Link to="/dashboard">Back</Link>
-								<Link to="/dashboard/step3">Next</Link>
-							</div> */}
+							</div>
 						</Route>
 						<Route exact path="/dashboard/step3">
 							{/* Third Step */}
@@ -48,7 +47,9 @@ const Stepper = ({ setAuth }) => {
 						</Route>
 						<Route exact path="/dashboard/step4">
 							{/* Fourth Step */}
-							<></>
+							<>
+								<SlideShow />
+							</>
 							<div className="btnContainer">
 								<Link to="/dashboard/step3">Back</Link>
 								<Link to="/dashboard/step5">Next</Link>
@@ -57,7 +58,7 @@ const Stepper = ({ setAuth }) => {
 						<Route exact path="/dashboard/step5">
 							{/* Finish Line */}
 							<div>
-								<WaitingForReview /> 
+								<FinalStep />
 							</div>
 							<div className="btnContainer">
 								<Link to="/dashboard/step4">Back</Link>

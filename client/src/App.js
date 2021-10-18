@@ -30,9 +30,9 @@ const App = () => {
 
 	async function isAuth() {
 		try {
-			const response = await fetch("http://localhost:3100/api/verify", {
+			const response = await fetch("/api/verify", {
 				method: "GET",
-				headers: { token: localStorage.token },
+				headers: { token: sessionStorage.token },
 			});
 
 			const parseRes = await response.json();
@@ -45,9 +45,9 @@ const App = () => {
 
 	async function getId() {
 		try {
-			const response = await fetch("http://localhost:3100/api/dashboard/", {
+			const response = await fetch("/api/dashboard/", {
 				method: "GET",
-				headers: { token: localStorage.token },
+				headers: { token: sessionStorage.token },
 			});
 
 			const parseRes = await response.json();

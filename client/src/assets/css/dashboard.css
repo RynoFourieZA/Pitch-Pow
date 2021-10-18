@@ -108,3 +108,17 @@ h5 {
     border-radius: 2px;
     color: black;
 }
+
+.submit:disabled {
+    background-color: rgba(229, 229, 229, 0.7);
+    color: #C1AA74;
+    margin-top: 1.5em;
+}
+
+.submit:enabled {
+    background-color: #C1AA74;
+    color:rgba(229, 229, 229, 0.7);
+    margin-top: 1.5em;
+}
+
+

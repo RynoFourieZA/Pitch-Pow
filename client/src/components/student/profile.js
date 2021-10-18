@@ -3,7 +3,6 @@ import "../../assets/css/profile.css";
 import profileImage from "../../assets/images/business-man_grey.png";
 
 export default function Profile() {
-    const [role, SetRole] = useState("Student");
 	const [studentName, setStudentName] = useState("");
     const [email,setEmail] = useState("");
 	const [studentNumber, setStudentNumber] = useState("");
@@ -13,13 +12,10 @@ export default function Profile() {
 	async function getProfile() {
 		try {
             
-			const response = await fetch(
-				"http://localhost:3100/api/dashboard/profile",
-				{
-					method: "GET",
-					headers: { token: localStorage.token },
-				}
-			);
+			const response = await fetch("/api/dashboard/profile", {
+				method: "GET",
+				headers: { token: sessionStorage.token },
+			});
 
 			const parseRes = await response.json();
 			

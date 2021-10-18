@@ -39,7 +39,7 @@ const SignUp = ({ setAuth }) => {
 			const parseRes = await response.json();
 
 			if (parseRes.token) {
-				localStorage.setItem("token", parseRes.token);
+				sessionStorage.setItem("token", parseRes.token);
 
 				setAuth(true);
 				toast.success("Registered Successfully");

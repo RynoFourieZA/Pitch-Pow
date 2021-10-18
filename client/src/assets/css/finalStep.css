@@ -1,0 +1,23 @@
+* {
+	box-sizing: border-box;
+}
+.center {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+    text-align: center;
+	background-color: #222359;
+	min-height: 100vh;
+	padding: 0;
+	margin: 0 auto;
+}
+
+.congrats {
+	color: #c1aa74;
+    font-size: 4.5rem;
+    font-weight: bolder;
+}
+
+.text {
+	color: rgb(255, 255, 255);
+}

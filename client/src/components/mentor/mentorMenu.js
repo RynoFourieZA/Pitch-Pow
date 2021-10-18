@@ -16,7 +16,7 @@ async function getName(setMentorName, setError) {
 	try {
 		const response = await fetch("/api/dashboard/", {
 			method: "GET",
-			headers: { token: localStorage.token },
+			headers: { token: sessionStorage.token },
 		});
 
 		const parseRes = await response.json();
@@ -29,7 +29,7 @@ async function getName(setMentorName, setError) {
 
 function logout(e, setAuth) {
 	e.preventDefault();
-	localStorage.removeItem("token");
+	sessionStorage.removeItem("token");
 	setAuth(false);
 	toast.success("Logged out successfully");
 }

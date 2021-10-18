@@ -15,13 +15,13 @@ const EditAnswers = () => {
             const myHeaders = new Headers();
 
             myHeaders.append("Content-Type", "application/json");
-            myHeaders.append("token", localStorage.token);
+            myHeaders.append("token", sessionStorage.token);
 			console.log(myHeaders);
             const body = { string, question: questions};
 
 			console.log(body);
 
-            const response = await fetch("http://localhost:3100/api/answers_v2", {
+            const response = await fetch("/api/answers_v2", {
                 method: "POST",
                 headers: myHeaders,
                 body: JSON.stringify(body),

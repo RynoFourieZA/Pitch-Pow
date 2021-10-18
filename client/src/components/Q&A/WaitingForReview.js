@@ -6,6 +6,7 @@ import "../../assets/css/waiting-for-review.css";
 
 
 const WaitingForReview = () => {
+
 	return (
         <section className="rightColumn step4">
             <div className="container py-5" style = {{padding:'10px'}}>

@@ -10,13 +10,13 @@ const InputComment = () => {
             const myHeaders = new Headers();
 
             myHeaders.append("Content-Type", "application/json");
-            myHeaders.append("token", localStorage.token);
+            myHeaders.append("token", sessionStorage.token);
 			console.log(myHeaders);
             const body = { string, answer_id };
 			console.log(myHeaders);
 
 			console.log(body);
-            const response = await fetch("http://localhost:3100/api/comments", {
+            const response = await fetch("/api/comments", {
                 method: "POST",
                 headers: myHeaders,
                 body: JSON.stringify(body),

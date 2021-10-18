@@ -2,12 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-	faFileAlt,
-	faPuzzlePiece,
-	faTrophy,
-	faUserCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faFileAlt, faPuzzlePiece, faTrophy, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 
 //
@@ -24,16 +19,12 @@ export default function StudentMenu({ setAuth, pathName }) {
 	async function getProfile() {
 		try {
             
-			const response = await fetch(
-				"/api/dashboard/profile",
-				{
-					method: "GET",
-					headers: { token: localStorage.token },
-				}
-			);
+			const response = await fetch("/api/dashboard/profile", {
+				method: "GET",
+				headers: { token: sessionStorage.token },
+			});
 
 			const parseRes = await response.json();
-			console.log("Hi",parseRes);
 			setStudentName(parseRes.name)
 			
 			setStudentNumber(parseRes.student_number);
@@ -49,7 +40,7 @@ export default function StudentMenu({ setAuth, pathName }) {
 
 	function logout(e) {
 		e.preventDefault();
-		localStorage.removeItem("token");
+		sessionStorage.removeItem("token");
 		setAuth(false);
 		toast.success("Logged out successfully");
 	}

@@ -8,7 +8,7 @@ const Questions_Existing = () => {
 		try {
 			const response = await fetch("/api/questions", {
 				method: "GET",
-				headers: { token: localStorage.token },
+				headers: { token: sessionStorage.token },
 			});
 
 			const parseRes = await response.json();

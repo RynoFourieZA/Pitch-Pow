@@ -10,13 +10,10 @@ export default function MentorsProfile() {
 
 	async function getProfile() {
 		try {
-			const response = await fetch(
-				"http://localhost:3100/api/dashboard/profile",
-				{
-					method: "GET",
-					headers: { token: localStorage.token },
-				}
-			);
+			const response = await fetch("/api/dashboard/profile", {
+				method: "GET",
+				headers: { token: sessionStorage.token },
+			});
 
 			const parseRes = await response.json();
 			setMentorName(parseRes.name);

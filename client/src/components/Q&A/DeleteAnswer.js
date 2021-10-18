@@ -4,10 +4,10 @@ const DeleteAnswer = () => {
 
     const deleteQues = async () => {
         try {
-          const res = await fetch("http://localhost:3100/api/answers_v2/delete", {
-            method: "PUT",
-            headers: { jwt_token: localStorage.token }
-          });
+          const res = await fetch("/api/answers_v2/delete", {
+						method: "PUT",
+						headers: { jwt_token: sessionStorage.token },
+					});
     
           const parseData = await res.json();
           console.log(parseData);
@@ -25,7 +25,6 @@ const DeleteAnswer = () => {
     return (
         <div>
 
-            
         </div>
     )
 }
