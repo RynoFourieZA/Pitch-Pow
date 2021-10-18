@@ -18,7 +18,7 @@ const InputAnswer = ({ item }) => {
             myHeaders.append("token", localStorage.token);
             const body = { string, question: questions};
 
-            const response = await fetch("http://localhost:3100/api/answers", {
+            const response = await fetch("/api/answers", {
                 method: "POST",
                 headers: myHeaders,
                 body: JSON.stringify(body),
