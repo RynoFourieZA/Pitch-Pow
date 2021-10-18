@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Accordion from "./Accordion";
 
 const Questions_New = () => {
@@ -171,6 +172,11 @@ const Questions_New = () => {
 					<Accordion property={property} />
 				</div>
 			))}
+			<Link to="/dashboard/step3">
+				<div className="text-center top">
+					<button className="yellowButton" onClick={(e) => logout(e)}>Submit for Review</button>
+				</div>
+			</Link>
 		</div>
 	);
 };

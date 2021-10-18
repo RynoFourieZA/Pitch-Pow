@@ -1,6 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Route, NavLink } from "react-router-dom";
 import "../../assets/css/stepper.css";
+import Profile from "./profile";
 
 const StepIndicator = () => {
 	const steps = [
@@ -39,6 +40,9 @@ const StepIndicator = () => {
 					</>
 					)
 			})}
+			{/* <Route path="/dashboard/step7">
+				<Profile />
+			</Route> */}
 		</div>
 	);
 };
