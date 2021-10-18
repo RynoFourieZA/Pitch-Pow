@@ -35,7 +35,6 @@ app.use(apiRoot, require("./routes/dashboard"));
 app.use(apiRoot, require("./routes/categories"));
 app.use(apiRoot, require("./routes/questions"));
 app.use(apiRoot, require("./routes/answers"));
-app.use(apiRoot, require("./routes/pitch"));
 app.use(apiRoot, require("./routes/comment"));
 
 // Config middleware
