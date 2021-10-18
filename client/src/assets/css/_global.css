@@ -65,3 +65,8 @@ body {
 	background-repeat: no-repeat;
 	resize: none;
 } */
+
+.test {
+	padding-left: 100px !important;
+	margin-top: 20px;
+}

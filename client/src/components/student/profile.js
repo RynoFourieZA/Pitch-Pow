@@ -60,7 +60,7 @@ export default function Profile() {
                                     </h5>
                             <ul className="nav nav-tabs" id="myTab" role="tablist">
                                 <li className="nav-item">
-                                    <a className="nav-link active" data-toggle="modal" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                    <a className="nav-link" data-toggle="modal" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                                 </li>
                             </ul>
                         </div>
@@ -72,7 +72,7 @@ export default function Profile() {
                 <div className="row">
                     <div className="col-md-8">
                         <div className="tab-content profile-tab" id="myTabContent">
-                            <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" style={{backgroundColor:"white"}}>
                                         <div className="row">
                                             <div className="col-md-6">
                                                 <label>Student Number</label>
