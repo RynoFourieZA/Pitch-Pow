@@ -39,24 +39,16 @@ function Dashboard({ setAuth }) {
 			{parseInt(id) === 1 ? (
 				<div className="d-flex main">
 					<div className="dashboardNav py-3 container col-sm-12 col-md-12 col-lg-3 col-xl-3">
-						<StudentMenu setAuth={setAuth} />
+					<StudentMenu setAuth={setAuth} />
 					</div>
 					<div className="col-sm-12 col-md-12 col-lg-9 col-xl-9">
-						<Stepper setAut={setAuth} />
-						<div className="">
+						{ location.path="/dashboard/step6" === true ? <MyProfile /> : <Stepper setAut={setAuth} /> }
+						{/* <div className="">
 							<Switch>
+								<Route path={`/dashboard/student/create-pitch`} component={ChooseYourBusiness} />
 								<Route exact path="/dashboard/Stepper" component={Stepper} />
-								<Route path={`/dashboard/student/pitch`} component={MyPitch} />
-								<Route
-									path={`/dashboard/student/myprofile`}
-									component={MyProfile}
-								/>
-								<Route
-									path={`/dashboard/student/create-pitch`}
-									component={ChooseYourBusiness}
-								/>
 							</Switch>
-						</div>
+						</div> */}
 					</div>
 				</div>
 			) : (

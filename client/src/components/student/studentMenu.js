@@ -54,31 +54,7 @@ export default function StudentMenu({ setAuth, pathName }) {
 		toast.success("Logged out successfully");
 	}
 	
-	return pathName === "/dashboard/student/create-new-biz-pitch" ||
-		pathName === "/dashboard/student/create-exist-biz-pitch" ? (
-		<div className="dashMenu text-center">
-			<div className="text-center pt-4">
-				<img src={profileImage} alt="image-of-user" width="30px" />
-			</div>
-
-			<div className="py-5 dashNav">
-				<div className="text-start px-2">
-					<ul>
-						<li className="text-center">
-							<NavLink to={`${match.url}/student/pitch`}>
-								<FontAwesomeIcon icon={faFileAlt} />
-							</NavLink>
-						</li>
-						<li className="text-center">
-							<NavLink to={`${match.url}/student/myprofile`}>
-								<FontAwesomeIcon icon={faUserCircle} />
-							</NavLink>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	) : (
+	return (
 		<div className="dashMenu">
 			<div className="text-center pt-4">
 				<img src={profileImage} alt="image-of-user" width="100px" />
@@ -90,13 +66,13 @@ export default function StudentMenu({ setAuth, pathName }) {
 				<div className="text-start px-5">
 					<ul>
 						<li>
-							<NavLink to={`${match.url}/student/pitch`}>
+							<NavLink to={`${match.url}/step2`}>
 								<FontAwesomeIcon icon={faFileAlt} /> My Pitch
 							</NavLink>
 						</li>
 
 						<li>
-							<NavLink to={`${match.url}/student/myprofile`}>
+							<NavLink to={`dashboard/step7`}>
 								<FontAwesomeIcon icon={faUserCircle} /> My Profile
 							</NavLink>
 						</li>

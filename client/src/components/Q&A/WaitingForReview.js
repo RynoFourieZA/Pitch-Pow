@@ -14,7 +14,8 @@ const WaitingForReview = () => {
                     <span className="underline"></span>
                 </div>
 
-                <div className="test" width="600px">
+                <div className="container" width="600px">
+                    
                     <div 
                         className="col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex justify-content-center"
                     >
