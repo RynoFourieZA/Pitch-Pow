@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-const InputComment = () => {
+const InputComment = ({ pitch }) => {
 	const [comment, setComment] = useState("");
-	const [id, setId] = useState("");
+	const [id, setId] = useState(pitch.id);
+	console.log("pitch: ", id);
 
 	const onSubmitNewForm = async () => {
         try {
@@ -12,7 +13,7 @@ const InputComment = () => {
             myHeaders.append("Content-Type", "application/json");
             myHeaders.append("token", sessionStorage.token);
 
-            const body = { string, answer_id };
+            const body = { string: comment, answer_id: id };
 
             const response = await fetch("/api/comments", {
                 method: "POST",
@@ -21,6 +22,7 @@ const InputComment = () => {
             });
 
             const parseResponse = await response.json();
+			console.log("Emma", parseResponse);
 			setComment(parseResponse.string);
 			setId(parseResponse.answer_id);
 

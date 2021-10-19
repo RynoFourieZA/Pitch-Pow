@@ -13,6 +13,7 @@ export default function Submissions() {
 	const [userQuestionAndAnswer, setUserQuestionAndAnswer] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [questionPerPage] = useState(2);
+	const [id, setId] = useState("");
 
 	// Get current questions
 	const indexOfLastQuestion = currentPage * questionPerPage;
@@ -27,6 +28,7 @@ export default function Submissions() {
 
 			const parseData = await res.json();
 			setAllQuestionsAndAnswers(parseData);
+			setId(parseData);
 		} catch (err) {
 			console.error(err.message);
 		}

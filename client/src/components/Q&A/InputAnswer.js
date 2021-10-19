@@ -16,6 +16,7 @@ const InputAnswer = ({ item }) => {
 
             myHeaders.append("Content-Type", "application/json");
             myHeaders.append("token", sessionStorage.token);
+			
             const body = { string, question: questions};
 
             const response = await fetch("/api/answers", {

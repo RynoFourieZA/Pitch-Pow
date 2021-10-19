@@ -1,46 +1,79 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import submission  from  "../../assets/images/pitch-submission.png";
-import laptop  from  "../../assets/images/kari-shea-1SAnrIxw5OY-unsplash.jpg";
+import submission from "../../assets/images/pitch-submission.png";
+import laptop from "../../assets/images/kari-shea-1SAnrIxw5OY-unsplash.jpg";
 import "../../assets/css/waiting-for-review.css";
 
-
 const WaitingForReview = () => {
+	const [comment, setComment] = useState([]);
+
+	// async function getAnswers() {
+	// 	try {
+	// 		const response = await fetch("/api/answers", {
+	// 			method: "GET",
+	// 			headers: { token: sessionStorage.token },
+	// 		});
+
+	// 		const parseRes = await response.json();
+	// 		console.log("Hi I am here, ParseRes: ", parseRes);
+	// 		setAnswer(parseRes);
+	// 	} catch (e) {
+	// 		console.error(e.message);
+	// 	}
+	// }
+
+	async function getComments() {
+		try {
+			const response = await fetch("/api/comments", {
+				method: "GET",
+				headers: { token: sessionStorage.token },
+			});
+
+			const parseRes = await response.json();
+			console.log("comments: ", parseRes);
+			setComment(parseRes);
+		} catch (e) {
+			console.error(e.message);
+		}
+	}
+
+	useEffect(() => {
+		// (async () => await getAnswers())();
+		(async () => await getComments())();
+	}, []);
 
 	return (
-        <section className="rightColumn step4">
-            <div className="container py-5" style = {{padding:'10px'}}>
-                <div>
-                    <h1 className="heading pb-2">Waiting For Review</h1>
-                    <span className="underline"></span>
-                </div>
+		<section className="rightColumn step4">
+			<div className="container py-5" style={{ padding: "10px" }}>
+				<div>
+					<h1 className="heading pb-2">Waiting For Review</h1>
+					<span className="underline"></span>
+				</div>
 
-                <div className="container" width="600px">
-                    
-                    <div 
-                        className="col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex justify-content-center"
-                    >
-                        <Link to="/dashboard/step2">
-                            <div>
-                                <div
-                                    className="bizStageBlock text-center"
-                                >
-                                    <img src={submission} className="img-fluid" width="400px"/>
-                                    <p>View Pitch</p>
-                                </div>
-                            </div>
-                        </Link>
-                                <div className="waiting-for-review">
-                                    <h3>Status: </h3>
-                                    <h5>Waiting for Review</h5>
-                                    <h3>Date Created: </h3>
-                                    <h5>Waiting for Review</h5>
-
-                                </div>
-                    </div>
-                </div>
-            </div>
-            {/* <div className="card">
+				<div className="container" width="600px">
+					<div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex justify-content-center">
+						<Link to="/dashboard/step2">
+							<div>
+								<div className="bizStageBlock text-center">
+									<img src={submission} className="img-fluid" width="400px" />
+									<p>View Pitch</p>
+								</div>
+							</div>
+						</Link>
+						<div className="waiting-for-review">
+							<h3>Status: </h3>
+							<h5>Waiting for Review</h5>
+							<h3>Date Created: </h3>
+							{/* <div> { date } </div> */}
+							<div>
+								<h1>Comments</h1>
+								<p>{comment.map(comment => comment.comment)}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{/* <div className="card">
                         <div className="card-header animated-bg" id="header">
                             <img src={laptop} alt="image of a laptop"/>
                         </div>
@@ -62,7 +95,7 @@ const WaitingForReview = () => {
                             </div>
                         </div>
                     </div> */}
-        </section>
+		</section>
 	);
 };
 
