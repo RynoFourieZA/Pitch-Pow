@@ -4,7 +4,7 @@ const DeleteAnswer = () => {
 
     const deleteQues = async () => {
         try {
-          const res = await fetch("/api/answers_v2/delete", {
+          const res = await fetch("/api/answers/delete", {
 						method: "PUT",
 						headers: { jwt_token: sessionStorage.token },
 					});

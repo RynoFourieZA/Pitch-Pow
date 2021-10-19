@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-const InputComment = () => {
-	const [comment, setComment] = useState("");
+const SubmitComment = () => {
+    const [comment, setComment] = useState("");
 	const [id, setId] = useState("");
 
 	const onSubmitNewForm = async () => {
@@ -50,11 +50,11 @@ const InputComment = () => {
 					onSubmitNewForm();
 				}}
 			>
-				Save
+				Submit
 			</button>
 		</div>
 	);
-}
+};
 
 const styles = {
 	container: {
@@ -83,4 +83,4 @@ const styles = {
   
   };
 
-export default InputComment;
+export default SubmitComment;

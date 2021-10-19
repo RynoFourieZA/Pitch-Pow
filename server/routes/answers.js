@@ -33,7 +33,7 @@ router.post("/answers", authorization, async (req, res) => {
 	}
 });
 
-router.get("/answers/all", authorization, async (_, res) => {
+router.get("/answers/all", async (_, res) => {
 	try {
 		connectDb
 			.query(
@@ -47,6 +47,20 @@ router.get("/answers/all", authorization, async (_, res) => {
 });
 
 router.get("/answers", authorization, async (req, res) => {
+	try {
+		connectDb
+			.query(
+				"SELECT answers.created_by, answers.student_number, questions.questions, answers.answer FROM answers INNER JOIN questions ON answers.question_id = questions.id WHERE users_id = $1",
+				[req.user]
+			)
+			.then((result) => res.json(result.rows));
+	} catch (e) {
+		console.error(e.message);
+		res.status(500).send("Server error");
+	}
+});
+
+router.get("/answers/all", async (req, res) => {
 	try {
 		connectDb
 			.query(

@@ -3,15 +3,12 @@ import { Route, Switch, NavLink, Link } from "react-router-dom";
 import StepIndicator from "./StepIndicator";
 import ChooseYourBusiness from "./ChooseYourBusiness";
 import Questions_New from "../Q&A/Questions_New";
-import Questions_Existing from "../Q&A/Questions_Existing";
 import WaitingForReview from "../Q&A/WaitingForReview";
 import FinalStep from "./FinalStep";
 import SlideShow from "./GoogleSlides";
-import Profile from "./profile";
-
 import "../../assets/css/_global.css";
 
-const Stepper = ({ setAuth }) => {
+const Stepper = () => {
 	return (
 		<Switch>
 			<div className="stepper">

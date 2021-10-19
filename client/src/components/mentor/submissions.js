@@ -20,7 +20,7 @@ export default function Submissions() {
 
 	const getProfile = async () => {
 		try {
-			const res = await fetch("/api/answers", {
+			const res = await fetch("/api/answers/all", {
 				method: "GET",
 				headers: { jwt_token: sessionStorage.token },
 			});

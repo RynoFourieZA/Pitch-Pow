@@ -5,10 +5,12 @@ import noSubmission from "../../assets/images/pitch-submission.png";
 import YellowButton from "../YellowButton";
 import PaginationMentor from "../mentor/PaginationMentor";
 import InputComment from "../mentor/Comments/InputComment";
+import SubmitComment from "../mentor/Comments/SubmitComment";
 
 const ListAnswers = () => {
 	const [allQuestionsAndAnswers, setAllQuestionsAndAnswers] = useState([]);
 	const [userQuestionAndAnswer, setUserQuestionAndAnswer] = useState([]);
+	// const [student, setStudent] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [questionPerPage] = useState(2);
 
@@ -22,15 +24,16 @@ const ListAnswers = () => {
 
 	const getProfile = async () => {
 		try {
-			const res = await fetch("/api/answers_v2", {
+			const res = await fetch("/api/answers/all", {
 				method: "GET",
 				headers: { jwt_token: sessionStorage.token },
 			});
 
 			const parseData = await res.json();
+			console.log(parseData);
 			setAllQuestionsAndAnswers(parseData);
-
 			setUserQuestionAndAnswer(parseData[0].created_by);
+
 		} catch (err) {
 			console.error(err.message);
 		}
@@ -43,6 +46,8 @@ const ListAnswers = () => {
 	const paginate = (pageNumber) => {
 		setCurrentPage(pageNumber);
 	};
+
+	console.log("test: ", allQuestionsAndAnswers);
 
 	return (
 		<div>
@@ -63,11 +68,13 @@ const ListAnswers = () => {
 							<div>
 								<div className="mentors-comment">
 									<h5 className="dashH5 mentors-comment">Mentors comment</h5>
-									<InputComment />
+										<InputComment />
 								</div>
 							</div>
 						</div>
 					))}
+					<SubmitComment />
+					{/* <InputComment /> */}
 					<PaginationMentor
 						questionPerPage={questionPerPage}
 						totalQuestions={allQuestionsAndAnswers.length}

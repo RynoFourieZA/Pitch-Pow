@@ -18,7 +18,7 @@ const EditAnswers = () => {
             myHeaders.append("token", sessionStorage.token);
             const body = { string, question: questions};
 
-            const response = await fetch("/api/answers_v2", {
+            const response = await fetch("/api/answers", {
                 method: "POST",
                 headers: myHeaders,
                 body: JSON.stringify(body),
