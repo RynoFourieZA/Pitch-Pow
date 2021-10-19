@@ -5,7 +5,6 @@ const getUserDetails = async (req, res) => {
     try {
 		const token = req.header("token");
 		const user_id = parseJwt(token).user;
-		console.log(user_id);
 
 		const user = await connectDb.query("SELECT name, email, student_number FROM users WHERE id = $1", [user_id]);
 		

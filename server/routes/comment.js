@@ -25,7 +25,7 @@ router.post("/comments", async (req, res) => {
 	}
 });
 
-router.get("/comments", async (_, res) => {
+router.get("/comments/all", async (_, res) => {
 	try {
 		connectDb
 			.query("SELECT id, comment, created_by FROM comments ORDER BY created_by")
@@ -38,10 +38,9 @@ router.get("/comments", async (_, res) => {
 
 router.get("/comments", async (req, res) => {
     try {
-        const { name, id } = req.query;
 
         connectDb
-            .query("SELECT comment FROM comments WHERE id = $1 AND name = $2", [id, name])
+            .query("SELECT comment FROM comments WHERE users_id = $1", [req.user])
             .then((result) => res.json(result.rows));
 
     } catch (e) {

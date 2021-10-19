@@ -36,7 +36,7 @@ function Dashboard({ setAuth }) {
 					<StudentMenu setAuth={setAuth} />
 					</div>
 					<div className="col-sm-12 col-md-12 col-lg-9 col-xl-9">
-						{ location.path="/dashboard/step6" === true ? <MyProfile /> : <Stepper setAut={setAuth} /> }
+						{ location.path ="/dashboard/step6" === true ? <MyProfile /> : <Stepper setAut={setAuth} /> }
 					</div>
 				</div>
 			) : (

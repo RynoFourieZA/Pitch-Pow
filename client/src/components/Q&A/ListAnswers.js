@@ -28,7 +28,6 @@ const ListAnswers = () => {
 			});
 
 			const parseData = await res.json();
-			console.log(parseData);
 			setAllQuestionsAndAnswers(parseData);
 
 			setUserQuestionAndAnswer(parseData[0].created_by);

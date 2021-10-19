@@ -7,8 +7,6 @@ router.post("/categories", async (req, res) => {
 	try {
 		const { type, explanation } = req.body;
 
-		console.log(type);
-
 		let query = "INSERT INTO category_type (name, description) VALUES ($1, $2)";
 
 		if (type.length === 0) {

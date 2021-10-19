@@ -4,7 +4,6 @@ import Accordion from "./Accordion";
 
 const Questions_New = () => {
 	const [data, setData] = useState([]);
-	const [disabled, setDisabled] = useState("true");
 	const [answer, setAnswer] = useState([]);
 	
 	async function getNewQuestions() {
@@ -162,6 +161,7 @@ const Questions_New = () => {
 			console.error(e.message);
 		}
 	}
+
 	async function getAnswers() {
 		try {
 			const response = await fetch("/api/answers", {
@@ -170,6 +170,7 @@ const Questions_New = () => {
 			});
 
 			const parseRes = await response.json();
+			console.log("Hi I am here, ParseRes: ", parseRes);
 			setAnswer(parseRes);
 		} catch (e) {
 			console.error(e.message);
@@ -181,7 +182,6 @@ const Questions_New = () => {
 		(async () => await getAnswers())();
 	}, []);
 
-	console.log(answer);
 
 	// const submitForReview = () => {
 	
@@ -197,7 +197,6 @@ const Questions_New = () => {
 			<Link to="/dashboard/step3">
 				<div className="text-center top">
 					<button
-						disabled={disabled}
 						className="yellowButton submit"
 						// onClick={ submitForReview }
 						>

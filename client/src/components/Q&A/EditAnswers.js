@@ -16,10 +16,7 @@ const EditAnswers = () => {
 
             myHeaders.append("Content-Type", "application/json");
             myHeaders.append("token", sessionStorage.token);
-			console.log(myHeaders);
             const body = { string, question: questions};
-
-			console.log(body);
 
             const response = await fetch("/api/answers_v2", {
                 method: "POST",
@@ -28,7 +25,6 @@ const EditAnswers = () => {
             });
 
             const parseResponse = await response.json();
-			console.log(parseResponse);
 			setString(parseResponse.string);
 			setQuestions(parseResponse.question);
 
@@ -37,7 +33,6 @@ const EditAnswers = () => {
         }
     } 
 
-	console.log(string, questions);
 	const onChange = (e) => {
 		setString(e.target.value);
 	};

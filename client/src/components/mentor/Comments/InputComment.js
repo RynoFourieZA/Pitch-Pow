@@ -11,11 +11,9 @@ const InputComment = () => {
 
             myHeaders.append("Content-Type", "application/json");
             myHeaders.append("token", sessionStorage.token);
-			console.log(myHeaders);
-            const body = { string, answer_id };
-			console.log(myHeaders);
 
-			console.log(body);
+            const body = { string, answer_id };
+
             const response = await fetch("/api/comments", {
                 method: "POST",
                 headers: myHeaders,
@@ -23,7 +21,6 @@ const InputComment = () => {
             });
 
             const parseResponse = await response.json();
-			console.log('string',parseResponse);
 			setComment(parseResponse.string);
 			setId(parseResponse.answer_id);
 
@@ -32,7 +29,6 @@ const InputComment = () => {
         }
     } 
 
-	console.log(comment, id);
 	const onChange = (e) => {
 		setString(e.target.value);
 	};

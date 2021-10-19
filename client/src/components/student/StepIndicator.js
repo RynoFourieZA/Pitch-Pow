@@ -25,8 +25,6 @@ const StepIndicator = () => {
     const handleStop = (e) => {
         e.preventDefault();
     }
-	console.log("step3");
-
 
 	return (
 		<div className="stepIndicator">

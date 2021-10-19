@@ -41,7 +41,6 @@ export default function Submissions() {
 			.reduce((map, obj) => map.set(obj.student_number, obj), new Map())
 			.values(),
 	];
-	console.log(uniqUsers);
 
 	const currentQuestions = uniqUsers.slice(
 		indexOfFirstQuestion,
