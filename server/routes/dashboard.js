@@ -25,7 +25,7 @@ router.get("/dashboard/profile", authorization, async (req, res) => {
 	}
 });
 
-router.put("/users/update-bio", async (req, res) => {
+router.put("/users/update-bio", authorization, async (req, res) => {
 	try {
 		const { stringBio, question } = req.body;
 		const token = req.header("token");
