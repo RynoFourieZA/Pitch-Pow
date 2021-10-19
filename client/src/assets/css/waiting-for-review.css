@@ -15,11 +15,15 @@
     margin: 0;
 }
 
-/* .waiting-for-review {
-    padding-left: 5rem;
-    width: 300px;
-} */
+.waiting-for-review {
+    display: flex;
+    flex-direction: column;
+}
 
+.display {
+    display: flex;
+    justify-content: space-evenly;
+}
 
 img {
     max-width: 100%;

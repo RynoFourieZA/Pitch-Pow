@@ -128,4 +128,7 @@
     border: 1px;
     opacity: 1;
 }
-  
+
+.display-center {
+  text-align: center;
+}
