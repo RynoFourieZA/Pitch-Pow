@@ -49,7 +49,6 @@ const InputAnswer = ({ item }) => {
 				placeholder="Type your answer here..."
 				value={string}
 				onChange={(e) => onChange(e)}
-				required
 			/>
 			<div className="my-2">
 				<button className="yellowButton" onClick={onSubmitNewForm}>

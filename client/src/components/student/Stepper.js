@@ -38,7 +38,7 @@ const Stepper = () => {
 								<WaitingForReview />
 							</div>
 							<div className="btnContainer">
-								<Link to="/dashboard/step2">Back</Link>
+								{/* <Link to="/dashboard/step2">Back</Link> */}
 								<Link to="/dashboard/step4">Next</Link>
 							</div>
 						</Route>

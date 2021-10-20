@@ -39,7 +39,7 @@ router.get("/comments/all", async (_, res) => {
 
 router.get("/comments", async (req, res) => {
     try {
-
+		console.log(req.user);
         connectDb
             .query("SELECT comment FROM comments WHERE users_id = $1", [req.user])
             .then((result) => res.json(result.rows));
