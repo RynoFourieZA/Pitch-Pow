@@ -49,6 +49,7 @@ const SubmitComment = () => {
 					e.preventDefault();
 					onSubmitNewForm();
 				}}
+				className="yellowButton"
 			>
 				Submit
 			</button>

@@ -51,6 +51,7 @@ const InputComment = ({ pitch }) => {
 					e.preventDefault();
 					onSubmitNewForm();
 				}}
+				className="blueButton"
 			>
 				Save
 			</button>

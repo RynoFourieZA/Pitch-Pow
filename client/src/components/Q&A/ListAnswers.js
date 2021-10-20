@@ -34,7 +34,6 @@ const ListAnswers = () => {
 			console.log("list :", parseData);
 			setAllQuestionsAndAnswers(parseData);
 			setUserQuestionAndAnswer(parseData[0].created_by);
-
 		} catch (err) {
 			console.error(err.message);
 		}
@@ -69,12 +68,15 @@ const ListAnswers = () => {
 							<div>
 								<div className="mentors-comment">
 									<h5 className="dashH5 mentors-comment">Mentors comment</h5>
-										<InputComment pitch={pitch} />
+									<InputComment pitch={pitch} />
 								</div>
 							</div>
 						</div>
 					))}
-					<SubmitComment />
+					<div className="mentors-comment">
+						<h5 className="dashH5 mentors-comment">General comment</h5>
+						<SubmitComment />
+					</div>
 					{/* <InputComment /> */}
 					<PaginationMentor
 						questionPerPage={questionPerPage}
