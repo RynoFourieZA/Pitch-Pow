@@ -5,7 +5,7 @@ import ChooseYourBusiness from "./ChooseYourBusiness";
 import Questions_New from "../Q&A/Questions_New";
 import WaitingForReview from "../Q&A/WaitingForReview";
 import FinalStep from "./FinalStep";
-import SlideShow from "./GoogleSlides";
+import GoogleSlides from "./GoogleSlides";
 import "../../assets/css/_global.css";
 
 const Stepper = () => {
@@ -44,9 +44,9 @@ const Stepper = () => {
 						</Route>
 						<Route exact path="/dashboard/step4">
 							{/* Fourth Step */}
-							<>
-								<SlideShow />
-							</>
+							<div>
+								<GoogleSlides />
+							</div>
 							<div className="btnContainer">
 								<Link to="/dashboard/step3">Back</Link>
 								<Link to="/dashboard/step5">Next</Link>
