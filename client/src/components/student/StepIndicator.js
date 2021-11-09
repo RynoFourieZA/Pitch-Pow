@@ -38,9 +38,6 @@ const StepIndicator = () => {
 					</>
 					)
 			})}
-			{/* <Route path="/dashboard/step7">
-				<Profile />
-			</Route> */}
 		</div>
 	);
 };

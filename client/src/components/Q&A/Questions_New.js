@@ -183,9 +183,7 @@ const Questions_New = () => {
 	}, []);
 
 
-	// const submitForReview = () => {
 	
-	// }
 
 	return (
 		<div className="container-accordion">

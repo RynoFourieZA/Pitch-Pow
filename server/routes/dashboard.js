@@ -49,5 +49,4 @@ router.put("/users/update-bio", authorization, async (req, res) => {
 	}
 });
 
-
 module.exports = router;

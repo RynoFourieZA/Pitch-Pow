@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useRouteMatch, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faFileAlt,
@@ -35,7 +35,6 @@ function logout(e, setAuth) {
 }
 
 export default function MentorMenu({ setAuth }) {
-	let match = useRouteMatch();
 
 	const [mentorName, setMentorName] = useState("");
 	const [error, setError] = useState("");
@@ -57,13 +56,13 @@ export default function MentorMenu({ setAuth }) {
 				<div className="text-start px-5">
 					<ul>
 						<li>
-							<NavLink to={`${match.url}/mentor/submission`}>
+							<NavLink to={`dashboard/mentor/submission`}>
 								<FontAwesomeIcon icon={faFileAlt} /> Submissions
 							</NavLink>
 						</li>
 
 						<li>
-							<NavLink to={`${match.url}/mentor/profile`}>
+							<NavLink to={`dashboard/mentor/profile`}>
 								<FontAwesomeIcon icon={faUserCircle} /> My Profile
 							</NavLink>
 						</li>

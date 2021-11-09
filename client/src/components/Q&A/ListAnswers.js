@@ -62,12 +62,12 @@ const ListAnswers = () => {
 					{allQuestionsAndAnswers.map((pitch, index) => (
 						<div className="pitchCard" key={index}>
 							<div>
-								<h6 width="200px">{pitch.questions}</h6>
+								<h5 className="dashH5 " width="200px">{pitch.questions}</h5>
 								<p>{pitch.answer}</p>
 							</div>
 							<div>
 								<div className="mentors-comment">
-									<h5 className="dashH5 mentors-comment">Mentors comment</h5>
+									<h5 className="dashH5 mentors-comment">Comment</h5>
 									<InputComment pitch={pitch} />
 								</div>
 							</div>
