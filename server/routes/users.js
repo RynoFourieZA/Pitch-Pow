@@ -1,6 +1,7 @@
 import { Router } from "express";
 import connectDb from "../db";
 import parseJwt from "../utils/tokenID";
+import date from "../utils/date";
 const bcrypt = require("bcrypt");
 
 const router = new Router();
@@ -86,7 +87,10 @@ router.put("/users/update-bio", async (req, res) => {
 		const user_email = await user.rows[0].email;
 
 		connectDb
-			.query("UPDATE users SET biography = $1, modifyby = $2 WHERE email = $3", [stringBio, user_name, user_email])
+			.query(
+				"UPDATE users SET biography = $1, modified_by = $2, modified_date = $3 WHERE email = $4",
+				[stringBio, user_name, date, user_email]
+			)
 			.then(() => res.send("Your biography was updated"));
 	} catch (e) {
 		console.error(e.message);
@@ -105,19 +109,17 @@ router.put("/users/update-password", async (req, res) => {
 
 		const user_name = await user.rows[0].name;
 		const user_email = await user.rows[0].email;
-		console.log(user_name, user_email);
 
-		if (userPassword === userPasswordTwo) {
+		if (userPassword !== userPasswordTwo) {
+			return "Password does not match";
+		}else {
 			const saltRounds = 10;
 			const salt = await bcrypt.genSalt(saltRounds);
 			const bcryptPassword = await bcrypt.hash(userPassword, salt);
 
 			connectDb
-				.query(
-					"UPDATE users SET password = $1, modifyby = $2 WHERE email = $3", [bcryptPassword, user_name, user_email])
+				.query("UPDATE users SET password = $1, modified_by = $2, modified_date = $3 WHERE email = $4", [bcryptPassword, user_name, date, user_email])
 				.then(() => res.send("Your password was updated"));
-		}else {
-			return "Password does not match";
 		}
 	} catch (e) {
 		console.error(e.message);
@@ -130,8 +132,13 @@ router.put("/users/delete", async (req, res) => {
 		const token = req.header("token");
 		const userID = await parseJwt(token).user;
 
+		const user_name = await user.rows[0].name;
+
 		connectDb
-			.query("Update users SET is_delete = true WHERE id = $1", [userID])
+			.query(
+				"Update users SET is_delete = true modified_by = $1, modified_date = $2 WHERE id = $3",
+				[user_name, date, userID]
+			)
 			.then(() => res.send("User has been deleted."));
 	} catch (e) {
 		console.error(e.message);

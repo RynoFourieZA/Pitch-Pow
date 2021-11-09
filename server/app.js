@@ -29,15 +29,13 @@ if (app.get("env") === "production") {
 }
 
 // Routes
-
 app.use(apiRoot, require("./routes/Authentication"));
 app.use(apiRoot, require("./routes/users"));
 app.use(apiRoot, require("./routes/dashboard"));
 app.use(apiRoot, require("./routes/categories"));
-app.use(apiRoot, require("./routes/Admin"));
 app.use(apiRoot, require("./routes/questions"));
 app.use(apiRoot, require("./routes/answers"));
-app.use(apiRoot, require("./routes/pitch"));
+app.use(apiRoot, require("./routes/comment"));
 
 // Config middleware
 app.use(express.static(staticDir));

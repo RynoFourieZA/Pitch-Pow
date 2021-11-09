@@ -11,12 +11,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/_global.css";
 import "./assets/css/_responsive.css";
 //React Components
-// import About from "./pages/About";
-// import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import LoginPage from "./pages/LoginPage";
 import Dashboard from "./pages/Dashboard";
-import MentorDashboard from "./components/mentor/MentorDashboard";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -25,6 +22,7 @@ toast.configure();
 
 const App = () => {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
+	const [id, setId] = useState("");
 
 	const setAuth = (boolean) => {
 		setIsAuthenticated(boolean);
@@ -32,9 +30,9 @@ const App = () => {
 
 	async function isAuth() {
 		try {
-			const response = await fetch("http://localhost:3100/auth/verify", {
+			const response = await fetch("/api/verify", {
 				method: "GET",
-				headers: { token: localStorage.token },
+				headers: { token: sessionStorage.token },
 			});
 
 			const parseRes = await response.json();
@@ -45,17 +43,28 @@ const App = () => {
 		}
 	}
 
+	async function getId() {
+		try {
+			const response = await fetch("/api/dashboard/", {
+				method: "GET",
+				headers: { token: sessionStorage.token },
+			});
+
+			const parseRes = await response.json();
+			setId(parseRes.role_type_id);
+			
+		} catch (e) {
+			console.error(e.message);
+		}
+	}
+
 	useEffect(() => {
 		isAuth();
+		getId();
 	}, []);
 
 	return (
 		<Switch>
-			{/* THIS ROUTE IS FOR TESTING PURPOSES ONLY */}
-			<Route path="/mentor-test">
-				<MentorDashboard />
-			</Route>
-
 			<Route
 				path="/signup"
 				render={(props) =>
@@ -71,10 +80,8 @@ const App = () => {
 				render={(props) =>
 					!isAuthenticated ? (
 						<LoginPage {...props} setAuth={setAuth} />
-					) : (
-						<Redirect to="/dashboard/student/pitch" />
-					)
-				}
+					) :( <Redirect to="/dashboard" />
+					)}
 			/>
 			<Route
 				path="/dashboard"
@@ -86,6 +93,8 @@ const App = () => {
 					)
 				}
 			/>
+
+			<Route path="*" render={() => <h1>404 Route not found</h1>} />
 		</Switch>
 	);
 };

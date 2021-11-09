@@ -18,7 +18,6 @@ export const connectDb = async () => {
 		console.error(err);
 		process.exit(1);
 	}
-	console.log("Postgres connected to", client.database);
 	client.release();
 };
 

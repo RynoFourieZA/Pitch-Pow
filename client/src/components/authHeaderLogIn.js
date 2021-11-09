@@ -4,7 +4,7 @@ import BlueButton from '../components/BlueButton';
 import uwcLogo from '../assets/images/UWC.png';
 
 const AuthHeaderLogin = () => (
-    <header className="">
+    <header>
         <div className="container d-flex justify-content-between">
             <div>
                 <Link>
@@ -16,7 +16,7 @@ const AuthHeaderLogin = () => (
                 <div className="w-50 d-flex align-items-center">
                     <h6>Already have an account?</h6>
                 </div>
-                 
+                
                 <Link>
                     <BlueButton 
                         href={"/login"} 

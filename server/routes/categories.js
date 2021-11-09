@@ -7,8 +7,6 @@ router.post("/categories", async (req, res) => {
 	try {
 		const { type, explanation } = req.body;
 
-		console.log(type);
-
 		let query = "INSERT INTO category_type (name, description) VALUES ($1, $2)";
 
 		if (type.length === 0) {
@@ -36,9 +34,9 @@ router.post("/categories", async (req, res) => {
 	}
 });
 
-router.get("/categories", async (req, res) => {
+router.get("/categories", async (_, res) => {
     try {
-		let query = "SELECT name, description FROM category_type WHERE isDELETE = 'False'";
+		let query = "SELECT name, description FROM category_type WHERE is_delete = 'false'";
 
 		connectDb
         .query(query)

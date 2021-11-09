@@ -16,7 +16,7 @@ const AuthHeaderSignup = () => (
                 <div className="w-50 d-flex align-items-center">
                     <h6>Dont have an account?</h6>
                 </div>
-                 
+                
                 <Link>
                     <BlueButton 
                         href={"/signup"} 

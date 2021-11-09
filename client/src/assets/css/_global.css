@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
-html {
-	overflow-x: hidden;
-}
-
 body {
 	font-family: "Open Sans", sans-serif !important;
 }
@@ -24,4 +20,61 @@ body {
 	background-color: #c1aa74;
 	color: white;
 	border: none;
+}
+
+.dashH4 {
+	margin-top: 30px;
+	padding: 5px;
+}
+
+.mentors-comment {
+	text-align: center;
+}
+
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	max-width: 600px;
+	height: 500px;
+	margin: auto;
+	text-align: center;
+}
+
+.title {
+	margin-left: 10px;
+	padding-left: 6px !important;
+	font-size: 18px;
+	text-align: start !important;
+}
+
+.student-num {
+	font-size: 12px !important;
+	font-weight: bold;
+	font-family: sans-serif;
+}
+
+.questions-answer-box {
+	width: 500px !important;
+	height: 300px !important;
+	margin: 10px !important;
+}
+
+/* textarea { 
+	padding: 5px;
+	font-family: Tahoma, sans-serif;
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	resize: none;
+} */
+
+.test {
+	padding-left: 100px !important;
+	margin-top: 20px;
+}
+
+
+p {
+    color: black;
+    transition: ease-in-out 0.2s;
+    font-size: 16px;
+    font-weight: bold;
 }

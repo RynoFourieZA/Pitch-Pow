@@ -1,5 +1,5 @@
 .main {
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .dashboardNav {
@@ -34,6 +34,11 @@ h4 {
     font-weight: bolder;
 }
 
+h5 {
+    color: #C1AA74;
+    font-weight: bolder;
+}
+
 .heading {
     font-weight: bolder;
 }
@@ -52,3 +57,68 @@ h4 {
     margin: 0rem 0rem 1.5rem 0;
     padding: 1.5rem 1.5rem;
 }
+
+.bizStageBlock {
+    max-width: 300px;
+    background: rgba(229, 229, 229, 0.7);
+    cursor: pointer;
+    transition: ease-in-out 0.2s;
+}
+
+.bizStageBlock:hover {
+    max-width: 300px;
+    background: #C1AA74;
+    box-shadow: 7px 7px 2px rgba(229, 229, 229, 0.7);
+    cursor: pointer;
+}
+
+.bizStageBlock p {
+    color: black;
+    transition: ease-in-out 0.2s;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.bizStageBlock:hover p{
+    color: white;
+}
+
+.questionsColumn {
+    background: #222359;
+    margin: 0;
+    color: white;
+}
+
+.question {
+    background: rgba(229, 229, 229, 0.7);
+    padding: 25px;
+    margin: 5px 25px 5px 5px;
+    border-radius: 2px;
+    color: black;
+}
+
+.question h6 {
+    font-weight: bold;
+}
+
+.commentCard {
+    background: rgba(255, 251, 0, 0.7);
+    padding: 15px;
+    margin: 10px 25px 10px 25px;
+    border-radius: 2px;
+    color: black;
+}
+
+.submit:disabled {
+    background-color: rgba(229, 229, 229, 0.7);
+    color: #C1AA74;
+    margin-top: 1.5em;
+}
+
+.submit:enabled {
+    background-color: #C1AA74;
+    color:rgba(229, 229, 229, 0.7);
+    margin-top: 1.5em;
+}
+
+
