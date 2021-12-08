@@ -19,7 +19,7 @@ input.input:focus {
 
 .showhide {
 	position: absolute;
-	transform: translate(200px, 103px);
+	transform: translate(210px, 100px);
 }
 
 .about-text {
