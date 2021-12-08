@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "../../assets/css/profile.css";
-import profileImage from "../../assets/images/business-man_grey.png";
+import "../assets/css/profile.css";
+import profileImage from "./business-man.png";
 
 export default function Profile() {
 	const [studentName, setStudentName] = useState("");

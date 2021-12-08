@@ -7,10 +7,8 @@ import {
 	faTrophy,
 	faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import YellowButton from "../YellowButton";
 import { toast } from "react-toastify";
-
-import profileImage from "../../assets/images/business-man.png";
+import profileImage from "./business-man.png";
 
 async function getName(setMentorName, setError) {
 	try {

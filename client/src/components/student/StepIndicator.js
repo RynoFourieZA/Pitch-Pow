@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, NavLink } from "react-router-dom";
 import "../../assets/css/stepper.css";
-import Profile from "./profile";
+import Profile from "../../side-panel/profile";
 
 const StepIndicator = () => {
 	const steps = [

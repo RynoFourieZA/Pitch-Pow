@@ -4,9 +4,8 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileAlt, faPuzzlePiece, faTrophy, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
-
-//
-import profileImage from "../../assets/images/business-man.png";
+import "../assets/css/_global.css";
+import profileImage from "./business-man.png";
 
 export default function StudentMenu({ setAuth, pathName }) {
 	let match = useRouteMatch();
@@ -61,6 +60,9 @@ export default function StudentMenu({ setAuth, pathName }) {
 							<NavLink to={`${match.url}/step2`}>
 								<FontAwesomeIcon icon={faFileAlt} /> My Pitch
 							</NavLink>
+						</li>
+						<li>
+							<a id="profile"><FontAwesomeIcon icon={faFileAlt} /> My Pitch 2</a>
 						</li>
 
 						<li>

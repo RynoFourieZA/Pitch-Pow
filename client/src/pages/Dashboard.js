@@ -4,8 +4,9 @@ import "../assets/css/dashboard.css";
 
 import MentorDashboard from "../components/mentor/MentorDashboard";
 import Stepper from "../components/student/Stepper";
-import StudentMenu from "../components/student/studentMenu";
-import MyProfile from "../components/student/profile";
+import StudentMenu from "../side-panel/studentMenu";
+// import MentorsMenu from "../side-panel/mentorMenu";
+import MyProfile from "../side-panel/profile";
 
 function Dashboard({ setAuth }) {
 	const [id, setId] = useState("");

@@ -4,7 +4,7 @@ import BlueButton from './BlueButton';
 import uwcLogo from '../assets/images/UWC.png';
 
 const AuthHeaderSignup = () => (
-    <header className="">
+    <header>
         <div className="container d-flex justify-content-between">
             <div>
                 <Link>

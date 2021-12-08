@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 
 //React Components
-import MentorMenu from "./mentorMenu";
+import MentorMenu from "../../side-panel/mentorMenu";
 import Submissions from "./submissions";
 import MentorsProfile from "./MentorsProfile";
 import ViewPitch from "./ViewPitch";

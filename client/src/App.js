@@ -1,7 +1,6 @@
 //React Router
 import React, { useState, useEffect } from "react";
 import {
-	BrowserRouter as Router,
 	Route,
 	Switch,
 	Redirect,
@@ -14,6 +13,7 @@ import "./assets/css/_responsive.css";
 import SignUp from "./pages/SignUp";
 import LoginPage from "./pages/LoginPage";
 import Dashboard from "./pages/Dashboard";
+import HomePage from "./pages/HomePage";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -65,6 +65,7 @@ const App = () => {
 
 	return (
 		<Switch>
+			<Route path="/" exact component={HomePage} />
 			<Route
 				path="/signup"
 				render={(props) =>

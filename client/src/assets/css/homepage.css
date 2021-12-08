@@ -1,0 +1,11 @@
+.container {
+    position: relative;
+}
+
+.col {
+    background-image: url(../images/column-image.png);
+}
+
+p {
+    color: white;
+}

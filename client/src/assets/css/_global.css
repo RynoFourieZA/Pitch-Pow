@@ -8,6 +8,14 @@ body {
 	outline: none;
 }
 
+.homepage {
+	margin-left: 1rem;
+	padding: 0.5rem 1rem;
+	/* background-color: #222359; */
+	color: #222359;
+	border: none;
+	font-size: 1.2rem;
+}
 .blueButton {
 	padding: 0.5rem 1rem;
 	background-color: #222359;
@@ -77,4 +85,8 @@ p {
     transition: ease-in-out 0.2s;
     font-size: 16px;
     font-weight: bold;
+}
+
+.pt-2 {
+	color: white;
 }

@@ -1,5 +1,4 @@
 import React from "react";
-import ReactGoogleSlides from "react-google-slides";
 import "../../assets/css/stepper.css";
 import googleSlide from "../../assets/images/Google-Slides.png";
 import powerPoint from "../../assets/images/Microsoft_Office_PowerPoint_(2013–2019).svg.png";

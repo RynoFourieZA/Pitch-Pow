@@ -7,9 +7,8 @@ const AuthHeaderLogin = () => (
     <header>
         <div className="container d-flex justify-content-between">
             <div>
-                <Link>
-                    <img src={uwcLogo} alt="university-logo"/>
-                </Link>
+                <img src={uwcLogo} alt="university-logo"/>
+                <Link to="/" className="homepage">Home</Link>
             </div>
 
             <div className="d-flex gap-1 align-items-center justify-content-center">
