@@ -34,7 +34,7 @@ router.post("/signup", validInfo, async (req, res) => {
 		const roleValue = role.rows[0].id;
 
 		if (roleValue === 1) {
-			const student_id = await email.replace("@myuwc.ac.za", "");
+			const student_id = await email;
 
 			const newUser = await connectDb.query(
 				"INSERT INTO users (role_type_id, name, email, password, student_number, created_date) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
