@@ -2,7 +2,7 @@ import { Pool } from "pg";
 
 require("dotenv").config();
 
-const dbUrl = process.env.DATABASE_URL || `postgres://postgres:${process.env.PASSWORD}@localhost:5432/cyf`;
+const dbUrl = process.env.DATABASE_URL || process.env.DB_URL;
 
 const pool = new Pool({
 	connectionString: dbUrl,

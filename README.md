@@ -1,4 +1,4 @@
-# Pitch Pow
+.# Pitch Pow
 
 Pitch Pow is an app that helps students create business pitches using a standard template with prompts to answer key questions and receive feedback from university staff.
 
